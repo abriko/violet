@@ -53,17 +53,17 @@
             }
           },
           {
-            "id": "4a885d7ce7838f67",
+            "id": "092596b321db0834",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Inbox/Agent skills.md",
+                "file": "0 - Inbox/Agent.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Agent skills"
+              "title": "Agent"
             }
           },
           {
@@ -227,12 +227,13 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "4a885d7ce7838f67",
+  "active": "092596b321db0834",
   "lastOpenFiles": [
+    "9 - Plugins/skills/obsidian-skills/README.md",
+    "0 - Inbox/Agent.md",
     "0 - Inbox/ai-ops/aiops-blueprint.md",
     "0 - Inbox/Kanban-main/!dea 💡.md",
     "9 - Plugins/skills/axton-obsidian-visual-skills/README.md",
-    "0 - Inbox/Agent skills.md",
     "0 - Inbox/Kanban-main/MTP pipeline.md",
     "9 - Plugins/auto/cleanup-git-logs",
     "9 - Plugins/auto",
@@ -266,7 +267,6 @@
     "4 - Resources/DevOps/MiniOps/miniops_wiki_20260531_082445.md",
     "4 - Resources/DevOps/MiniOps/miniops-web-app_wiki_20260531_083910.md",
     "4 - Resources/DevOps/MiniOps",
-    "0 - Inbox/2.md",
     "4 - Resources/DevOps/Service Catalog/Copy of AliCloud_Service_Request.xlsx",
     "4 - Resources/DevOps/Service Catalog",
     "4 - Resources/DevOps",
