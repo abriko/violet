@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.timeline-wrap { margin-top: 22pt; }
+.axis { height: 2pt; background: var(--border-strong); margin: 0 28pt; }
+.nodes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14pt; margin-top: -8pt; }
+.node { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.dot { width: 14pt; height: 14pt; border-radius: 50%; background: var(--accent-2); border: 3pt solid #FFFFFF; }
+.node.highlight .dot { background: var(--accent); }
+.stage-card { margin-top: 10pt; width: 100%; min-height: 148pt; border: 1pt solid var(--border); background: #FFFFFF; padding: 10pt; }
+.stage-title { font-family: var(--font-sans-bold); font-size: 13pt; color: var(--accent); line-height: 1.2; }
+.stage-time { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-2); letter-spacing: 1.2pt; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Roadmap</p>
+    <p class="slide-no">09</p>
+  </div>
+  <h1 class="title">Deliver in phases. Do not industrialize everything at once.</h1>
+  <p class="subtitle" style="margin-top:8pt; max-width: 520pt;">Foundation first. First deliveries next. Deeper capability after the substrate is real.</p>
+  <div class="timeline-wrap">
+    <div class="axis"></div>
+    <div class="nodes">
+      <div class="node highlight">
+        <div class="dot"></div>
+        <div class="stage-card">
+          <p class="stage-time">Q2 2026</p>
+          <p class="stage-title" style="margin-top:6pt;">Foundation</p>
+          <ul class="bullets" style="margin-top:10pt; text-align:left;">
+            <li>Jenkins Agent standardization</li>
+            <li>Service Catalog MVP</li>
+            <li>miniops 2.0 MVP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node">
+        <div class="dot"></div>
+        <div class="stage-card">
+          <p class="stage-time">Q3 2026</p>
+          <p class="stage-title" style="margin-top:6pt;">First deliveries</p>
+          <ul class="bullets" style="margin-top:10pt; text-align:left;">
+            <li>Pipeline AI L2</li>
+            <li>AIOps Dashboard v1</li>
+            <li>Documentation reorganization</li>
+            <li>UC3 cost observability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="node">
+        <div class="dot"></div>
+        <div class="stage-card">
+          <p class="stage-time">Q4 2026</p>
+          <p class="stage-title" style="margin-top:6pt;">Deeper capability</p>
+          <ul class="bullets" style="margin-top:10pt; text-align:left;">
+            <li>UC2 monitoring RCA MVP</li>
+            <li>Pipeline AI L3</li>
+            <li>Non-production auto-fix</li>
+            <li>UC3 daily agent pattern</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

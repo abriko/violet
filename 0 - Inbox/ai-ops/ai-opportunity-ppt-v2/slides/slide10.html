@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.ask-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; margin-top: 18pt; }
+.ask-card { min-height: 214pt; display: flex; flex-direction: column; justify-content: space-between; }
+.ask-title { font-family: var(--font-sans-bold); font-size: 15pt; color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Resource ask</p>
+    <p class="slide-no">10</p>
+  </div>
+  <h1 class="title">To deliver in phases, we need staged resourcing</h1>
+  <p class="subtitle" style="margin-top:8pt; max-width: 520pt;">A specific phased ask, not an open-ended platform budget.</p>
+  <div class="ask-grid">
+    <div class="card ask-card highlight">
+      <div>
+        <p class="small-label accent-label">Q2 ask</p>
+        <p class="big-number" style="margin-top:6pt;">3.5 FTE</p>
+        <p class="ask-title" style="margin-top:10pt;">Build the foundation</p>
+        <ul class="bullets" style="margin-top:12pt;">
+          <li>Service Catalog MVP</li>
+          <li>miniops 2.0 MVP</li>
+          <li>Jenkins Agent standardization</li>
+        </ul>
+      </div>
+      <p class="body-muted">Critical path for the rest of the platform.</p>
+    </div>
+    <div class="card ask-card">
+      <div>
+        <p class="small-label">Q3 ask</p>
+        <p class="big-number teal" style="margin-top:6pt;">2.5 FTE</p>
+        <p class="ask-title" style="margin-top:10pt;">Extend into first deliveries</p>
+        <ul class="bullets" style="margin-top:12pt;">
+          <li>Pipeline AI L2</li>
+          <li>AIOps Dashboard v1</li>
+          <li>Documentation reorganization</li>
+        </ul>
+      </div>
+      <p class="body-muted">Appendix A contains the role-level split behind these numbers.</p>
+    </div>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

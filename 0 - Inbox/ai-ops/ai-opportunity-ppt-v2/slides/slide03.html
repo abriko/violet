@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.slide { overflow: hidden; }
+.judgment-bg-shell {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.80;
+}
+.judgment-bg-shell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.quote-wrap {
+  position: relative;
+  z-index: 2;
+}
+.quote-mark {
+  color: rgba(255,255,255,0.92);
+}
+.quote-text {
+  max-width: 560pt;
+  color: var(--amber);
+}
+.quote-sub {
+  max-width: 500pt;
+  line-height: 1.4;
+  color: #002060;
+}
+.footer-row.has-logo .footer-note,
+.header-row .kicker,
+.header-row .slide-no {
+  color: rgba(255,255,255,0.82);
+}
+</style>
+</head>
+<body>
+<div class="slide soft">
+  <div class="judgment-bg-shell">
+    <img src="../assets/core-judgment-bg.png" alt="subtle operational scale background">
+  </div>
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Core judgment</p>
+    <p class="slide-no">03</p>
+  </div>
+  <div class="quote-wrap">
+    <p class="quote-mark">“</p>
+    <p class="quote-text">Operations scale has outgrown what headcount alone can cover.</p>
+    <p class="quote-sub">Our answer is AIOps: AI-assisted, proactive, and governed DevOps.</p>
+  </div>
+  <div class="footer-row has-logo">
+    <p class="footer-note">This is not a concept pitch; it is a formalization ask for a direction already in motion.</p>
+    <p class="footer-note">Decision slide</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

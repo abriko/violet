@@ -1,0 +1,2276 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "mongodb-overview",
+    "url": "/d/5952-055230-cloud-mongodb-overview/mongodb-overview",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:12+08:00",
+    "updated": "2026-04-02T11:30:51+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 5,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 84,
+    "folderUid": "bfhn1wwtcqfb4d",
+    "folderTitle": "DB ALL",
+    "folderUrl": "/dashboards/f/bfhn1wwtcqfb4d/db-all",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 122,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 30,
+        "panels": [],
+        "title": "Advanced Monitoring",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "This panel shows the sum of the QPS of the operations of all Shard nodes and certain roles (primary/secondary/hidden) in the sharded cluster instance",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 28,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(insert{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insert_primary",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(query{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "query_primary",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(update{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "update_primary",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(delete{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "delete_primary",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(getmore{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "getmore_primary",
+            "queryType": "randomWalk",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(command{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "command_primary",
+            "queryType": "randomWalk",
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(insert{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insert_secondary",
+            "queryType": "randomWalk",
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(query{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "query_secondary",
+            "queryType": "randomWalk",
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(update{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "update_secondary",
+            "queryType": "randomWalk",
+            "refId": "I"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(delete{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "delete_secondary",
+            "queryType": "randomWalk",
+            "refId": "J"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(getmore{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "getmore_secondary",
+            "queryType": "randomWalk",
+            "refId": "K"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(command{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"secondary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "command_secondary",
+            "queryType": "randomWalk",
+            "refId": "L"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(insert{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insert_hidden",
+            "queryType": "randomWalk",
+            "refId": "M"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(query{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "query_hidden",
+            "queryType": "randomWalk",
+            "refId": "N"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(update{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "update_hidden",
+            "queryType": "randomWalk",
+            "refId": "O"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(delete{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "delete_hidden",
+            "queryType": "randomWalk",
+            "refId": "P"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(getmore{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "getmore_hidden",
+            "queryType": "randomWalk",
+            "refId": "Q"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(command{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Shard\", role=\"hidden\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "command_hidden",
+            "queryType": "randomWalk",
+            "refId": "R"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Total QPS of Shard Component Operations in Sharded Clusters (by Role)",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "This panel shows the sum of the QPS of the operations of all Mongos nodes in the sharded cluster instance",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 31,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(insert{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insert",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(query{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "query",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(update{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "update",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(delete{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "delete",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(getmore{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "getmore",
+            "queryType": "randomWalk",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(command{product=\"mongodb\",logicIns=\"$logicInstance\", character=\"Mongos\", role=\"primary\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "command",
+            "queryType": "randomWalk",
+            "refId": "F"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Total QPS of Mongos Component Operations in Sharded Clusters",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "id": 26,
+        "panels": [],
+        "title": "Basic Monitoring",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 10
+        },
+        "hiddenSeries": false,
+        "id": 2,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "cpu_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "cpu_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "CPU Usage (%)",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 10
+        },
+        "hiddenSeries": false,
+        "id": 3,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "mem_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "mem_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Memory Usage (%)",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 4,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "data_iops{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "data_iops",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "log_iops{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "log_iops",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "IOPS Usage (Times/Second)",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 5,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 7,
+        "interval": "1m",
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "iops_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "iops_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "IOPS Usage (%)",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 26
+        },
+        "id": 6,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "ins_size{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "ins_size",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "data_size{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "data_size",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "log_size{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "log_size",
+            "queryType": "randomWalk",
+            "refId": "C"
+          }
+        ],
+        "title": "Disk Space Usage (Byte)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 26
+        },
+        "id": 8,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "disk_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "disk_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Disk Space Usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 34
+        },
+        "id": 5,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "current_conn{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "current_conn",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "connections_active{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "active_conn",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "Number of Connections (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 34
+        },
+        "id": 18,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "conn_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "conn_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of Connections Usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 42
+        },
+        "id": 17,
+        "interval": "1min",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "bytes_in{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "bytes_in",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "bytes_out{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "bytes_out",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "Network Traffic (Byte)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 42
+        },
+        "id": 19,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "wt_cache_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "wt_cache_usage",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "wt_cache_dirty_usage{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "wt_cache_dirty_usage",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "WiR edTigerCache usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 50
+        },
+        "id": 21,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "iocheck_cost{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "iocheck_cost",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "IO latency (milliseconds)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 50
+        },
+        "id": 20,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "repl_lag{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "repl_lag",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Master-slave latency (seconds)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 58
+        },
+        "id": 9,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "insert{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insert",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "query{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "query",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "update{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "update",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "delete{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "delete",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "getmore{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "getmore",
+            "queryType": "randomWalk",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "command{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "command",
+            "queryType": "randomWalk",
+            "refId": "F"
+          }
+        ],
+        "title": "Operation QPS (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 58
+        },
+        "id": 22,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "gl_cq_total{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "currentQueue_total",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "gl_cq_readers{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "currentQueue_readers",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "gl_cq_writers{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "currentQueue_writers",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "gl_ac_readers{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "active_readers",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "gl_ac_writers{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "active_writers",
+            "queryType": "randomWalk",
+            "refId": "E"
+          }
+        ],
+        "title": "Read and write queues (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 66
+        },
+        "id": 23,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "write_concurrent_trans_out{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "write_concurrent_trans_out",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "write_concurrent_trans_available{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "write_concurrent_trans_available",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "read_concurrent_trans_out{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "read_concurrent_trans_out",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "read_concurrent_trans_available{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "read_concurrent_trans_available",
+            "queryType": "randomWalk",
+            "refId": "D"
+          }
+        ],
+        "title": "WiredTiger request queues (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 66
+        },
+        "id": 11,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "noTimeout_open{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "open_no_timedout",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "pinned_open{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "open_with_timedout",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "total_open{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "open_total",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "timed_out{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "closed_by_timeout",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "job_cursors_closed{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "closed_by_session",
+            "queryType": "randomWalk",
+            "refId": "E"
+          }
+        ],
+        "title": "Cursors (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 74
+        },
+        "id": 13,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "operation_scanAndOrder_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "scanAndOrder",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "operation_writeConflicts_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "writeConflicts",
+            "queryType": "randomWalk",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "operation_exactIDCount_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "exactIDCount",
+            "queryType": "randomWalk",
+            "refId": "E"
+          }
+        ],
+        "title": "Operation details (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 74
+        },
+        "id": 15,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "document_deleted_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "deletedDocuments",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "document_inserted_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "insertedDocuments",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "document_returned_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "returnDocuments",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "document_updated_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "updatedDocuments",
+            "queryType": "randomWalk",
+            "refId": "D"
+          }
+        ],
+        "title": "Number of affected documents (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 82
+        },
+        "id": 14,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "queryExecutor_scanned_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "scannedKeys",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "queryExecutor_scannedObject_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "scannedDocs",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "Number of query scan indexes and documents (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 82
+        },
+        "id": 10,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "ttl_deletedDocuments_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "ttlDeletedDocuments",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "ttl_passes_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "ttlPasses",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "TTL (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 90
+        },
+        "id": 32,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "avg_rt{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "avg_rt",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Average response time (microseconds)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 90
+        },
+        "id": 24,
+        "interval": "1m",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "moveChunk_donor_started_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "donorCount",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "moveChunk_recip_stared_ps{product=\"mongodb\",instance=\"$instance\", role=\"$role\", rdsIns=\"$nodeId\"}",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "recipientCount",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "title": "moveChunk (pcs)",
+        "type": "graph"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "scene:database",
+      "env:Cloud",
+      "env:type:Cloud",
+      "addon:version:0.0.3",
+      "prometheus",
+      "dashboard:name:cloud-mongodb-overview",
+      "addon:name:cloud-mongodb"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "副本集实例",
+            "value": "副本集实例"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\"}, arch)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Instance Architecture",
+          "name": "arch",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\"}, arch)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "dds-3ns6c280eb4a4774",
+            "value": "dds-3ns6c280eb4a4774"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\"}, logicIns)",
+          "includeAll": false,
+          "label": "Logical Instance",
+          "name": "logicInstance",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\"}, logicIns)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "Normal",
+            "value": "Normal"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\"}, character)",
+          "includeAll": false,
+          "label": "Component Type",
+          "name": "character",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\"}, character)",
+          "refresh": 2,
+          "regex": "",
+          "sort": 2,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "dds-3ns6c280eb4a4774",
+            "value": "dds-3ns6c280eb4a4774"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\"}, instance)",
+          "includeAll": false,
+          "label": "Component ID",
+          "name": "instance",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\"}, instance)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "primary",
+            "value": "primary"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\", instance=\"$instance\"}, role)",
+          "includeAll": false,
+          "label": "Role",
+          "name": "role",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\", instance=\"$instance\"}, role)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "500018982",
+            "value": "500018982"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\", instance=\"$instance\", role=\"$role\"}, rdsIns)",
+          "includeAll": false,
+          "label": "Node ID",
+          "name": "nodeId",
+          "options": [],
+          "query": "label_values(cpu_usage{product=\"mongodb\", arch=\"$arch\", logicIns=\"$logicInstance\",character=\"$character\", instance=\"$instance\", role=\"$role\"}, rdsIns)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nprd-hkg-cloudservice",
+            "value": "jXu2wByNz"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-nprd-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "MongoDB Overview",
+    "uid": "5952-055230-cloud-mongodb-overview",
+    "version": 5,
+    "weekStart": ""
+  }
+}

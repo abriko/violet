@@ -1,0 +1,2284 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "cs-cost-namespace",
+    "url": "/d/5495437431802631-18195779-801-6-6/cs-cost-namespace",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-03T15:18:15+08:00",
+    "updated": "2026-04-28T17:09:31+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 30,
+    "folderUid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "folderTitle": "mfc-glprom-nprod-ackcluster",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-ugjfwpzz_/mfc-glprom-nprod-ackcluster",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 164,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "f4V_TpTHk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "max": 2,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 53,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "expr": "scalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n",
+            "fields": [
+              {
+                "jsonPath": ""
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Current CPU Weight",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "max": 2,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 54,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "scalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))",
+            "fields": [
+              {
+                "jsonPath": ""
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Current Memory Weight",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "Cores"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "H"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 2
+        },
+        "id": 48,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[1m])) by (node) * on(node) max(kube_node_labels{}) by (node))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "CPU Resource Usage (Usage):",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{}) by (node))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "CPU resource request:",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com!=\"\"}) by (node))",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "Alibaba Cloud ECS CPU Request resource requests:",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com=\"\"}) by (node))",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "IDC",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\"}[1m])) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com=\"\"}) by (node))",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "IDC CPU Usage Resource Utilization",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(machine_cpu_cores) by (node) * on(node) max(kube_node_labels{}) by (node))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Total CPU resources (Capacity):",
+            "range": true,
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (node) * on(node) max(kube_node_labels{}) by (node))\n\n/\n\nsum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{}) by (node))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "CPU resource usage (Usage / Request):",
+            "range": true,
+            "refId": "H"
+          }
+        ],
+        "title": "CPU resource usage",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "This metric is memory working set, which is cluster scheduler relay on.\n",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "GiB"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "E"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 2
+        },
+        "id": 42,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (node) * on(node) max(kube_node_labels{}) by (node)) / 1024 / 1024 / 1024",
+            "interval": "3600",
+            "legendFormat": "Memory resource usage:",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com=\"\"}) by (node)) / 1024 / 1024 / 1024",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "IDC",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{}) by (node)) / 1024 / 1024 / 1024",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Memory resource request (Request):",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(machine_memory_bytes) by (node) * on(node) max(kube_node_labels{}) by (node)) / 1024 / 1024 / 1024",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Total memory resource capacity (Capacity):",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (node) * on(node) max(kube_node_labels{}) by (node))\n\n/ \n\nsum(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{}) by (node))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Memory Resource Utilization (Usage / Request):",
+            "range": true,
+            "refId": "E"
+          }
+        ],
+        "title": "Memory resource usage",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "This metric is GPU Memory with ACK GPU-Exporter V2, which is cluster scheduler relay on.\n",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "noValue": "No GPU Used",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "mbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": "/.*率/"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "red",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 80
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 2
+        },
+        "id": 56,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName))",
+            "interval": "3600",
+            "legendFormat": "GPU memory resource usage (Usage):",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "GPU memory resource allocation (Usage):",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName) \n/ on(NodeName, NamespaceName) sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s]))) by (NodeName,NamespaceName) \n* on(NodeName) group_left \nsum(sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (gpu, NodeName)) by (NodeName))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Total GPU memory resource capacity (Capacity):",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{}[29s]))) by (NodeName,NamespaceName) \n/ on(NodeName) group_left \nsum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s]))) by (NodeName,NamespaceName) )",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "GPU memory resource utilization (Pod Used / Pod Allocated):",
+            "range": true,
+            "refId": "E"
+          }
+        ],
+        "title": "GPU Resource Usage",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "The \"Namespace Cost\" is estimated by compute resource. Which is calculated by:\n\nΣ(Pod Request/Node Capacity)*EachNodePrice\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least one hour.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": "/.*百分比/"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 18,
+          "y": 2
+        },
+        "id": 50,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n\n#由于某些namespace可能没有配cpu或内存request，保证结果展示全量的namespace\nmax(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 \n\n#cpu分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by (namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n* \n\n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#内存分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n#内存权重\n*\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#ECI成本\n+ on(namespace) group_left\nsum(max(label_replace(pod_current_price, \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\")) by (exported_pod, namespace) or max(kube_namespace_labels{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n# GPU节点\n+ on(namespace) group_left\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, NamespaceName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"namespace\", \"$1\", \"NamespaceName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n)",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Total cost (original bill cost):",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Namespace Real-time Cost Estimation",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "The \"Namespace Cost\" is estimated by compute resource. Which is calculated by:\n\nΣ(Pod Request/Node Capacity)*EachNodePrice\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least one hour.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": "/.*百分比/"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 18,
+          "y": 6
+        },
+        "id": 55,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n\n#由于某些namespace可能没有配cpu或内存request，保证结果展示全量的namespace\nmax(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 \n\n#cpu分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by (namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n* \n\n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#内存分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n#内存权重\n*\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#ECI成本\n+ on(namespace) group_left\nsum(max(label_replace(pod_current_price, \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\")) by (exported_pod, namespace) or max(kube_namespace_labels{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n# GPU节点\n+ on(namespace) group_left\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, NamespaceName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"namespace\", \"$1\", \"NamespaceName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n)\n/\nscalar(\n sum(node_current_price or pod_current_price) * ($__interval_ms/1000)\n)\n*\nscalar(abs(sum(max(sum($cost_measure)) by (product_code, instance_id)) ))",
+            "hide": false,
+            "interval": "86400",
+            "legendFormat": "__auto",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Namespace Cost Allocation-$cost_measure",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "The \"Pod Cost Per Core\" is estimated by compute resource. Which is calculated by:\n \nΣ(Pod Request/Node Capacity)*EachNodePrice / Node Price\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least one hour.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 10
+        },
+        "hiddenSeries": false,
+        "id": 21,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "$$hashKey": "object:107",
+            "alias": "/./",
+            "color": "#5794F2"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n((sum(sum(node_current_price{chargeType!=\"IDC\"} / on (node) group_left max(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node)) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"})) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"})) * 3600\nor\nsum(pod_current_price{exported_namespace=~\"$Namespace\"}) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) * 3600\n)",
+            "interval": "3600",
+            "legendFormat": "ECS/ECI",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "((sum(sum(node_current_price{chargeType=\"IDC\"} / on (node) group_left max(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node)) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"})) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"})) * 3600",
+            "interval": "3600",
+            "legendFormat": "IDC",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Price per core-hour",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:114",
+            "decimals": 1,
+            "format": "$/Core*Hour",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:115",
+            "decimals": 1,
+            "format": "percent",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "CPU Usage / CPU Request.\n\nIf this Utilization is too low, may be your app is idle.\n\nIf this Utilization > 100%, your app is oversold.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 10
+        },
+        "hiddenSeries": false,
+        "id": 27,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/./",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "CPUUsage - Total",
+            "color": "#FF9830"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) / (sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) )) > 0 or vector(0)",
+            "hide": false,
+            "interval": "600",
+            "legendFormat": "CPU Utilization (Usage / Request)",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\"}[1m])) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com!=\"\"}) by (node))\n\n/\n\nsum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com!=\"\"}) by (node))",
+            "hide": true,
+            "interval": "600",
+            "legendFormat": "CPUUsage - ECS",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\"}[1m])) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com=\"\"}) by (node))\n\n/\n\nsum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (node) * on(node) max(kube_node_labels{label_ack_aliyun_com!=\"\"}) by (node))",
+            "hide": true,
+            "interval": "600",
+            "legendFormat": "CPUUsage - IDC",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) / sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) ",
+            "hide": false,
+            "interval": "600",
+            "legendFormat": "Memory Utilization (Usage / Request)",
+            "range": true,
+            "refId": "D"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "CPU/Memory Resource Usage Trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "percentunit",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 17
+        },
+        "hiddenSeries": false,
+        "id": 23,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "CPURequest",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "CPUUsage",
+            "color": "#FA6400"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum (rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[1m])) ",
+            "interval": "600",
+            "legendFormat": "CPUUsage",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"})",
+            "interval": "600",
+            "legendFormat": "CPURequest",
+            "queryType": "randomWalk",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "CPU resource request/usage trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "Cores",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "decimals": 0,
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 17
+        },
+        "hiddenSeries": false,
+        "id": 24,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "MemoryRequest",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "MemoryUsage",
+            "color": "#FA6400"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) / 1024 / 1024 / 1024",
+            "interval": "600",
+            "legendFormat": "MemoryUsage",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) / 1024 / 1024 / 1024",
+            "interval": "600",
+            "legendFormat": "MemoryRequest",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Memory resource request/usage trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "GiB",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 0,
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "mbytes"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 17
+        },
+        "hiddenSeries": false,
+        "id": 57,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "MemoryRequest",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "MemoryUsage",
+            "color": "#FA6400"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName)",
+            "interval": "600",
+            "legendFormat": "GPUMemoryUsed",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName)",
+            "interval": "600",
+            "legendFormat": "GPUMemoryAllocated",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "GPU memory resource request/usage trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "mbytes",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 0,
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "The \"Namespace Cost Trend\" is estimated by compute resource. Which is calculated by:\n \nΣ(Pod Request/Node Capacity)*EachNodePrice\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least 10 minutes.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "$/Day"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        },
+        "id": 2,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n\n#由于某些namespace可能没有配cpu或内存request，保证结果展示全量的namespace\nmax(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 \n\n#cpu分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by (namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n* \n\n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#内存分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n#内存权重\n*\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#ECI成本\n+ on(namespace) group_left\nsum(max(label_replace(pod_current_price, \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\")) by (exported_pod, namespace) or max(kube_namespace_labels{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n# GPU节点\n+ on(namespace) group_left\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, NamespaceName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"namespace\", \"$1\", \"NamespaceName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n)",
+            "hide": false,
+            "interval": "86400",
+            "legendFormat": "{{namespace}}",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Namespace Estimated Cost Trend-Original Bill Cost",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "The \"Namespace Cost Trend\" is estimated by compute resource. Which is calculated by:\n\nΣ(Pod Request/Node Capacity)*EachNodePrice / ALL Node Cost\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least 10 minutes.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        },
+        "id": 29,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n\n#由于某些namespace可能没有配cpu或内存request，保证结果展示全量的namespace\nmax(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 \n\n#cpu分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by (namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n* \n\n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#内存分摊成本\n+ on(namespace) group_left \nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node)) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n#内存权重\n*\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node)))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}) by (node))+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(max(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}) by (node))))\n\n#ECI成本\n+ on(namespace) group_left\nsum(max(label_replace(pod_current_price, \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\")) by (exported_pod, namespace) or max(kube_namespace_labels{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n# GPU节点\n+ on(namespace) group_left\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, NamespaceName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"namespace\", \"$1\", \"NamespaceName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} or max(kube_namespace_labels{job=\"_kube-state-metrics\"}) by(namespace) * 0 ) by (namespace) * ($__interval_ms/1000)\n\n)\n\n/\n\nsum(\nsum(node_current_price) by (pod, namespace) * ($__interval_ms/1000)\n\nor\nsum(max(pod_current_price{}) by (exported_pod, exported_namespace)) * ($__interval_ms/1000)\n)\n",
+            "hide": false,
+            "interval": "600",
+            "legendFormat": "[Namespace]: $Namespace",
+            "range": true,
+            "refId": "D"
+          }
+        ],
+        "title": "Trend in the proportion of cluster total costs attributable to this namespace",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "Sorted by CPU Request.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "decimals": 3,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*CPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "Core"
+                },
+                {
+                  "id": "noValue",
+                  "value": "Request not configured"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*Memory.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                },
+                {
+                  "id": "noValue",
+                  "value": "Request not configured"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*GPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "mbytes"
+                },
+                {
+                  "id": "noValue",
+                  "value": "No GPU Used"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 35
+        },
+        "id": 61,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "CPU资源请求量Request"
+            }
+          ]
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(label_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\")) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Pod resource request volume ranking",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "last"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "last"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Value #A (lastNotNull)": "GPU memory resource request Allocated(Request)",
+                "Value #D (last)": "CPU resource request Request",
+                "Value #E (last)": "Memory resource request quantity Request",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "Sorted by CPU Usage.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "min": -1,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*率.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "noValue",
+                  "value": "Request not configured"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Maximum CPU resource usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "Core"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Maximum Memory Resource Usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*GPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "noValue",
+                  "value": "No GPU Used"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 35
+        },
+        "id": 63,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "CPU资源利用率(Usage / Request)"
+            }
+          ]
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[1m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) \n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (node, pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Pod Resource Usage Ranking-Sorted by CPU Usage",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #B": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #C": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "max"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "max"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Value #A (lastNotNull)": "CPU Resource Utilization (Usage / Request)",
+                "Value #A (mean)": "CPU resource utilization",
+                "Value #B (lastNotNull)": "Memory resource utilization (Usage / Request)",
+                "Value #B (mean)": "Memory resource usage",
+                "Value #C (lastNotNull)": "GPU memory usage (Usage / Allocated)",
+                "Value #D (last)": "CPURequest(Cores)",
+                "Value #D (max)": "Maximum CPU resource usage",
+                "Value #E (last)": "MemoryRequest(GiB)",
+                "Value #E (max)": "Maximum Memory Resource Usage",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+        },
+        "description": "Sort by WasteRate.\nWasteRate = 1 - CPUUtilization\n\nCPUUtilization = CPUUsage / CPURequest\n\nMemroyUtilization = MemoryUsage / MemroyRequest",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "decimals": 3,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*率.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 45
+        },
+        "id": 59,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "资源闲置率(Pod未被使用的计算资源占已分配资源的比重)"
+            }
+          ]
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) \n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (pod)",
+            "format": "table",
+            "hide": false,
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mfc-glprom-sit-hkg-ackcluster-01_5495437431802631_67570f"
+            },
+            "expr": "1 \n\n- \n## 1. CPU 利用率\n(\n sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[1m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) \n > 0\n or max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * 0\n)\n\n- \n\n## 2. GPU显存利用率\n\n(\n sum(label_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) \n/ on(node) group_left \nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n) by (pod) > 0\n or max(kube_pod_labels{namespace=~\"$Namespace\"}) by (pod) * 0\n)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "G"
+          }
+        ],
+        "title": "Pod resource idle ranking",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #B": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #C": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #F": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #G": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "bloom7b1-deepspeed-alpha-custom-serving-67584945c6-827kv": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "Value #A (lastNotNull)": 3,
+                "Value #C (lastNotNull)": 1,
+                "Value #F (lastNotNull)": 2,
+                "Value #G (lastNotNull)": 4,
+                "pod": 0
+              },
+              "renameByName": {
+                "Value #A (last)": "MaxCPUUsage(Cores)",
+                "Value #A (lastNotNull)": "GPU memory usage (Usage / Allocated)",
+                "Value #B (last)": "MaxMemoryUsage(GiB)",
+                "Value #C (last)": "MaxCPUUtilization",
+                "Value #C (lastNotNull)": "CPU Usage (Usage / Request)",
+                "Value #D (last)": "CPURequest(Cores)",
+                "Value #E (last)": "MemoryRequest(GiB)",
+                "Value #F (last)": "MaxMemoryUtilization",
+                "Value #F (lastNotNull)": "Memory Usage (Usage / Request)",
+                "Value #G (lastNotNull)": "Resource Idle Rate (the proportion of unutilized compute resources among allocated resources for Pods)",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": "5m",
+    "schemaVersion": 40,
+    "tags": [
+      "prometheus"
+    ],
+    "templating": {
+      "list": [
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "ns-gft-atas-system",
+            "value": "ns-gft-atas-system"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "f4V_TpTHk"
+          },
+          "definition": "label_values(kube_pod_info, namespace)",
+          "includeAll": true,
+          "label": "Namespace (Namespace)",
+          "name": "Namespace",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info, namespace)",
+            "refId": "lch-sg-124_1251182063904492_28a60a-Namespace-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "1",
+            "value": "1"
+          },
+          "includeAll": false,
+          "label": "cost allocation model",
+          "name": "cost_allocation_method",
+          "options": [
+            {
+              "selected": true,
+              "text": "CPU模型",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "内存模型",
+              "value": "0"
+            },
+            {
+              "selected": false,
+              "text": "CPU-内存混合模型（推荐权重）",
+              "value": "-10000"
+            },
+            {
+              "selected": false,
+              "text": "CPU-内存混合模型（自定义权重）",
+              "value": "-1"
+            }
+          ],
+          "query": "CPU模型 : 1, 内存模型 : 0, CPU-内存混合模型（推荐权重） : -10000, CPU-内存混合模型（自定义权重） : -1",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "100",
+            "value": "100"
+          },
+          "description": "Cost allocation model takes effect after \"CPU-memory hybrid model (custom weight)\" is selected",
+          "label": "CPU Weight Setting (%)",
+          "name": "CPUWeight",
+          "options": [
+            {
+              "selected": true,
+              "text": "100",
+              "value": "100"
+            }
+          ],
+          "query": "100",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "pretax_amount",
+            "value": "pretax_amount"
+          },
+          "includeAll": false,
+          "label": "Actual/original bill",
+          "name": "cost_measure",
+          "options": [
+            {
+              "selected": true,
+              "text": "优惠后实际账单成本",
+              "value": "pretax_amount"
+            },
+            {
+              "selected": false,
+              "text": "原价账单成本",
+              "value": "pretax_gross_amount"
+            }
+          ],
+          "query": "优惠后实际账单成本 : pretax_amount,原价账单成本 : pretax_gross_amount",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-3d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "CS Cost Namespace",
+    "uid": "5495437431802631-18195779-801-6-6",
+    "version": 4,
+    "weekStart": ""
+  }
+}

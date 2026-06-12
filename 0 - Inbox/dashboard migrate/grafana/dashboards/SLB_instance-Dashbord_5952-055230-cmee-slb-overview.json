@@ -1,0 +1,1260 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "slb-instance-dashbord",
+    "url": "/d/5952-055230-cmee-slb-overview/slb-instance-dashbord",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:12+08:00",
+    "updated": "2026-04-09T12:11:09+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 6,
+    "folderUid": "global-v2-cn-5495437431802631-uugqtqwk_",
+    "folderTitle": "mfc-glprom-nprd-cloudservice",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-uugqtqwk_/mfc-glprom-nprd-cloudservice",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 123,
+    "links": [],
+    "panels": [
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Number of healthy backend ECS instances",
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "hiddenSeries": false,
+        "id": 4,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "avg(AliyunSlb_HeathyServerCount{instanceId=~\"$instanceId\",vip=~\"$vip\"}) by (instanceName,vip)",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{instanceName}}/{{vip}}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Healthy Server Count",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 58,
+        "panels": [],
+        "title": "RX/TX",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Number of inbound/outbound bits per second",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "Bps"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "hiddenSeries": false,
+        "id": 46,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunSlb_InstanceTrafficTX{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{instanceName}}/{{vip}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "-AliyunSlb_InstanceTrafficRX{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "interval": "",
+            "legendFormat": "{{instanceName}}/{{vip}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Instance TrafficRX/TX",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "Bps",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Inbound/outbound bandwidth",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "Bps"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "hiddenSeries": false,
+        "id": 48,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunSlb_TrafficTXNew{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "interval": "",
+            "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "-AliyunSlb_TrafficRXNew{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "interval": "",
+            "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "TrafficRX/TX",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "Bps",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Number of outbound/inbound packets per second",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "cps"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "hiddenSeries": false,
+        "id": 38,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": " AliyunSlb_PacketTX{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": " -AliyunSlb_PacketRX{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "interval": "",
+            "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Package RX/TX",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "cps",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        },
+        "id": 64,
+        "panels": [],
+        "title": "Connection",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "id": 36,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.2.4",
+        "repeat": "ConnectionStatus",
+        "repeatDirection": "h",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunSlb_${ConnectionStatus}Connection{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+            "interval": "",
+            "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+            "refId": "C"
+          }
+        ],
+        "title": "$ConnectionStatus Connection",
+        "type": "graph"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "id": 56,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 34
+            },
+            "id": 2,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "9.2.4",
+            "repeat": "ConnectionStatus",
+            "repeatDirection": "h",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunSlb_Instance${ConnectionStatus}Connection{regionId=~\"$regionId\",instanceId=~\"$instanceId\",regionId=~\"$regionId\"}",
+                "format": "time_series",
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 2,
+                "legendFormat": "${ConnectionStatus}#{{instanceName}}/{{vip}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Instance ${ConnectionStatus} Connection",
+            "type": "graph"
+          }
+        ],
+        "title": "Instance Connection",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 34
+        },
+        "id": 62,
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Layer 7 protocol instance QPS",
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 43
+            },
+            "hiddenSeries": false,
+            "id": 22,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "11.5.1",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "expr": "AliyunSlb_InstanceQps{regionId=~\"$regionId\",instanceId=~\"$instanceId\"}",
+                "interval": "",
+                "legendFormat": "{{instanceName}}/{{vip}}",
+                "queryType": "randomWalk",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance QPS",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 43
+            },
+            "id": 86,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "expr": "AliyunSlb_InstanceQpsUtilization{regionId=~\"$regionId\",instanceId=~\"$instanceId\"}",
+                "legendFormat": "{{instanceName}}/{{vip}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Instance Qps Utilization",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Layer 7 protocol port QPS",
+            "fieldConfig": {
+              "defaults": {
+                "unit": "cps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 51
+            },
+            "id": 40,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "9.2.4",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "sum(AliyunSlb_Qps{instanceId=~\"$instanceId\"}) by (instanceId,vip)",
+                "interval": "",
+                "legendFormat": "{{instanceName}}/{{vip}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "QPS",
+            "type": "graph"
+          }
+        ],
+        "title": "QPS(Layer 7)",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 35
+        },
+        "id": 60,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "unit": "ms"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 68
+            },
+            "id": 24,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "9.2.4",
+            "repeat": "RT",
+            "repeatDirection": "h",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunSlb_${RT}{regionId=~\"$regionId\",instanceId=~\"$instanceId\",vip=~\"$vip\"}",
+                "interval": "",
+                "legendFormat": "{{instanceName}}/{{vip}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "${RT}",
+            "type": "graph"
+          }
+        ],
+        "title": "RT(Layer 7)",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 36
+        },
+        "id": 54,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "unit": "cps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 69
+            },
+            "id": 44,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "9.2.4",
+            "repeat": "StatusCode",
+            "repeatDirection": "h",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunSlb_$StatusCode{instanceId=~\"$instanceId\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "{{instanceName}}:{{port}}/{{vip}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "$StatusCode",
+            "type": "graph"
+          }
+        ],
+        "title": "Status Code(Layer 7)",
+        "type": "row"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "slb"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunSlb_ActiveConnection{}, regionId)",
+          "includeAll": true,
+          "multi": true,
+          "name": "regionId",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunSlb_ActiveConnection{}, regionId)",
+            "refId": "${datasource}-regionId-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "/^(?![--])[a-zA-Z-.0-9]/",
+          "sort": 5,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunSlb_ActiveConnection{regionId=~\"$regionId\"}, instanceName)",
+          "includeAll": true,
+          "multi": true,
+          "name": "instanceName",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunSlb_ActiveConnection{regionId=~\"$regionId\"}, instanceName)",
+            "refId": "${datasource}-instanceName-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "query_result(AliyunSlb_ActiveConnection{regionId=~\"$regionId\", instanceName=~\"$instanceName\" })",
+          "includeAll": true,
+          "multi": true,
+          "name": "instanceId",
+          "options": [],
+          "query": {
+            "query": "query_result(AliyunSlb_ActiveConnection{regionId=~\"$regionId\", instanceName=~\"$instanceName\" })",
+            "refId": "${datasource}-instanceId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "/.*instanceId=\"(.*)\",instanceName=.*/",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunSlb_ActiveConnection{regionId=~\"$regionId\",instanceName=~\"$instanceName\"},vip)",
+          "includeAll": true,
+          "multi": true,
+          "name": "vip",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunSlb_ActiveConnection{regionId=~\"$regionId\",instanceName=~\"$instanceName\"},vip)",
+            "refId": "${datasource}-vip-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "$__all"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "includeAll": true,
+          "label": "Connection Status",
+          "multi": true,
+          "name": "ConnectionStatus",
+          "options": [
+            {
+              "selected": false,
+              "text": "Active",
+              "value": "Active"
+            },
+            {
+              "selected": false,
+              "text": "Inactive",
+              "value": "Inactive"
+            },
+            {
+              "selected": false,
+              "text": "Drop",
+              "value": "Drop"
+            },
+            {
+              "selected": false,
+              "text": "Max",
+              "value": "Max"
+            }
+          ],
+          "query": "Active,Inactive,Drop,Max",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": [
+              "$__all"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "includeAll": true,
+          "label": "RT Options",
+          "multi": true,
+          "name": "RT",
+          "options": [
+            {
+              "selected": false,
+              "text": "Listen RT",
+              "value": "Rt"
+            },
+            {
+              "selected": false,
+              "text": "Instance RT",
+              "value": "InstanceRt"
+            },
+            {
+              "selected": false,
+              "text": "Listen Upstream RT",
+              "value": "UpstreamRt"
+            },
+            {
+              "selected": false,
+              "text": "Instance Upstream RT",
+              "value": "UpstreamInstanceRt"
+            }
+          ],
+          "query": "Listen RT : Rt,Instance RT : InstanceRt,Listen Upstream RT : UpstreamRt,Instance Upstream RT : UpstreamInstanceRt",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": [
+              "$__all"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "includeAll": true,
+          "label": "Status Code",
+          "multi": true,
+          "name": "StatusCode",
+          "options": [
+            {
+              "selected": false,
+              "text": "Listen 2XX",
+              "value": "StatusCode2xx"
+            },
+            {
+              "selected": false,
+              "text": "Listen 3XX",
+              "value": "StatusCode3xx"
+            },
+            {
+              "selected": false,
+              "text": "Listen 4XX",
+              "value": "StatusCode4xx"
+            },
+            {
+              "selected": false,
+              "text": "Listen 5XX",
+              "value": "StatusCode5xx"
+            },
+            {
+              "selected": false,
+              "text": "Listen Other",
+              "value": "StatusCodeOther"
+            },
+            {
+              "selected": false,
+              "text": "Listen Upstream 4XX",
+              "value": "UpstreamCode4xx"
+            },
+            {
+              "selected": false,
+              "text": "Listen Upstream 5XX",
+              "value": "UpstreamCode5xx"
+            },
+            {
+              "selected": false,
+              "text": "Instance 2XX",
+              "value": "InstanceStatusCode2xx"
+            },
+            {
+              "selected": false,
+              "text": "Instance 3XX",
+              "value": "InstanceStatusCode3xx"
+            },
+            {
+              "selected": false,
+              "text": "Instance 4XX",
+              "value": "InstanceStatusCode4xx"
+            },
+            {
+              "selected": false,
+              "text": "Instance 5XX",
+              "value": "InstanceStatusCode5xx"
+            },
+            {
+              "selected": false,
+              "text": "Instance Other",
+              "value": "StatusCodeOther"
+            }
+          ],
+          "query": "Listen 2XX : StatusCode2xx,Listen 3XX : StatusCode3xx,Listen 4XX : StatusCode4xx,Listen 5XX : StatusCode5xx,Listen Other : StatusCodeOther,Listen Upstream 4XX : UpstreamCode4xx,Listen Upstream 5XX : UpstreamCode5xx,Instance 2XX : InstanceStatusCode2xx,Instance 3XX : InstanceStatusCode3xx,Instance 4XX : InstanceStatusCode4xx,Instance 5XX : InstanceStatusCode5xx,Instance Other : StatusCodeOther",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": [
+              "mfc-glprom-uat-hkg-cloudservice"
+            ],
+            "value": [
+              "PewhKFtvz"
+            ]
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "multi": true,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-uat-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-30m",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "SLB instance-Dashbord",
+    "uid": "5952-055230-cmee-slb-overview",
+    "version": 4,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.layout { display: grid; grid-template-columns: 1.04fr 0.88fr; gap: 18pt; margin-top: 16pt; height: 265pt; }
+.governance-copy { display: flex; flex-direction: column; justify-content: space-between; }
+.anchor { font-family: var(--font-sans-bold); font-size: 22pt; line-height: 1.18; color: var(--accent); max-width: 360pt; }
+.governance-visual {
+  height: 214pt;
+  border: 1pt solid var(--border);
+  background: #FFFFFF;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.governance-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.principle-title .hl {
+  color: var(--accent-2);
+}
+</style>
+</head>
+<body>
+<div class="slide soft">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Governance & security</p>
+    <p class="slide-no">08</p>
+  </div>
+  <div class="layout">
+    <div class="governance-copy">
+      <div>
+        <p class="small-label accent-label">Non-negotiable design rule</p>
+        <h1 class="anchor" style="margin-top:8pt;">AI can recommend. Only humans can execute production change.</h1>
+        <p class="subtitle" style="margin-top:10pt; max-width: 360pt;">Built for governed adoption, not blind automation.</p>
+      </div>
+      <div class="principle-stack">
+        <div class="principle-card">
+          <p class="principle-title"><span class="hl">Evidence</span> before action</p>
+          <p class="principle-copy">Every AI decision must be backed by observable data and a traceable evidence chain.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-title"><span class="hl">Human approval</span> for production</p>
+          <p class="principle-copy">Production actions stay behind mandatory approval gates aligned with ITIL process.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-title"><span class="hl">Minimum permissions</span> by design</p>
+          <p class="principle-copy">Each agent receives only the access needed for the task it is assigned.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="governance-visual">
+        <img src="../assets/governance.png" alt="governed AI approval gate illustration">
+      </div>
+    </div>
+  </div>
+  <div class="footer-row has-logo">
+    <p class="footer-note">Governance is part of the product, not a post-hoc control layer.</p>
+    <p class="footer-note">See Appendix C</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

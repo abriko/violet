@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12pt;
+  margin-top: 14pt;
+}
+.stat-card { min-height: 96pt; display: flex; flex-direction: column; justify-content: space-between; }
+.verdict { margin-top: 8pt; padding: 8pt 12pt; border: 1pt solid var(--border); background: #FBFCFE; }
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Current state</p>
+    <p class="slide-no">02</p>
+  </div>
+  <h1 class="title">The operating model is already under strain</h1>
+  <p class="subtitle" style="margin-top:8pt; max-width: 560pt;">Internal signals show a concentration of operational friction. The issue is not isolated inefficiency; it is a scaling limit in how work gets deployed, investigated, and coordinated.</p>
+  <div class="stats-grid">
+    <div class="card stat-card">
+      <div>
+        <p class="small-label">Survey base</p>
+        <p class="big-number">136</p>
+      </div>
+      <p class="body-muted">Internal respondents from the HK DevOps & Platform team.</p>
+    </div>
+    <div class="card stat-card">
+      <div>
+        <p class="small-label">Release / deployment friction</p>
+        <p class="big-number coral">118</p>
+      </div>
+      <p class="body-muted">Most frequently raised pain point across the survey.</p>
+    </div>
+    <div class="card stat-card">
+      <div>
+        <p class="small-label">Jenkins incident pain</p>
+        <p class="big-number amber">83</p>
+      </div>
+      <p class="body-muted">A recurring operational drain; 54% voted it the hardest tool to use.</p>
+    </div>
+    <div class="card stat-card highlight">
+      <div>
+        <p class="small-label">Service footprint</p>
+        <p class="big-number teal">~400</p>
+      </div>
+      <p class="body-muted">Services already sit under the HK Marketing estate while manual intervention remains high.</p>
+    </div>
+  </div>
+  <div class="verdict">
+    <p class="body"><strong style="color: var(--accent);">Executive reading:</strong> service scale keeps growing, but the operating model still depends on human coordination and reactive firefighting.</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

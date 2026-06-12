@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIOps Platform — Executive Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* === VIEWPORT BASE === */
+html, body { height:100%; overflow-x:hidden; margin:0; padding:0; }
+html { scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+.slide { width:100vw; height:100vh; height:100dvh; overflow:hidden; scroll-snap-align:start; display:flex; flex-direction:column; position:relative; }
+.slide-content { flex:1; display:flex; flex-direction:column; justify-content:center; max-height:100%; overflow:hidden; padding:var(--slide-padding); }
+:root {
+    --title-size: clamp(2.6rem,5vw,5rem);
+    --h2-size: clamp(1.8rem,2.6vw,2.6rem);
+    --h3-size: clamp(1.3rem,1.7vw,1.7rem);
+    --body-size: clamp(1rem,1.25vw,1.25rem);
+    --small-size: clamp(0.85rem,1vw,1rem);
+    --slide-padding: clamp(2rem,4vw,4.5rem);
+    --bg:#060c1a; --bg2:#0b1428;
+    --blue:#0ea5e9; --cyan:#22d3ee;
+    --amber:#f59e0b; --green:#10b981; --red:#ef4444; --purple:#a855f7;
+    --text:#e2e8f0; --muted:#64748b;
+    --border:rgba(14,165,233,0.2);
+}
+@media (max-height:700px) { :root { --slide-padding:clamp(1.5rem,2.5vw,2.5rem); --h2-size:clamp(1.5rem,2.3vw,2rem); } }
+@media (max-height:600px) { :root { --slide-padding:clamp(1rem,2vw,1.8rem); --body-size:clamp(0.9rem,1vw,1.1rem); } .keyboard-hint{display:none} }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.2s !important; } }
+* { box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }
+
+/* Grid texture */
+.grid-bg { background-image: linear-gradient(rgba(14,165,233,0.032) 1px,transparent 1px), linear-gradient(90deg,rgba(14,165,233,0.032) 1px,transparent 1px); background-size:48px 48px; }
+
+/* Slide number */
+.slide-num { position:absolute; top:clamp(1rem,2vh,1.6rem); left:var(--slide-padding); font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--blue); opacity:0.6; letter-spacing:0.1em; }
+
+/* Nav */
+.corner-nav { position:fixed; bottom:clamp(1rem,3vh,2rem); right:clamp(1rem,2.5vw,2rem); display:flex; flex-direction:column; gap:6px; z-index:100; }
+.nav-dot { width:6px; height:6px; border-radius:50%; background:var(--muted); cursor:pointer; transition:background 0.3s, transform 0.3s; }
+.nav-dot.active { background:var(--blue); transform:scale(1.5); }
+.keyboard-hint { position:fixed; bottom:clamp(1rem,3vh,2rem); left:clamp(1rem,2.5vw,2rem); font-family:'JetBrains Mono',monospace; font-size:clamp(0.4rem,0.6vw,0.52rem); color:var(--muted); opacity:0.4; }
+
+/* Animations */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left { opacity:0; transform:translateX(-26px); transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale { opacity:0; transform:scale(0.93); transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.slide.visible .reveal,.slide.visible .reveal-left,.slide.visible .reveal-scale { opacity:1; transform:none; }
+.d1{transition-delay:.07s}.d2{transition-delay:.16s}.d3{transition-delay:.25s}.d4{transition-delay:.34s}
+.d5{transition-delay:.43s}.d6{transition-delay:.52s}.d7{transition-delay:.61s}.d8{transition-delay:.70s}
+
+/* Shared */
+.section-tag { font-family:'JetBrains Mono',monospace; font-size:clamp(0.9rem,1vw,1rem); color:var(--blue); letter-spacing:0.12em; text-transform:uppercase; display:flex; align-items:center; gap:0.6em; opacity:0.8; }
+.section-tag::before { content:''; display:inline-block; width:20px; height:1px; background:var(--blue); }
+.section-h2 { font-family:'Syne',sans-serif; font-size:clamp(2rem,2.8vw,2.8rem); font-weight:700; color:#fff; margin:0; line-height:1.15; }
+.status-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:0.4em; }
+.live { background:var(--green); box-shadow:0 0 6px var(--green); }
+.wip  { background:var(--blue); animation:pulse-dot 2s ease-in-out infinite; }
+.plan { background:var(--muted); }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+@keyframes pulse-ring { 0%,100%{box-shadow:0 0 0 0 rgba(14,165,233,0.4)} 50%{box-shadow:0 0 0 12px rgba(14,165,233,0)} }
+
+/* Split layout */
+.split-layout { display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,3.5vw,3.5rem); height:100%; align-items:center; }
+.split-left { display:flex; flex-direction:column; gap:clamp(0.6rem,1.5vh,1.3rem); }
+
+/* Placeholder box */
+.ph-box {
+    height:min(70vh,520px); border:1px dashed rgba(14,165,233,0.22); border-radius:14px;
+    background:rgba(14,165,233,0.025); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:clamp(0.5rem,1.2vh,1rem);
+    padding:clamp(1rem,2.5vh,2rem); text-align:center; position:relative; overflow:hidden;
+}
+.ph-box::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(14,165,233,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.035) 1px,transparent 1px); background-size:28px 28px; }
+.ph-icon { font-size:clamp(1.8rem,3.5vw,3rem); opacity:0.35; position:relative; z-index:1; }
+.ph-label { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--blue); opacity:0.55; letter-spacing:0.1em; text-transform:uppercase; position:relative; z-index:1; }
+.ph-suggestion { font-size:var(--body-size); color:var(--muted); line-height:1.6; max-width:240px; position:relative; z-index:1; }
+.ph-tags { display:flex; flex-wrap:wrap; gap:0.35em; justify-content:center; position:relative; z-index:1; }
+.ph-tag { font-family:'JetBrains Mono',monospace; font-size:clamp(0.45rem,0.65vw,0.56rem); padding:0.18em 0.55em; border-radius:4px; border:1px solid rgba(14,165,233,0.18); color:rgba(14,165,233,0.45); }
+
+/* ============================================================
+   S1 — PROBLEM (split)
+   ============================================================ */
+#s1 { background:var(--bg); background-image:radial-gradient(ellipse at 80% 100%,rgba(239,68,68,0.06) 0%,transparent 50%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+.s1-stats { display:flex; gap:clamp(1.2rem,3.5vw,2.8rem); }
+.stat-num { font-family:'Syne',sans-serif; font-size:clamp(2.2rem,3.8vw,3.8rem); font-weight:800; color:var(--blue); line-height:1; }
+.stat-label { font-size:clamp(0.95rem,1.05vw,1.05rem); color:var(--muted); margin-top:0.15em; }
+/* === SURVEY BAR CHART === */
+.survey-bars { display:flex; flex-direction:column; gap:clamp(0.38rem,0.9vh,0.72rem); }
+.sbar-row { display:grid; grid-template-columns:clamp(130px,14vw,165px) 1fr clamp(28px,3vw,38px); align-items:center; gap:clamp(0.4rem,0.8vw,0.8rem); }
+.sbar-label { font-family:'JetBrains Mono',monospace; font-size:clamp(0.78rem,0.88vw,0.9rem); color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sbar-track { height:clamp(7px,0.9vh,11px); background:rgba(255,255,255,0.07); border-radius:99px; overflow:hidden; }
+.sbar-fill { height:100%; border-radius:99px; }
+.sbar-num { font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(0.88rem,1vw,1rem); text-align:right; }
+.sbar-num.cyan { color:var(--cyan); }
+.sbar-num.orange { color:var(--orange); }
+.sbar-num.green { color:var(--green); }
+.sbar-num.purple { color:#a78bfa; }
+.sbar-num.red { color:#fb7185; }
+
+.pain-cards { display:flex; flex-direction:column; gap:clamp(0.45rem,1.1vh,0.85rem); }
+.pain-card { border:1px solid rgba(239,68,68,0.2); border-left:3px solid; border-radius:8px; padding:clamp(0.5rem,1.2vh,0.85rem) clamp(0.7rem,1.6vw,1.2rem); background:rgba(239,68,68,0.035); position:relative; overflow:hidden; }
+.pain-card.ops { border-left-color:var(--red); } .pain-card.sec { border-left-color:var(--amber); } .pain-card.fin { border-left-color:var(--blue); }
+.pain-title { font-family:'Syne',sans-serif; font-size:clamp(1rem,1.25vw,1.25rem); font-weight:700; margin:0 0 0.28em; color:#fff; display:block; padding-right:clamp(4rem,7vw,7rem); }
+.pain-detail { font-size:var(--body-size); color:var(--muted); line-height:1.45; margin:0; }
+.pain-metric { font-family:'JetBrains Mono',monospace; font-size:clamp(0.85rem,0.95vw,0.95rem); position:absolute; top:0.55rem; right:0.85rem; opacity:0.62; }
+.pain-card.ops .pain-metric{color:var(--red)} .pain-card.sec .pain-metric{color:var(--amber)} .pain-card.fin .pain-metric{color:var(--blue)}
+
+/* ============================================================
+   S2 — EVOLUTION + THREE TRACKS (merged)
+   ============================================================ */
+#s2 { background:var(--bg); background-image:radial-gradient(ellipse at 50% 40%,rgba(14,165,233,0.08) 0%,transparent 60%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+.s2-inner { display:flex; flex-direction:column; height:100%; justify-content:center; gap:clamp(0.9rem,2vh,1.8rem); }
+.s2-inner > h2 { font-family:'Syne',sans-serif; font-size:var(--h2-size); font-weight:700; color:#fff; margin:0; }
+
+/* Evolution row */
+.evo-track { display:flex; align-items:center; width:100%; }
+.evo-node { flex:1; display:flex; flex-direction:column; align-items:center; gap:clamp(0.3rem,0.7vh,0.6rem); }
+.evo-circle { width:clamp(64px,6vw,90px); height:clamp(64px,6vw,90px); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:clamp(0.45rem,0.75vw,0.62rem); font-weight:700; letter-spacing:0.04em; border:2px solid; flex-shrink:0; position:relative; z-index:2; }
+.evo-node.done .evo-circle { background:linear-gradient(135deg,var(--blue),var(--cyan)); border-color:var(--cyan); color:#060c1a; box-shadow:0 0 20px rgba(14,165,233,0.38); }
+.evo-node.active-now .evo-circle { background:rgba(14,165,233,0.12); border-color:var(--blue); color:var(--blue); animation:pulse-ring 2.5s ease-in-out infinite; }
+.evo-node.planned .evo-circle { background:rgba(100,116,139,0.09); border-color:rgba(100,116,139,0.28); color:var(--muted); }
+.evo-arrow { flex:0 0 clamp(16px,3vw,42px); height:2px; background:linear-gradient(90deg,var(--blue),rgba(14,165,233,0.28)); position:relative; margin-top:calc(-1 * clamp(44px,5.5vw,70px)/2); z-index:1; }
+.evo-arrow::after { content:''; position:absolute; right:-5px; top:-4px; border:5px solid transparent; border-left-color:rgba(14,165,233,0.45); }
+.evo-label { font-family:'Syne',sans-serif; font-size:clamp(1rem,1.2vw,1.2rem); font-weight:700; color:#fff; }
+.evo-sub { font-size:clamp(0.85rem,0.95vw,0.95rem); color:var(--muted); line-height:1.35; max-width:100px; text-align:center; }
+.evo-badge { font-family:'JetBrains Mono',monospace; font-size:clamp(0.82rem,0.9vw,0.9rem); padding:0.18em 0.5em; border-radius:100px; }
+.evo-node.done .evo-badge { background:rgba(16,185,129,0.14); color:var(--green); }
+.evo-node.active-now .evo-badge { background:rgba(14,165,233,0.12); color:var(--blue); }
+.evo-node.planned .evo-badge { background:rgba(100,116,139,0.1); color:var(--muted); }
+
+/* Divider */
+.s2-divider { display:flex; align-items:center; gap:0.8em; }
+.s2-divider::before,.s2-divider::after { content:''; flex:1; height:1px; background:rgba(14,165,233,0.12); }
+.s2-divider span { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--muted); white-space:nowrap; opacity:0.6; }
+
+/* Tracks compact */
+.tracks { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(0.6rem,1.5vw,1.4rem); }
+.track-card { border:1px solid var(--border); border-radius:10px; padding:clamp(0.75rem,1.8vh,1.35rem) clamp(0.8rem,1.6vw,1.3rem); background:rgba(14,165,233,0.04); display:flex; flex-direction:column; gap:clamp(0.4rem,0.9vh,0.75rem); position:relative; overflow:hidden; transition:border-color 0.3s,background 0.3s; }
+.track-card:hover { border-color:rgba(14,165,233,0.38); background:rgba(14,165,233,0.07); }
+.track-card::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; }
+.track-card.devops::before { background:linear-gradient(90deg,var(--blue),var(--cyan)); }
+.track-card.crossteam::before { background:linear-gradient(90deg,var(--green),var(--cyan)); }
+.track-card.platform::before { background:linear-gradient(90deg,var(--amber),#f97316); }
+.track-icon { font-size:clamp(1rem,2vw,1.6rem); }
+.track-name { font-family:'Syne',sans-serif; font-size:var(--h3-size); font-weight:700; color:#fff; margin:0; }
+.track-items { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:clamp(0.25rem,0.6vh,0.5rem); }
+.track-items li { font-size:clamp(1rem,1.15vw,1.15rem); color:var(--muted); display:flex; align-items:flex-start; gap:0.45em; line-height:1.32; }
+
+/* ============================================================
+   S3 — PIPELINE AI
+   ============================================================ */
+#s3 { background:var(--bg); background-image:radial-gradient(ellipse at 100% 0%,rgba(34,211,238,0.08) 0%,transparent 50%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+.s3-inner { display:flex; flex-direction:column; justify-content:center; height:100%; gap:clamp(0.9rem,2.2vh,2.2rem); }
+.s3-header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.s3-header h2 { font-family:'Syne',sans-serif; font-size:var(--h2-size); font-weight:700; color:#fff; margin:0; }
+.metric-badge { display:flex; flex-direction:column; align-items:flex-end; }
+.metric-num { font-family:'Syne',sans-serif; font-size:clamp(1.4rem,3.5vw,2.8rem); font-weight:800; color:var(--green); line-height:1; }
+.metric-label { font-size:var(--small-size); color:var(--muted); }
+.flow-chain { display:flex; align-items:center; }
+.flow-node { flex:1; min-width:0; background:rgba(14,165,233,0.06); border:1px solid var(--border); border-radius:8px; padding:clamp(0.45rem,1.2vh,0.85rem) clamp(0.3rem,0.7vw,0.65rem); text-align:center; }
+.flow-arrow { flex:0 0 clamp(10px,1.6vw,24px); display:flex; align-items:center; justify-content:center; color:var(--blue); font-size:clamp(0.6rem,1vw,0.85rem); opacity:0.6; flex-shrink:0; }
+.flow-icon { font-size:clamp(1.3rem,2vw,2rem); display:block; margin-bottom:0.12em; }
+.flow-title { font-family:'Syne',sans-serif; font-size:clamp(0.9rem,1.05vw,1.1rem); font-weight:700; color:#fff; display:block; line-height:1.18; }
+.flow-sub { font-family:'JetBrains Mono',monospace; font-size:clamp(0.8rem,0.9vw,0.95rem); color:var(--blue); display:block; margin-top:0.1em; }
+.flow-node.hl { border-color:var(--green); background:rgba(16,185,129,0.08); }
+.flow-node.hl .flow-sub { color:var(--green); }
+.s3-bottom { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(0.6rem,1.4vw,1.1rem); }
+.insight-box { border:1px solid rgba(14,165,233,0.14); border-radius:8px; padding:clamp(0.5rem,1.3vh,0.85rem); background:rgba(14,165,233,0.04); }
+.ib-title { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--blue); margin:0 0 0.22em; }
+.ib-body { font-size:clamp(0.95rem,1.1vw,1.15rem); color:var(--muted); line-height:1.5; margin:0; }
+
+/* ============================================================
+   S4 — ARCHITECTURE (left ph) + FINOPS UC (right drawn)
+   ============================================================ */
+#s4 { background:var(--bg2); background-image:radial-gradient(ellipse at 50% 20%,rgba(14,165,233,0.09) 0%,transparent 55%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+
+/* FinOps flow diagram */
+.finops-panel { display:flex; flex-direction:column; height:min(70vh,520px); justify-content:space-between; }
+.finops-header { display:flex; flex-direction:column; gap:0.3em; }
+.finops-title { font-family:'Syne',sans-serif; font-size:var(--h3-size); font-weight:700; color:#fff; margin:0; }
+.finops-sub { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--amber); opacity:0.8; }
+
+.finops-flow { display:flex; flex-direction:column; gap:0; flex:1; justify-content:center; }
+.fo-row { display:flex; align-items:center; gap:clamp(0.4rem,1vw,0.8rem); }
+.fo-node {
+    border:1px solid; border-radius:8px;
+    padding:clamp(0.35rem,0.9vh,0.65rem) clamp(0.5rem,1.1vw,0.85rem);
+    display:flex; align-items:center; gap:0.4em; flex:1;
+    transition:transform 0.2s;
+}
+.fo-node:hover { transform:translateX(3px); }
+.fo-node.source  { border-color:rgba(14,165,233,0.3); background:rgba(14,165,233,0.07); }
+.fo-node.agent   { border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.07); }
+.fo-node.llm     { border-color:rgba(245,158,11,0.35); background:rgba(245,158,11,0.08); }
+.fo-node.detect  { border-color:rgba(239,68,68,0.3); background:rgba(239,68,68,0.07); }
+.fo-node.output  { border-color:rgba(168,85,247,0.3); background:rgba(168,85,247,0.07); }
+.fo-node.action  { border-color:rgba(16,185,129,0.35); background:rgba(16,185,129,0.1); }
+
+.fo-icon { font-size:clamp(1.2rem,1.8vw,1.6rem); flex-shrink:0; }
+.fo-name { font-family:'Syne',sans-serif; font-size:clamp(0.95rem,1.1vw,1.1rem); font-weight:700; color:#fff; line-height:1.2; }
+.fo-detail { font-family:'JetBrains Mono',monospace; font-size:clamp(0.8rem,0.88vw,0.9rem); color:var(--muted); line-height:1.3; }
+.fo-arrow { display:flex; flex-direction:column; align-items:center; gap:0; flex-shrink:0; }
+.fo-arrow-line { width:2px; height:clamp(10px,1.8vh,18px); background:linear-gradient(180deg,rgba(14,165,233,0.5),rgba(14,165,233,0.2)); margin:0 auto; }
+.fo-arrow-tip { width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid rgba(14,165,233,0.45); margin:0 auto; }
+
+/* Branch row */
+.fo-branch { display:flex; gap:clamp(0.4rem,1vw,0.75rem); }
+.fo-branch-arrow { display:flex; align-items:center; justify-content:center; flex-shrink:0; padding:0 0.2em; }
+.fo-branch-line { width:2px; height:clamp(10px,1.8vh,18px); background:rgba(14,165,233,0.3); }
+.fo-branch-tip { width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid rgba(14,165,233,0.35); }
+
+/* arch styles kept minimal for left side */
+.arch-stack { display:flex; flex-direction:column; gap:clamp(0.28rem,0.65vh,0.55rem); }
+.arch-layer { display:grid; grid-template-columns:clamp(68px,8.5vw,105px) 1fr; gap:clamp(0.35rem,0.8vw,0.8rem); align-items:center; }
+.arch-label { font-family:'JetBrains Mono',monospace; font-size:clamp(0.8rem,0.9vw,0.9rem); text-align:right; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; white-space:nowrap; }
+.arch-bar { border-radius:6px; padding:clamp(0.28rem,0.8vh,0.55rem) clamp(0.45rem,1.1vw,0.9rem); font-size:var(--body-size); color:var(--text); display:flex; align-items:center; gap:clamp(0.28rem,0.7vw,0.55rem); flex-wrap:wrap; border:1px solid; }
+.arch-bar.ui    { background:rgba(14,165,233,0.09);  border-color:rgba(14,165,233,0.28); }
+.arch-bar.orch  { background:rgba(34,211,238,0.06);  border-color:rgba(34,211,238,0.2); }
+.arch-bar.agent { background:rgba(16,185,129,0.06);  border-color:rgba(16,185,129,0.2); }
+.arch-bar.llm   { background:rgba(245,158,11,0.09);  border-color:rgba(245,158,11,0.28); font-weight:600; }
+.arch-bar.gov   { background:rgba(239,68,68,0.06);   border-color:rgba(239,68,68,0.2); }
+.arch-bar.data  { background:rgba(100,116,139,0.08); border-color:rgba(100,116,139,0.2); }
+.arch-chip { font-family:'JetBrains Mono',monospace; font-size:clamp(0.44rem,0.65vw,0.57rem); padding:0.1em 0.45em; border-radius:4px; background:rgba(255,255,255,0.055); white-space:nowrap; }
+.arch-chip.hl { background:rgba(245,158,11,0.17); color:var(--amber); }
+.arch-chip.rd { background:rgba(239,68,68,0.14); color:#fca5a5; }
+.arch-note { font-size:var(--small-size); color:var(--muted); font-style:italic; margin:0; }
+
+/* ============================================================
+   S5 — PRINCIPLES (split)
+   ============================================================ */
+#s5 { background:var(--bg); background-image:radial-gradient(ellipse at 100% 100%,rgba(16,185,129,0.06) 0%,transparent 50%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+.principles { display:flex; flex-direction:column; gap:clamp(0.38rem,0.9vh,0.8rem); }
+.principle { display:grid; grid-template-columns:clamp(22px,2.5vw,36px) 1fr; gap:clamp(0.55rem,1.2vw,1.1rem); align-items:start; padding:clamp(0.6rem,1.2vh,1rem) clamp(0.8rem,1.8vw,1.4rem); border:1px solid rgba(14,165,233,0.1); border-radius:8px; background:rgba(14,165,233,0.03); transition:border-color 0.3s,background 0.3s; }
+.principle:hover { border-color:rgba(14,165,233,0.26); background:rgba(14,165,233,0.06); }
+.principle-num { font-family:'JetBrains Mono',monospace; font-size:clamp(1rem,1.2vw,1.2rem); color:var(--blue); font-weight:700; padding-top:0.1em; }
+.principle-title { font-family:'Syne',sans-serif; font-size:clamp(1.32rem,1.65vw,1.65rem); font-weight:700; color:#fff; margin:0 0 0.1em; }
+.principle-desc { font-size:clamp(1rem,1.15vw,1.15rem); color:var(--muted); margin:0; line-height:1.48; }
+.s5-sub { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--blue); margin:0; }
+
+/* ============================================================
+   S6 — ROADMAP (richer)
+   ============================================================ */
+#s6 { background:var(--bg2); background-image:radial-gradient(ellipse at 0% 0%,rgba(14,165,233,0.07) 0%,transparent 50%),linear-gradient(rgba(14,165,233,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.025) 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; }
+.s6-inner { display:flex; flex-direction:column; height:100%; justify-content:center; gap:clamp(0.7rem,1.6vh,1.4rem); }
+.s6-inner h2 { font-family:'Syne',sans-serif; font-size:var(--h2-size); font-weight:700; color:#fff; margin:0; text-align:center; }
+
+.roadmap-wrap { display:grid; grid-template-columns:clamp(85px,10vw,125px) repeat(4,1fr); gap:2px; background:rgba(14,165,233,0.08); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.rm-cell { background:var(--bg2); padding:clamp(0.4rem,0.95vh,0.75rem) clamp(0.35rem,0.85vw,0.65rem); }
+.rm-cell.header { background:rgba(14,165,233,0.09); font-family:'JetBrains Mono',monospace; font-size:clamp(0.95rem,1.05vw,1.05rem); color:var(--blue); font-weight:700; letter-spacing:0.07em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; text-align:center; }
+.rm-cell.track-label { background:rgba(14,165,233,0.055); font-family:'Syne',sans-serif; font-size:clamp(1rem,1.15vw,1.15rem); font-weight:700; color:var(--text); display:flex; align-items:center; padding-left:clamp(0.4rem,0.8vw,0.65rem); white-space:nowrap; overflow:hidden; }
+.rm-items { display:flex; flex-direction:column; gap:0.26rem; }
+.rm-item { display:flex; align-items:flex-start; gap:0.28em; line-height:1.28; }
+.rm-dot { width:5px; height:5px; border-radius:50%; margin-top:0.36em; flex-shrink:0; }
+.rm-text { font-size:clamp(1rem,1.1vw,1.1rem); color:var(--muted); }
+.rm-text strong { color:var(--text); font-weight:500; }
+.rm-text .kpi { color:var(--green); font-family:'JetBrains Mono',monospace; }
+
+/* Before/after row */
+.rm-ba-row { display:grid; grid-template-columns:clamp(85px,10vw,125px) repeat(2,1fr); gap:2px; }
+.rm-ba-cell { background:rgba(14,165,233,0.03); border:1px solid rgba(14,165,233,0.1); border-radius:0; padding:clamp(0.35rem,0.85vh,0.65rem); font-size:clamp(0.44rem,0.68vw,0.58rem); color:var(--muted); line-height:1.45; }
+.rm-ba-cell.label { font-family:'Syne',sans-serif; font-size:clamp(0.52rem,0.8vw,0.68rem); font-weight:700; color:var(--text); display:flex; align-items:center; }
+.rm-ba-cell .before { color:var(--red); font-family:'JetBrains Mono',monospace; font-size:0.9em; }
+.rm-ba-cell .after  { color:var(--green); font-family:'JetBrains Mono',monospace; font-size:0.9em; }
+
+/* Key dependencies strip */
+.dep-strip { display:grid; grid-template-columns:clamp(85px,10vw,125px) 1fr; gap:2px; background:rgba(14,165,233,0.06); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+.dep-label { font-family:'Syne',sans-serif; font-size:clamp(0.52rem,0.8vw,0.68rem); font-weight:700; color:var(--text); display:flex; align-items:center; padding:clamp(0.4rem,0.9vh,0.7rem) clamp(0.4rem,0.8vw,0.65rem); background:rgba(14,165,233,0.06); }
+.dep-items { display:flex; gap:0.45em; flex-wrap:wrap; align-items:center; padding:clamp(0.4rem,0.9vh,0.7rem) clamp(0.4rem,0.8vw,0.65rem); }
+.dep-chip { font-family:'JetBrains Mono',monospace; font-size:clamp(0.92rem,1vw,1rem); padding:0.18em 0.55em; border-radius:4px; white-space:nowrap; }
+.dep-chip.critical { background:rgba(239,68,68,0.14); color:#fca5a5; border:1px solid rgba(239,68,68,0.22); }
+.dep-chip.important { background:rgba(245,158,11,0.12); color:var(--amber); border:1px solid rgba(245,158,11,0.2); }
+
+.legend { display:flex; gap:clamp(0.7rem,1.8vw,1.4rem); justify-content:center; flex-wrap:wrap; }
+.legend-item { font-family:'JetBrains Mono',monospace; font-size:var(--small-size); display:flex; align-items:center; gap:0.4em; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ================================================
+     S1 — PROBLEM (split)
+     ================================================ -->
+<section class="slide grid-bg" id="s1">
+    <span class="slide-num">01 / 06</span>
+    <div class="slide-content">
+        <div class="split-layout">
+
+            <!-- LEFT: industry pain points -->
+            <div class="split-left">
+                <h2 class="reveal d1 section-h2">Industry-Wide<br>Pain Points</h2>
+                <div class="pain-cards" style="margin-top:clamp(0.6rem,1.5vh,1.2rem);">
+                    <div class="reveal reveal-left d2 pain-card ops">
+                        <span class="pain-metric">83 cases</span>
+                        <p class="pain-title">⚡ Operational Risk</p>
+                        <p class="pain-detail">Pipeline failure → manual log hunt · 30–120 min per incident</p>
+                    </div>
+                    <div class="reveal reveal-left d3 pain-card sec">
+                        <span class="pain-metric">no audit trail</span>
+                        <p class="pain-title">🔒 Security Exposure</p>
+                        <p class="pain-detail">CVE &amp; IaC drift enter production undetected — no evidence chain</p>
+                    </div>
+                    <div class="reveal reveal-left d4 pain-card fin">
+                        <span class="pain-metric">100% manual review</span>
+                        <p class="pain-title">💸 Financial Waste</p>
+                        <p class="pain-detail">No automated visibility · Cost optimisation relies entirely on manual review</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: 136-person survey data + image -->
+            <div class="reveal reveal-scale d2" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(0.5rem,1.2vh,1rem);height:min(70vh,520px);">
+                <div style="text-align:center;width:100%;">
+                    <div class="section-tag" style="margin-bottom:0.5em;">136-person survey · HK DevOps &amp; Platform</div>
+                    <div class="s1-stats" style="justify-content:center;">
+                        <div><div class="stat-num">118</div><div class="stat-label">mentions — release friction</div></div>
+                        <div><div class="stat-num">83</div><div class="stat-label">mentions — pipeline failures</div></div>
+                    </div>
+                </div>
+                <img src="pain-point.png" style="max-width:100%;max-height:min(48vh,370px);object-fit:contain;border-radius:10px;" alt="Pain point survey">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     S2 — EVOLUTION + THREE TRACKS (merged)
+     ================================================ -->
+<section class="slide" id="s2">
+    <span class="slide-num">02 / 06</span>
+    <div class="slide-content">
+        <div class="s2-inner">
+            <h2 class="reveal d1">Strategy: Progressive Trust, Progressive Autonomy</h2>
+
+            <!-- Evolution track -->
+            <div class="reveal d2 evo-track">
+                <div class="evo-node done">
+                    <div class="evo-circle">REACTIVE</div>
+                    <span class="evo-label">Reactive</span>
+                    <span class="evo-sub">Manual firefighting</span>
+                    <span class="evo-badge">✓ Starting point</span>
+                </div>
+                <div class="evo-arrow"></div>
+                <div class="evo-node done">
+                    <div class="evo-circle">PROACTIVE</div>
+                    <span class="evo-label">Proactive</span>
+                    <span class="evo-sub">L1 RCA &lt;30s · Live</span>
+                    <span class="evo-badge">✓ Live</span>
+                </div>
+                <div class="evo-arrow"></div>
+                <div class="evo-node active-now">
+                    <div class="evo-circle">PREDICTIVE</div>
+                    <span class="evo-label">Predictive</span>
+                    <span class="evo-sub">L2 pattern via Splunk</span>
+                    <span class="evo-badge">⬤ In Progress</span>
+                </div>
+                <div class="evo-arrow"></div>
+                <div class="evo-node planned">
+                    <div class="evo-circle">AUTONOMOUS</div>
+                    <span class="evo-label">Autonomous</span>
+                    <span class="evo-sub">Policy-gated auto-fix</span>
+                    <span class="evo-badge">◯ 2027+</span>
+                </div>
+            </div>
+
+            <div class="reveal d3 s2-divider"><span>Three delivery tracks executing in parallel</span></div>
+
+            <!-- Three tracks -->
+            <div class="tracks">
+                <div class="reveal reveal-scale d4 track-card devops">
+                    <span class="track-icon">🚀</span>
+                    <h3 class="track-name">DevOps Drive</h3>
+                    <ul class="track-items">
+                        <li><span class="status-dot live"></span>Pipeline AI L1 · RCA &lt;30s</li>
+                        <li><span class="status-dot wip"></span>L2 · Splunk → Teams alert</li>
+                        <li><span class="status-dot plan"></span>L3 · Deep diagnosis Bot</li>
+                        <li><span class="status-dot plan"></span>UC2 · Monitoring + Auto-Fix</li>
+                    </ul>
+                </div>
+                <div class="reveal reveal-scale d5 track-card crossteam">
+                    <span class="track-icon">🔗</span>
+                    <h3 class="track-name">X-Team Drive</h3>
+                    <ul class="track-items">
+                        <li><span class="status-dot live"></span>miniops 1.0 · Release orchestration</li>
+                        <li><span class="status-dot wip"></span>miniops 2.0 · NL-driven release</li>
+                        <li><span class="status-dot wip"></span>Migration AI validation</li>
+                        <li><span class="status-dot plan"></span>Smart scheduling 2027+</li>
+                    </ul>
+                </div>
+                <div class="reveal reveal-scale d6 track-card platform">
+                    <span class="track-icon">🛡</span>
+                    <h3 class="track-name">Platform Drive</h3>
+                    <ul class="track-items">
+                        <li><span class="status-dot live"></span>ChatBot · Copilot Studio</li>
+                        <li><span class="status-dot wip"></span>AIOps Dashboard</li>
+                        <li><span class="status-dot plan"></span>SecOps AI · FinOps AI</li>
+                        <li><span class="status-dot plan"></span>Service Catalog v2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     S3 — PIPELINE AI
+     ================================================ -->
+<section class="slide grid-bg" id="s3">
+    <span class="slide-num">03 / 06</span>
+    <div class="slide-content">
+        <div class="s3-inner">
+            <div class="s3-header">
+                <h2 class="reveal d1">Pipeline AI · 30-Second RCA</h2>
+                <div class="reveal d2 metric-badge">
+                    <span class="metric-num">&lt;30s</span>
+                    <span class="metric-label">vs manual 30–120 min</span>
+                </div>
+            </div>
+            <div class="reveal d3 flow-chain">
+                <div class="flow-node"><span class="flow-icon">💥</span><span class="flow-title">Build<br>Fails</span><span class="flow-sub">Trigger</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node"><span class="flow-icon">🤖</span><span class="flow-title">Jenkins<br>Agent</span><span class="flow-sub">Fetch logs</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node"><span class="flow-icon">🧠</span><span class="flow-title">Copilot<br>Enterprise</span><span class="flow-sub">Root cause</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node"><span class="flow-icon">🔍</span><span class="flow-title">Evidence<br>Linking</span><span class="flow-sub">Log line + event</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node"><span class="flow-icon">⚖️</span><span class="flow-title">Policy<br>Gate</span><span class="flow-sub">Security check</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node hl"><span class="flow-icon">📩</span><span class="flow-title">Teams<br>RCA</span><span class="flow-sub">&lt;30 seconds</span></div>
+            </div>
+            <div class="s3-bottom">
+                <div class="reveal d4 insight-box">
+                    <p class="ib-title">// Security Signals</p>
+                    <p class="ib-body">CVE &amp; IaC drift auto-flagged in same pipeline — no separate scan step</p>
+                </div>
+                <div class="reveal d5 insight-box">
+                    <p class="ib-title">// Evidence-Linked</p>
+                    <p class="ib-body">Every RCA cites a specific log line or deployment event — no black boxes</p>
+                </div>
+                <div class="reveal d6 insight-box">
+                    <p class="ib-title">// Human-in-the-Loop</p>
+                    <p class="ib-body">LLM reasons only. All execution requires Policy Gate + human approval</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     S4 — ARCHITECTURE (left ph) + FINOPS UC (right)
+     ================================================ -->
+<section class="slide" id="s4">
+    <span class="slide-num">04 / 06</span>
+    <div class="slide-content">
+        <div class="split-layout">
+
+            <!-- Left: AIOps architecture diagram -->
+            <div class="reveal reveal-scale d2" style="display:flex;align-items:center;justify-content:center;height:min(70vh,520px);overflow:hidden;">
+                <img src="aiops-architecture.excalidraw.png" style="max-width:108%;max-height:min(90vh,660px);object-fit:contain;border-radius:10px;" alt="AIOps Architecture">
+            </div>
+
+            <!-- Right: FinOps UC drawn in CSS -->
+            <div class="split-left reveal d2">
+                <div class="finops-panel">
+                    <div class="finops-header">
+                        <div class="section-tag">Use Case Preview · FinOps AI</div>
+                        <p class="finops-title">Cloud Cost Intelligence Flow</p>
+                        <p class="finops-sub">// Planned · 2027+</p>
+                    </div>
+
+                    <div class="finops-flow">
+                        <!-- Dashboard (top = output) -->
+                        <div class="fo-row">
+                            <div class="fo-node action">
+                                <span class="fo-icon">📊</span>
+                                <div><div class="fo-name">AIOps Dashboard · FinOps View</div><div class="fo-detail">Cost trends · attribution by deployment · savings realised · human-approve actions</div></div>
+                            </div>
+                        </div>
+                        <div class="fo-arrow"><div class="fo-arrow-line"></div><div class="fo-arrow-tip"></div></div>
+
+                        <!-- Branch: alert OR recommend -->
+                        <div class="fo-branch">
+                            <div class="fo-node detect" style="flex:1">
+                                <span class="fo-icon">🚨</span>
+                                <div><div class="fo-name">Anomaly Alert</div><div class="fo-detail">Real-time Teams notification · cost spike → deployment RCA</div></div>
+                            </div>
+                            <div style="display:flex; align-items:center; padding:0 0.3em;">
+                                <span style="font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--muted);">OR</span>
+                            </div>
+                            <div class="fo-node output" style="flex:1">
+                                <span class="fo-icon">💡</span>
+                                <div><div class="fo-name">Optimisation Advice</div><div class="fo-detail">Right-sizing · orphan cleanup · reserved instance recommendations</div></div>
+                            </div>
+                        </div>
+                        <div class="fo-arrow"><div class="fo-arrow-line"></div><div class="fo-arrow-tip"></div></div>
+
+                        <!-- LLM analysis -->
+                        <div class="fo-row">
+                            <div class="fo-node llm">
+                                <span class="fo-icon">🧠</span>
+                                <div><div class="fo-name">Copilot LLM · Pattern Analysis</div><div class="fo-detail">Anomaly scoring · deployment attribution · resource waste ranking</div></div>
+                            </div>
+                        </div>
+                        <div class="fo-arrow"><div class="fo-arrow-line"></div><div class="fo-arrow-tip"></div></div>
+
+                        <!-- Cloud Agent -->
+                        <div class="fo-row">
+                            <div class="fo-node agent">
+                                <span class="fo-icon">🤖</span>
+                                <div><div class="fo-name">Cloud Agent</div><div class="fo-detail">Normalise · tag · correlate cost ↔ deployment · detect orphan resources</div></div>
+                            </div>
+                        </div>
+                        <div class="fo-arrow"><div class="fo-arrow-line"></div><div class="fo-arrow-tip"></div></div>
+
+                        <!-- Source layer (bottom = data input) -->
+                        <div class="fo-row">
+                            <div class="fo-node source">
+                                <span class="fo-icon">☁️</span>
+                                <div><div class="fo-name">AliCloud / Azure</div><div class="fo-detail">Cost &amp; usage metrics · resource tags · billing API</div></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     S5 — PRINCIPLES (split)
+     ================================================ -->
+<section class="slide" id="s5">
+    <span class="slide-num">05 / 06</span>
+    <div class="slide-content">
+        <div class="split-layout">
+            <div class="split-left">
+                <div class="reveal d1 section-tag">Why we're different</div>
+                <h2 class="reveal d2 section-h2">Not bringing ChatGPT<br>into our system</h2>
+                <p class="reveal d3 s5-sub" style="font-family:'JetBrains Mono',monospace; font-size:var(--small-size); color:var(--blue); margin:0;">// 5 Design Principles</p>
+                <div class="principles">
+                    <div class="reveal d3 principle" style="border-color:rgba(34,211,238,0.25);background:rgba(34,211,238,0.06);">
+                        <span class="principle-num">01</span>
+                        <div><p class="principle-title">Security as First-Class Signal</p><p class="principle-desc">CVE / IaC findings enter every RCA — not patched in after the fact</p></div>
+                    </div>
+                    <div class="reveal d4 principle" style="border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.06);">
+                        <span class="principle-num">02</span>
+                        <div><p class="principle-title">Reasoning ≠ Execution</p><p class="principle-desc">LLM reasons only. All writes require Policy Gate + human approval</p></div>
+                    </div>
+                    <div class="reveal d5 principle" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.06);">
+                        <span class="principle-num">03</span>
+                        <div><p class="principle-title">Evidence-Linked RCA</p><p class="principle-desc">Every conclusion cites a specific log line or deployment event — no black boxes</p></div>
+                    </div>
+                    <div class="reveal d6 principle" style="border-color:rgba(168,85,247,0.25);background:rgba(168,85,247,0.06);">
+                        <span class="principle-num">04</span>
+                        <div><p class="principle-title">Progressive Autonomy</p><p class="principle-desc">AI cannot self-escalate. Non-prod first. Reversible actions first.</p></div>
+                    </div>
+                    <div class="reveal d7 principle" style="border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.06);">
+                        <span class="principle-num">05</span>
+                        <div><p class="principle-title">Agent Observability</p><p class="principle-desc">Every session logs: prompt, tool calls, model version, token cost</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal reveal-scale d3" style="display:flex;align-items:center;justify-content:center;height:min(70vh,520px);">
+                <img src="5-design-principles.png" style="max-width:100%;max-height:min(68vh,510px);object-fit:contain;border-radius:10px;" alt="5 Design Principles">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     S6 — ROADMAP (richer)
+     ================================================ -->
+<section class="slide" id="s6">
+    <span class="slide-num">06 / 06</span>
+    <div class="slide-content">
+        <div class="s6-inner">
+            <h2 class="reveal d1">Roadmap · Every Phase Has a Security Gate</h2>
+
+            <div class="reveal d2 roadmap-wrap">
+                <!-- Header row -->
+                <div class="rm-cell header">Track</div>
+                <div class="rm-cell header">Q2 2026</div>
+                <div class="rm-cell header">Q3 2026</div>
+                <div class="rm-cell header">Q4 2026</div>
+                <div class="rm-cell header">2027+</div>
+
+                <!-- DevOps Drive -->
+                <div class="rm-cell track-label">🚀 DevOps</div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot live"></span><span class="rm-text"><strong>L1 LIVE</strong> · <span class="kpi">&lt;30s RCA</span></span></div>
+                    <div class="rm-item"><span class="rm-dot live"></span><span class="rm-text">Jenkins Agent std.</span></div>
+                    <div class="rm-item"><span class="rm-dot live"></span><span class="rm-text">Service Catalog MVP</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text"><strong>L2</strong> Splunk → Teams</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Alert noise <span class="kpi">↓50%</span> target</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text"><strong>L3</strong> deep diagnosis Bot</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">UC2 RCA MVP · <span class="kpi">&lt;60s</span></span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Auto-Fix non-prod · <span class="kpi">40%</span> auto-resolve</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Full auto-fix (prod, HitL)</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Predictive failure detection</span></div>
+                </div></div>
+
+                <!-- Cross-team -->
+                <div class="rm-cell track-label">🔗 X-Team</div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot live"></span><span class="rm-text"><strong>miniops 1.0 LIVE</strong></span></div>
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text">miniops 2.0 MVP · NL release</span></div>
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text">Jira / Git Agent</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text">Migration AI validation</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Release Guardrail (CVE gate)</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Full Release Guardrail</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">K8s health pre-release</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Smart release scheduling</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Multi-agent coordination</span></div>
+                </div></div>
+
+                <!-- Platform -->
+                <div class="rm-cell track-label">🛡 Platform</div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot live"></span><span class="rm-text"><strong>ChatBot LIVE</strong></span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Doc Reorg (prerequisite)</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text">DevOps Chatbot MVP · <span class="kpi">&gt;60%</span> self-serve</span></div>
+                    <div class="rm-item"><span class="rm-dot wip"></span><span class="rm-text">Init AIOps Dashboard</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">SecOps AI (Snyk/DAST signals)</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Incident auto-triage</span></div>
+                </div></div>
+                <div class="rm-cell"><div class="rm-items">
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">FinOps AI · cost intelligence</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Full Dashboard · all agents</span></div>
+                    <div class="rm-item"><span class="rm-dot plan"></span><span class="rm-text">Service Catalog v2 / CMDB</span></div>
+                </div></div>
+            </div>
+
+            <!-- Key dependencies -->
+            <div class="reveal d3 dep-strip">
+                <span class="dep-label">Critical deps</span>
+                <div class="dep-items">
+                    <span class="dep-chip critical">Jenkins Agent (blocks all tracks)</span>
+                    <span class="dep-chip critical">Service Catalog (L2 routing + miniops)</span>
+                    <span class="dep-chip critical">Splunk access (L2 trigger)</span>
+                    <span class="dep-chip important">Doc Reorg (ChatBot quality)</span>
+                    <span class="dep-chip important">K8s read access (UC2 auto-fix)</span>
+                    <span class="dep-chip important">Signal normalisation (RCA accuracy)</span>
+                </div>
+            </div>
+
+            <div class="reveal d4 legend">
+                <span class="legend-item"><span class="rm-dot live" style="display:inline-block"></span>Live</span>
+                <span class="legend-item"><span class="rm-dot wip"  style="display:inline-block"></span>In Progress</span>
+                <span class="legend-item"><span class="rm-dot plan" style="display:inline-block"></span>Planned</span>
+                <span class="legend-item" style="color:var(--green); font-family:'JetBrains Mono',monospace;">green = KPI target</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === NAV === -->
+<div class="corner-nav">
+    <div class="nav-dot active" onclick="goTo(0)"></div>
+    <div class="nav-dot" onclick="goTo(1)"></div>
+    <div class="nav-dot" onclick="goTo(2)"></div>
+    <div class="nav-dot" onclick="goTo(3)"></div>
+    <div class="nav-dot" onclick="goTo(4)"></div>
+    <div class="nav-dot" onclick="goTo(5)"></div>
+</div>
+<div class="keyboard-hint">↑↓ / Space / Scroll</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.nav-dot');
+let current  = 0;
+function goTo(i) {
+    if (i < 0 || i >= slides.length) return;
+    current = i;
+    slides[i].scrollIntoView({ behavior:'smooth' });
+    dots.forEach((d,j) => d.classList.toggle('active', j === i));
+}
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            const idx = Array.from(slides).indexOf(e.target);
+            if (idx !== -1) { current = idx; dots.forEach((d,j) => d.classList.toggle('active', j === idx)); }
+        }
+    });
+}, { threshold: 0.5 });
+slides.forEach(s => obs.observe(s));
+document.addEventListener('keydown', e => {
+    if (['ArrowDown','ArrowRight',' '].includes(e.key)) { e.preventDefault(); goTo(current+1); }
+    if (['ArrowUp','ArrowLeft'].includes(e.key))        { e.preventDefault(); goTo(current-1); }
+});
+setTimeout(() => slides[0].classList.add('visible'), 80);
+</script>
+</body>
+</html>

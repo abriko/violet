@@ -1,0 +1,2013 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "cs-cost-node-pool",
+    "url": "/d/5495437431802631-17360765-806-5/cs-cost-node-pool",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-07-07T17:26:59+08:00",
+    "updated": "2026-04-03T16:00:02+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 8,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 30,
+    "folderUid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "folderTitle": "mfc-glprom-nprod-ackcluster",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-ugjfwpzz_/mfc-glprom-nprod-ackcluster",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "lfx-okg-dashboard_1251182063904492_5b6a79",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 5,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This is original billing price without discount of this NodePool.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "hideTimeOverride": true,
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 35
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"}) by (product_code, instance_id))) ",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": "1d/d",
+        "title": "Node spent yesterday",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "if there is \"No data\", please wait for at least two days's data.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-green",
+                  "value": -1
+                },
+                {
+                  "color": "light-red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        },
+        "hideTimeOverride": true,
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "firstNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 35
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs((sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"} offset 1d) by (product_code, instance_id)) - abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"} offset 2d) by (product_code, instance_id))))) / abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"} offset 2d) by (product_code, instance_id)))",
+            "hide": false,
+            "instant": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": "now/d",
+        "title": "Node Pool Node Spending Day Ring Ratio",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "The \"Pod Cost Per Core\" is estimated by compute resource of the cluster. Which is calculated by:\n \nΣ(Pod Request/Node Capacity)*EachNodePrice / Node Price\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least one hour.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "hiddenSeries": false,
+        "id": 12,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": true,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "$$hashKey": "object:114",
+            "alias": "/./",
+            "color": "#5794F2"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(sum(node_current_price / on (node) group_left max(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"})by(node)) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})) * 3600",
+            "interval": "3600",
+            "legendFormat": "Unit nuclear hour price per hour",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Unit price per core of the cluster",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:121",
+            "decimals": 1,
+            "format": "$/Core*Hour",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:122",
+            "decimals": 1,
+            "format": "percent",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.\n\nCost Ratio = This NodePool Cost / This Cluster Cost",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 4
+        },
+        "hideTimeOverride": true,
+        "id": 17,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 35
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"}) by (product_code, instance_id))) \n/ \nabs(sum(max($cost_measure{}) by (product_code, instance_id))) ",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{}) by (product_code, instance_id))) ",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "",
+            "queryType": "randomWalk",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": "1d/d",
+        "title": "Node pool node spend as a percentage of total cluster cost",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "The \"Pod Cost Per Core\" is estimated by compute resource of this cluster. Which is calculated by:\n \nΣ(Pod Request/Node Capacity)*EachNodePrice / Node Price\n\nWarning:\n1. This is a estimate data by compute resource.\n2. If there is \"No Data\", please wait for at least one hour.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "$/ Core*Hour"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 4
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 35
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "((sum(sum(node_current_price / on (node) group_left max(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"})by(node)) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})) * 3600",
+            "interval": "3600",
+            "legendFormat": "$Namespace",
+            "refId": "A"
+          }
+        ],
+        "title": "Node Unit Core Time Price-Overall Cluster",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "$/ day"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "hiddenSeries": false,
+        "id": 16,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "default_node_pool",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "virtual_kubelet",
+            "color": "#F2495C"
+          },
+          {
+            "alias": "/./",
+            "color": "#5794F2",
+            "lines": true,
+            "nullPointMode": "connected"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"}) by (product_code, instance_id)))",
+            "interval": "14400",
+            "legendFormat": "[Node Pool ID]: $NodePoolId",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{node_pool_id!=\"\",product_code=\"ecs\"}) by (product_code, instance_id, node_pool_id)) by (node_pool_id))",
+            "hide": true,
+            "interval": "14400",
+            "legendFormat": "{{node_pool_id}}",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{product_code=\"eci\"}) by (product_code, instance_id)))",
+            "hide": true,
+            "interval": "14400",
+            "legendFormat": "virtual_kubelet",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Node Pool Cost Change Trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "$/ day",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 1,
+            "format": "short",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.\n\nCost Ratio = This NodePool Cost / This Cluster Cost\n\n",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "hiddenSeries": false,
+        "id": 18,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "default_node_pool",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "virtual_kubelet",
+            "color": "#F2495C"
+          },
+          {
+            "alias": "/./",
+            "color": "#5794F2",
+            "lines": true,
+            "nullPointMode": "connected"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "abs(sum(max($cost_measure{node_pool_id=~\"$NodePoolId\", product_code=\"ecs\"}) by (product_code, instance_id))) \n/ \nabs(sum(max($cost_measure{}) by (product_code, instance_id))) ",
+            "interval": "14400",
+            "legendFormat": "[Node Pool ID]: $NodePoolId",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{node_pool_id!=\"\",product_code=\"ecs\"}) by (product_code, instance_id, node_pool_id)) by (node_pool_id))",
+            "hide": true,
+            "interval": "14400",
+            "legendFormat": "{{node_pool_id}}",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "abs(sum(max($cost_measure{product_code=\"eci\"}) by (product_code, instance_id)))",
+            "hide": true,
+            "interval": "14400",
+            "legendFormat": "virtual_kubelet",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Trend of node pool node cost as a percentage of total cluster cost",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "percentunit",
+            "logBase": 1,
+            "max": "1",
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 1,
+            "format": "short",
+            "logBase": 1,
+            "max": "1",
+            "min": "0",
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 17
+        },
+        "hiddenSeries": false,
+        "id": 19,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "payAsYouGo",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "spot",
+            "color": "#F2495C"
+          },
+          {
+            "alias": "/./",
+            "lines": true,
+            "nullPointMode": "connected"
+          },
+          {
+            "alias": "payByPeriod",
+            "color": "#FADE2A"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "count(node_current_price{chargeType != \"\"}) by (chargeType)",
+            "interval": "14400",
+            "legendFormat": "{{chargeType}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Change Trend of Number of Node Instances with Different Billing Policies",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 0,
+            "format": "short",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.\n\n",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 17
+        },
+        "hiddenSeries": false,
+        "id": 20,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "payAsYouGo",
+            "color": "#5794F2"
+          },
+          {
+            "alias": "spot",
+            "color": "#F2495C"
+          },
+          {
+            "alias": "/./",
+            "lines": true,
+            "nullPointMode": "connected"
+          },
+          {
+            "alias": "payByPeriod",
+            "color": "#FADE2A"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(node_current_price{chargeType != \"\"}) by (chargeType) * 3600",
+            "interval": "3600",
+            "legendFormat": "{{chargeType}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Cost Trend of Node Instances with Different Payment Policies-Original Price Billing Cost",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 1,
+            "format": "$/ Hour",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "decimals": 1,
+            "format": "short",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Estimated Cost for Pay-As-You-Go Policy Node\n\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost when your cluster all replace to PayAsYouGo charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$/ Hour"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 0,
+          "y": 26
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payAsYouGo_price) - sum(node_current_price{})) * 3600) > 0",
+            "interval": "3600",
+            "legendFormat": "Excess:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payAsYouGo_price) - sum(node_current_price{})) * 3600) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Savings:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all pay-as-you-go expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Forecast nodes are all annual and monthly expenses.\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost when your cluster all replace to PayByPeriod (one year) charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$/ Hour"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*"
+              },
+              "properties": [
+                {
+                  "id": "noValue",
+                  "value": "Consistent with existing expenses"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 3,
+          "y": 26
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payByPeriod_price) - sum(node_current_price{})) * 3600) > 0",
+            "interval": "3600",
+            "legendFormat": "超额：",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payByPeriod_price) - sum(node_current_price{})) * 3600) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "节省：",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all annual and monthly expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Forecast nodes are all Spot Spending\n\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost when your cluster all replace to Spot charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$/ Hour"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 26
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_spot_price) - sum(node_current_price{})) * 3600) > 0",
+            "interval": "3600",
+            "legendFormat": "超额：",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_spot_price) - sum(node_current_price{})) * 3600) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "节省：",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all Spot Spending",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Different Charge Type's cost distribution of this cluster, count by dashboard time range.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 4,
+          "x": 9,
+          "y": 26
+        },
+        "id": 14,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_current_price{chargeType != \"\"}) by (chargeType) * 3600",
+            "instant": false,
+            "interval": "3600",
+            "legendFormat": "{{chargeType}}",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Overall node payment policy statistics-original price bill cost",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Different Charge Type's cost distribution of this cluster, count by dashboard time range.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 4,
+          "x": 13,
+          "y": 26
+        },
+        "id": 28,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "count(node_current_price{chargeType != \"\"}) by (chargeType)",
+            "instant": true,
+            "interval": "3600",
+            "legendFormat": "{{chargeType}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Statistics on the number of instances with different payment policies for the overall cluster node",
+        "type": "piechart"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "$/ day"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 10,
+          "w": 7,
+          "x": 17,
+          "y": 26
+        },
+        "hiddenSeries": false,
+        "id": 31,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_current_price{chargeType != \"\"}) by (chargeType, node) * 3600",
+            "hide": false,
+            "interval": "86400",
+            "legendFormat": "[node] :{{ node}}-[billing policy] :{{ chargeType}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Hourly cost/payment policy statistics of the node-original price bill cost",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "$/ day",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Estimated cost savings for pay-as-you-go strategy nodes\n\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost rate when your cluster all replace to PayAsYouGo charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 0,
+          "y": 31
+        },
+        "id": 25,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payAsYouGo_price) - sum(node_current_price)) / sum(node_current_price)) > 0",
+            "interval": "3600",
+            "legendFormat": "Excess:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payAsYouGo_price) - sum(node_current_price)) / sum(node_current_price)) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Savings:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all pay-as-you-go expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Forecast nodes are all annual and monthly expenses.\n\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost rate when your cluster all replace to PayByPeriod (one year) charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 3,
+          "y": 31
+        },
+        "id": 26,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payByPeriod_price) - sum(node_current_price{})) / sum(node_current_price)) > 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Excess:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_payByPeriod_price) - sum(node_current_price{})) / sum(node_current_price)) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Savings:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all annual and monthly expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Forecast nodes are all Spot Spending\n\nThis billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting increase cost rate when your cluster all replace to Spot charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 31
+        },
+        "id": 27,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 30
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_spot_price) - sum(node_current_price{})) / sum(node_current_price{})) > 0",
+            "interval": "3600",
+            "legendFormat": "Excess:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "((sum(node_spot_price) - sum(node_current_price{})) / sum(node_current_price{})) <= 0",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Savings:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all Spot Spending",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "This billing data is related to the cluster. This is original compute resource billing price without discount.\n\nThis cost is without discount.\n\nThis is a forecasting cost when your cluster all replace to PayAsYouGo / PayByPeriod (one year) / Spot charge type.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "$/ day"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 36
+        },
+        "hiddenSeries": false,
+        "id": 21,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_current_price{chargeType != \"\"}) * 3600",
+            "interval": "86400",
+            "legendFormat": "Current expenses",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_payAsYouGo_price) * 3600",
+            "interval": "86400",
+            "legendFormat": "Estimated as Pay-As-You-Go strategy (PayAsYouGo)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_payByPeriod_price) * 3600",
+            "interval": "86400",
+            "legendFormat": "Estimated as package year and package month strategy (PayByPeriod)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(node_spot_price) * 3600",
+            "interval": "86400",
+            "legendFormat": "Estimated as Preemptive Instance Policy (Spot)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "D"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Estimated cost of different payment policies for daily node pool nodes-original bill cost",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "$/ day",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "prometheus"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "uat",
+            "value": "uat"
+          },
+          "description": "",
+          "label": "Selecte Env",
+          "name": "env",
+          "options": [
+            {
+              "selected": false,
+              "text": "nprod",
+              "value": "nprod"
+            },
+            {
+              "selected": true,
+              "text": "uat",
+              "value": "uat"
+            },
+            {
+              "selected": false,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": false,
+              "text": "sit",
+              "value": "sit"
+            }
+          ],
+          "query": "nprod,uat,dev,sit",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-uat-hkg-ackcluster",
+            "value": "VTUAY-6Nz"
+          },
+          "description": "",
+          "hide": 2,
+          "label": "datasource",
+          "name": "datasource_ack",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/mfc-glprom-${env}-hkg-ackcluster$/",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": "pretax_amount",
+            "value": "pretax_amount"
+          },
+          "includeAll": false,
+          "label": "Actual/original bill",
+          "name": "cost_measure",
+          "options": [
+            {
+              "selected": true,
+              "text": "pretax_amount",
+              "value": "pretax_amount"
+            },
+            {
+              "selected": false,
+              "text": "pretax_gross_amount",
+              "value": "pretax_gross_amount"
+            }
+          ],
+          "query": "pretax_amount : pretax_amount,pretax_gross_amount : pretax_gross_amount",
+          "type": "custom"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "query_result( sum(count_over_time($cost_measure{}[2d])) by (node_pool_id) )",
+          "includeAll": true,
+          "label": "Node Pool ID(NodePoolID)",
+          "name": "NodePoolId",
+          "options": [],
+          "query": {
+            "query": "query_result( sum(count_over_time($cost_measure{}[2d])) by (node_pool_id) )",
+            "refId": "lfx-okg-dashboard_1251182063904492_5b6a79-NodePoolId-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "/.*node_pool_id=\"(.*)\".*/",
+          "sort": 1,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "CS Cost Node Pool",
+    "uid": "5495437431802631-17360765-806-5",
+    "version": 8,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "new-dashboard",
+    "url": "/d/ffj4h97623mrke/new-dashboard",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-15T10:52:35+08:00",
+    "updated": "2026-04-15T10:52:35+08:00",
+    "updatedBy": "lamarwei_adm@mfcgcr.com",
+    "createdBy": "lamarwei_adm@mfcgcr.com",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 173,
+    "folderUid": "efj4f8d31patcc",
+    "folderTitle": "HK DCS",
+    "folderUrl": "/dashboards/f/efj4f8d31patcc/hk-dcs",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 175,
+    "links": [],
+    "panels": [],
+    "preload": false,
+    "refresh": "",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "New dashboard",
+    "uid": "ffj4h97623mrke",
+    "version": 1,
+    "weekStart": ""
+  }
+}

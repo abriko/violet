@@ -1,0 +1,3399 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "rabbitmq-instance-status-and-cost-overview",
+    "url": "/d/dfij8st4zkfswd/rabbitmq-instance-status-and-cost-overview",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-09T12:02:59+08:00",
+    "updated": "2026-04-09T12:44:29+08:00",
+    "updatedBy": "wanjewaadm@mfcgcr.com",
+    "createdBy": "wanjewaadm@mfcgcr.com",
+    "version": 12,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 6,
+    "folderUid": "global-v2-cn-5495437431802631-uugqtqwk_",
+    "folderTitle": "mfc-glprom-nprd-cloudservice",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-uugqtqwk_/mfc-glprom-nprd-cloudservice",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 169,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Real-time resource utilization across all RabbitMQ instances. Color transitions smoothly from cool blue (idle) → green (normal) → amber (elevated) → red (critical).",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlYlRd"
+            },
+            "decimals": 1,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "color": "transparent",
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "noValue": "offline",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#73BF69"
+                },
+                {
+                  "color": "#FF9830",
+                  "value": 50
+                },
+                {
+                  "color": "#F2495C",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 70,
+        "options": {
+          "displayMode": "gradient",
+          "maxVizHeight": 50,
+          "minVizHeight": 16,
+          "minVizWidth": 8,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {
+            "titleSize": 11,
+            "valueSize": 13
+          },
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "(100 * sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=~\"$InstanceGaugeIDs\"}) by (instanceId) / 1000000) or on(instanceId) (0 * group(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\", instanceId=~\"$InstanceGaugeIDs\"}) by (instanceId))",
+            "interval": "",
+            "legendFormat": "{{instanceId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "⚡ Instance Utilization",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Percentage of instances in SERVING state for the selected region.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red"
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 99
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 12
+        },
+        "id": 300,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "100 * sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) / clamp_min(sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}), 1)",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Instance Health Score",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Estimated monthly infrastructure cost based on active instance count.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "yellow",
+                  "value": 500
+                },
+                {
+                  "color": "red",
+                  "value": 1000
+                }
+              ]
+            },
+            "unit": "currencyUSD"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 12
+        },
+        "id": 301,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) * 360",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Estimated Monthly Cost",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Estimated cost per one million published messages in the last 30 days.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "yellow",
+                  "value": 5
+                },
+                {
+                  "color": "red",
+                  "value": 20
+                }
+              ]
+            },
+            "unit": "currencyUSD"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 12,
+          "y": 12
+        },
+        "id": 302,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "(sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) * 360) / clamp_min(sum(increase(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\", vHost=~\"$VirtualHost\"}[30d])) / 1000000, 0.001)",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Cost per 1M Messages",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Queue backlog usage against a logical 1M message threshold.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "yellow",
+                  "value": 60
+                },
+                {
+                  "color": "red",
+                  "value": 85
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 18,
+          "y": 12
+        },
+        "id": 303,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "100 * sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=~\"$InstanceID\", vHost=~\"$VirtualHost\"}) / 1000000",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Queue Capacity Usage",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 304,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": true
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Allocated Monthly Cost"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(rate(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\",vHost=~\"$VirtualHost\"}[5m])) by (vHost)",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "Publish Rate",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "100 * sum(rate(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\",vHost=~\"$VirtualHost\"}[5m])) by (vHost) / clamp_min(sum(rate(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\",vHost=~\"$VirtualHost\"}[5m])), 0.001)",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "Traffic Share (%)",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "(sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) * 360) * (sum(rate(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\",vHost=~\"$VirtualHost\"}[5m])) by (vHost) / clamp_min(sum(rate(rabbitmq_queue_messages_published_total{instanceId=~\"$InstanceID\",vHost=~\"$VirtualHost\"}[5m])), 0.001))",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "Allocated Monthly Cost",
+            "refId": "C"
+          }
+        ],
+        "title": "Cost Allocation by VHost",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "renameByName": {
+                "Value #A": "Publish Rate",
+                "Value #B": "Traffic Share (%)",
+                "Value #C": "Allocated Monthly Cost",
+                "vHost": "VHost"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Monthly infrastructure allocation grouped by Alibaba Cloud tags.",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Estimated Monthly Cost"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "currencyUSD"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 23
+        },
+        "id": 305,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": true
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Estimated Monthly Cost"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) by (costcenter, appcode)",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "Instance Count",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", status=\"SERVING\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"}) by (costcenter, appcode) * 360",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "Estimated Monthly Cost",
+            "refId": "B"
+          }
+        ],
+        "title": "Cost Allocation by Cost Center and App Code",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "renameByName": {
+                "Value #A": "Instance Count",
+                "Value #B": "Estimated Monthly Cost",
+                "appcode": "App Code",
+                "costcenter": "Cost Center"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 29
+        },
+        "id": 7,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "noValue": "0",
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue"
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 6,
+              "x": 0,
+              "y": 14
+            },
+            "id": 16,
+            "interval": "60s",
+            "options": {
+              "colorMode": "value",
+              "graphMode": "none",
+              "justifyMode": "auto",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"})",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Ready messages ($VirtualHost)",
+            "type": "stat"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "noValue": "0",
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 6,
+              "x": 6,
+              "y": 14
+            },
+            "id": 3,
+            "interval": "60s",
+            "options": {
+              "colorMode": "value",
+              "graphMode": "none",
+              "justifyMode": "auto",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_connections{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"})",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Current connections ($VirtualHost)",
+            "type": "stat"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "noValue": "0",
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 6,
+              "x": 12,
+              "y": 14
+            },
+            "id": 4,
+            "options": {
+              "colorMode": "value",
+              "graphMode": "none",
+              "justifyMode": "auto",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_channels{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"})",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Current channels ($VirtualHost)",
+            "type": "stat"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "noValue": "0",
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 4,
+              "w": 6,
+              "x": 18,
+              "y": 14
+            },
+            "id": 5,
+            "options": {
+              "colorMode": "value",
+              "graphMode": "none",
+              "justifyMode": "auto",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_queue_consumers{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"})",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Current consumers ($VirtualHost)",
+            "type": "stat"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Message processing time = server response time - server message delivery time.\n",
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "filterable": false,
+                  "inspect": false
+                },
+                "mappings": [],
+                "noValue": "0",
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Ready messages"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Unacked messages"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "The number of messages in the timer"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Incoming message rate"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Deliver/get message rate"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Ack message rate"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Number of consumers"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Message processing time"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "ms"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "QueueName"
+                  },
+                  "properties": [
+                    {
+                      "id": "links",
+                      "value": [
+                        {
+                          "targetBlank": true,
+                          "title": "${__data.fields.QueueName}",
+                          "url": "https://amqp.console.aliyun.com/region/$region/instance/$InstanceID/vhost/${__data.fields.VirtualHost}/queue/${__data.fields.QueueName}/queue-detail?activeTab=dashboard"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "VirtualHost"
+                  },
+                  "properties": [
+                    {
+                      "id": "links",
+                      "value": [
+                        {
+                          "targetBlank": true,
+                          "title": "${__data.fields.VirtualHost}",
+                          "url": "https://amqp.console.aliyun.com/region/$region/instance/$InstanceID/vhost/${__data.fields.VirtualHost}/vhost-detail?activeTab=dashboard"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 18
+            },
+            "id": 54,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "enablePagination": true,
+                "fields": "",
+                "reducer": [
+                  "sum"
+                ],
+                "show": false
+              },
+              "showHeader": true,
+              "sortBy": [
+                {
+                  "desc": true,
+                  "displayName": "Ready messages"
+                }
+              ]
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Ready messages",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum({__name__=~\"rabbitmq_queue_unacked_deliver_messages|rabbitmq_queue_unacked_get_messages\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Unacked messages",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_queue_messages_timing{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "The number of messages in the timer",
+                "refId": "E"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_messages_published_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Incoming message rate",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate({__name__=~\"rabbitmq_queue_deliver_total|rabbitmq_queue_get_total\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Deliver/get message rate",
+                "refId": "D"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_ack_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Ack message rate",
+                "refId": "F"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_queue_consumers{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) by (vHost,queueName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "Number of consumers",
+                "refId": "G"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "avg({__name__=~\"rabbitmq_consumer_acked_proccess_time_avg|rabbitmq_consumer_unacked_proccess_time_avg\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) by (vHost,queueName)",
+                "hide": false,
+                "instant": true,
+                "legendFormat": "process time",
+                "range": false,
+                "refId": "H"
+              }
+            ],
+            "title": "Queue overview (message rate in bars/second)",
+            "transformations": [
+              {
+                "id": "merge",
+                "options": {}
+              },
+              {
+                "id": "organize",
+                "options": {
+                  "excludeByName": {
+                    "Time": true
+                  },
+                  "indexByName": {
+                    "Time": 0,
+                    "Value #A": 3,
+                    "Value #B": 4,
+                    "Value #C": 6,
+                    "Value #D": 7,
+                    "Value #E": 5,
+                    "Value #F": 8,
+                    "Value #G": 9,
+                    "queueName": 2,
+                    "vHost": 1
+                  },
+                  "renameByName": {
+                    "Value #A": "Ready messages",
+                    "Value #B": "Unacked messages",
+                    "Value #C": "Incoming message rate",
+                    "Value #D": "Deliver/get message rate",
+                    "Value #E": "The number of messages in the timer",
+                    "Value #F": "Ack message rate",
+                    "Value #G": "Number of consumers",
+                    "Value #I": "Message processing time",
+                    "process time": "Message processing time",
+                    "queueName": "QueueName",
+                    "vHost": "VirtualHost"
+                  }
+                }
+              }
+            ],
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Click the column name to sort in ascending or descending order according to the current column value",
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "filterable": false,
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Message rate in"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Message rate out"
+                  },
+                  "properties": [
+                    {
+                      "id": "unit",
+                      "value": "short"
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "VirtualHost"
+                  },
+                  "properties": [
+                    {
+                      "id": "links",
+                      "value": [
+                        {
+                          "targetBlank": true,
+                          "title": "${__data.fields.VirtualHost}",
+                          "url": "https://amqp.console.aliyun.com/region/$region/instance/$InstanceID/vhost/${__data.fields.VirtualHost}/vhost-detail?activeTab=dashboard"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "ExchangeName"
+                  },
+                  "properties": [
+                    {
+                      "id": "links",
+                      "value": [
+                        {
+                          "targetBlank": true,
+                          "title": "${__data.fields.ExchangeName}",
+                          "url": "https://amqp.console.aliyun.com/region/$region/instance/$InstanceID/vhost/${__data.fields.VirtualHost}/exchange/${__data.fields.ExchangeName}/exchange-detail?activeTab=dashboard"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 28
+            },
+            "id": 56,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "enablePagination": true,
+                "fields": "",
+                "reducer": [
+                  "sum"
+                ],
+                "show": false
+              },
+              "showHeader": true,
+              "sortBy": [
+                {
+                  "desc": true,
+                  "displayName": "Message rate in"
+                }
+              ]
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_messages_published_in_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",exchangeName=~\"$ExchangeName\"}[1m])) by (vHost,exchangeName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "message rate in (messages/s)",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_messages_published_out_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",exchangeName=~\"$ExchangeName\"}[1m])) by (vHost,exchangeName)",
+                "format": "table",
+                "instant": true,
+                "interval": "",
+                "legendFormat": "message rate out (messages/s)",
+                "refId": "B"
+              }
+            ],
+            "title": "Exchange overview (message rate Unit: bar/second)",
+            "transformations": [
+              {
+                "id": "merge",
+                "options": {}
+              },
+              {
+                "id": "organize",
+                "options": {
+                  "excludeByName": {
+                    "Time": true
+                  },
+                  "indexByName": {
+                    "Time": 0,
+                    "Value #A": 3,
+                    "Value #B": 4,
+                    "exchangeName": 2,
+                    "vHost": 1
+                  },
+                  "renameByName": {
+                    "Value #A": "Message rate in",
+                    "Value #B": "Message rate out",
+                    "exchangeName": "ExchangeName",
+                    "vHost": "VirtualHost"
+                  }
+                }
+              }
+            ],
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "Messages",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 38
+            },
+            "id": 64,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [
+                  "lastNotNull",
+                  "max"
+                ],
+                "displayMode": "table",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "topk(20,sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}) by (queueName))",
+                "interval": "",
+                "legendFormat": "{{queueName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Ready messages top 20 queues($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "ms"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 46
+            },
+            "id": 67,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [
+                  "lastNotNull",
+                  "max"
+                ],
+                "displayMode": "table",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "topk(20,avg({__name__=~\"rabbitmq_consumer_acked_proccess_time_avg|rabbitmq_consumer_unacked_proccess_time_avg\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}) by (queueName))",
+                "interval": "",
+                "legendFormat": "{{queueName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Message processing time (server response time - server message delivery time) top 20 queues($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Total number of messages published to queues",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "Messages/s",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 54
+            },
+            "id": 62,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [
+                  "lastNotNull",
+                  "max"
+                ],
+                "displayMode": "table",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "multi",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "topk(20,sum(rate(rabbitmq_queue_messages_published_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (queueName))",
+                "format": "time_series",
+                "interval": "",
+                "legendFormat": "{{queueName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Queue publish message rate top 20 queues ($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Total number of messages deliver and get from queues",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 63
+            },
+            "id": 66,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "right",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "topk(20,sum(rate({__name__=~\"rabbitmq_queue_deliver_total|rabbitmq_queue_get_total\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (queueName))",
+                "interval": "",
+                "legendFormat": "{{queueName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Deliver and get message rate top 20 queues ($VirtualHost)",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Operations Overview (VHost: $VirtualHost)",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 30
+        },
+        "id": 13,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 15
+            },
+            "id": 18,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_messages_published_in_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",exchangeName=~\"$ExchangeName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Exchange messages published in (Exchagne:$ExchangeName)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 15
+            },
+            "id": 20,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_messages_published_out_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",exchangeName=~\"$ExchangeName\"}[1m]))",
+                "interval": "",
+                "legendFormat": "",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Exchange messages published out (Exchange:$ExchangeName)",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Exchanges (VHost: $VirtualHost, Exchange: $ExchangeName)",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 31
+        },
+        "id": 44,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 16
+            },
+            "id": 46,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum({__name__=~\"rabbitmq_queue_accumulation|rabbitmq_queue_messages_ready\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"})",
+                "interval": "",
+                "legendFormat": "ready",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rabbitmq_queue_unacked_deliver_messages{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"})",
+                "interval": "",
+                "legendFormat": "deliver unacked",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rabbitmq_queue_unacked_get_messages{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"})",
+                "interval": "",
+                "legendFormat": "get unacked",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rabbitmq_queue_messages_timing{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"})",
+                "interval": "",
+                "legendFormat": "Timing",
+                "refId": "D"
+              }
+            ],
+            "title": "Queue messages (Queue:$QueueName)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "Message processing time = server response time - server message delivery time",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 24
+            },
+            "id": 68,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "expr": "avg({__name__=~\"rabbitmq_consumer_acked_proccess_time_avg|rabbitmq_consumer_unacked_proccess_time_avg\",instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"})",
+                "interval": "",
+                "legendFormat": "Processing time",
+                "queryType": "randomWalk",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Message processing time (server response time - server message delivery time) (Queue:$QueueName)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 32
+            },
+            "id": 48,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_messages_published_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "publish",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_deliver_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "deliver",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_get_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "get",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_ack_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "ack",
+                "refId": "D"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_uack_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": " unack",
+                "refId": "E"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_recover_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "recover",
+                "refId": "G"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_reject_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m])) ",
+                "interval": "",
+                "legendFormat": "reject",
+                "refId": "H"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_other_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}[1m]))",
+                "interval": "",
+                "legendFormat": "other",
+                "refId": "F"
+              }
+            ],
+            "title": "Queue APIs rate(Queue:$QueueName)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 41
+            },
+            "id": 50,
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "editorMode": "code",
+                "expr": "sum(rabbitmq_queue_consumers{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\",queueName=~\"$QueueName\"}) ",
+                "interval": "",
+                "legendFormat": "consumer count",
+                "queryType": "randomWalk",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Queue consumers (Queue:$QueueName)",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Queues (VHost: $VirtualHost, Queue: $QueueName)",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 32
+        },
+        "id": 42,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 17
+            },
+            "id": 22,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_connections_opened_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "open connection",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_connections_closed_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "close connection",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_channels_opened_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "open channel",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_channels_closed_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "close channel",
+                "refId": "D"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_queues_declared_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "declare queue",
+                "refId": "E"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queues_deleted_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "delete queue",
+                "refId": "F"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_declared_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "declare exchange",
+                "refId": "G"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_deleted_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "delete exchange",
+                "refId": "H"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_bind_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "bind exchange",
+                "refId": "I"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_exchange_unbind_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "unbind exchange",
+                "refId": "J"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "jXu2wByNz"
+                },
+                "expr": "sum(rate(rabbitmq_queue_bind_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "bind queue",
+                "refId": "K"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "sum(rate(rabbitmq_queue_unbind_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}[1m])) by (vHost)",
+                "interval": "",
+                "legendFormat": "unbind queue",
+                "refId": "L"
+              }
+            ],
+            "title": "Rate per API ($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "description": "Channels currently open.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 26
+            },
+            "id": 24,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "expr": "sum(rabbitmq_channels{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}) by (vHost)",
+                "interval": "",
+                "legendFormat": "{{vHost}}",
+                "queryType": "randomWalk",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "VirtualHost channels ($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "description": "Connections currently open.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 26
+            },
+            "id": 25,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "editorMode": "code",
+                "expr": "sum(rabbitmq_connections{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}) by (vHost)",
+                "interval": "",
+                "legendFormat": "{{vHost}}",
+                "queryType": "randomWalk",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "VirtualHost connections ($VirtualHost)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 34
+            },
+            "id": 52,
+            "options": {
+              "alertThreshold": true,
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "topk(20,sum(rabbitmq_connection_channels{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"}) by (remoteAddress))",
+                "interval": "",
+                "legendFormat": "{{remoteAddress}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Channels per Connection ($VirtualHost)",
+            "type": "timeseries"
+          }
+        ],
+        "title": "VirtualHost (VHost: $VirtualHost)",
+        "type": "row"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "dev",
+            "value": "dev"
+          },
+          "label": "Select Env",
+          "name": "env",
+          "options": [
+            {
+              "selected": false,
+              "text": "nprd",
+              "value": "nprd"
+            },
+            {
+              "selected": true,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": false,
+              "text": "uat",
+              "value": "uat"
+            }
+          ],
+          "query": "nprd,dev,uat",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "mfc-rabbitmq-dev-hkg-rcs-01",
+            "value": "mfc-rabbitmq-dev-hkg-rcs-01"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceName)",
+          "includeAll": false,
+          "label": "InstanceName",
+          "name": "InstanceName",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceName)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-dev-hkg-cloudservice",
+            "value": "VOX0KKpvz"
+          },
+          "description": "",
+          "hide": 2,
+          "includeAll": false,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/mfc-glprom-${env}-hkg-cloudservice$/",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": [
+              "cn-hongkong"
+            ],
+            "value": [
+              "cn-hongkong"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\"}, regionId)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "area",
+          "multi": true,
+          "name": "region",
+          "options": [],
+          "query": {
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\"}, regionId)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\"},costcenter)",
+          "includeAll": true,
+          "label": "CostCenter",
+          "name": "CostCenter",
+          "options": [],
+          "query": {
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\"},costcenter)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\"},appcode)",
+          "includeAll": true,
+          "label": "AppCode",
+          "name": "AppCode",
+          "options": [],
+          "query": {
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\"},appcode)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceId)",
+          "hide": 2,
+          "includeAll": true,
+          "label": "InstanceGaugeIDs",
+          "multi": true,
+          "name": "InstanceGaugeIDs",
+          "options": [],
+          "query": {
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=~\"$region\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceId)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "rabbitmq-sg-x1e4j5btr02",
+            "value": "rabbitmq-sg-x1e4j5btr02"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=\"$region\", instanceName=\"$InstanceName\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceId)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "InstanceID",
+          "name": "InstanceID",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(cloud_monitor_instance_info{service=\"amqp\", regionId=\"$region\", instanceName=\"$InstanceName\", costcenter=~\"$CostCenter\", appcode=~\"$AppCode\"},instanceId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(rabbitmq_connections{instanceId=\"$InstanceID\"},vHost)",
+          "includeAll": true,
+          "label": "VirtualHost",
+          "name": "VirtualHost",
+          "options": [],
+          "query": {
+            "query": "label_values(rabbitmq_connections{instanceId=\"$InstanceID\"},vHost)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(rabbitmq_exchange_messages_published_in_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"},exchangeName)",
+          "includeAll": true,
+          "label": "ExchangeName",
+          "name": "ExchangeName",
+          "options": [],
+          "query": {
+            "query": "label_values(rabbitmq_exchange_messages_published_in_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"},exchangeName)",
+            "refId": "prom-rw-579594444d759090b41ede31ca9b-ExchangeName-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(rabbitmq_queue_messages_published_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"},queueName)",
+          "includeAll": true,
+          "label": "QueueName",
+          "name": "QueueName",
+          "options": [],
+          "query": {
+            "query": "label_values(rabbitmq_queue_messages_published_total{instanceId=\"$InstanceID\",vHost=~\"$VirtualHost\"},queueName)",
+            "refId": "prom-rw-579594444d759090b41ede31ca9b-QueueName-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-90d",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "1m",
+        "2m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "RabbitMQ Instance Status & Cost Overview",
+    "uid": "dfij8st4zkfswd",
+    "version": 12,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,707 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "cloud-asm-istio-http-gateway",
+    "url": "/d/5495437431802631-17669917-64-2/cloud-asm-istio-http-gateway",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-14T18:41:09+08:00",
+    "updated": "2026-01-14T14:35:55+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 7,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 30,
+    "folderUid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "folderTitle": "mfc-glprom-nprod-ackcluster",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-ugjfwpzz_/mfc-glprom-nprod-ackcluster",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 18,
+    "links": [],
+    "panels": [
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "hiddenSeries": false,
+        "id": 2,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m]))",
+            "interval": "",
+            "legendFormat": "5min",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[1m]))",
+            "hide": false,
+            "legendFormat": "1min",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[30s]))",
+            "hide": false,
+            "legendFormat": "30s",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Request Total",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 6
+        },
+        "hiddenSeries": false,
+        "id": 4,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum by (response_code)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m]))",
+            "interval": "",
+            "legendFormat": "response_code={{response_code}}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Response Code",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 6
+        },
+        "hiddenSeries": false,
+        "id": 27,
+        "legend": {
+          "alignAsTable": false,
+          "avg": false,
+          "current": false,
+          "hideEmpty": true,
+          "hideZero": false,
+          "max": false,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "(histogram_quantile(0.50, sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le)) / 1000) or histogram_quantile(0.50, sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-sysytem\",source_app=\"$asm_gateway_name\"}[1m])) by (source_workload, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{source_app}}.{{source_workload_namespace}} P50",
+            "range": true,
+            "refId": "A",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "(histogram_quantile(0.90, sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le)) / 1000) or histogram_quantile(0.90, sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{source_app}}.{{source_workload_namespace}} P90",
+            "range": true,
+            "refId": "B",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "(histogram_quantile(0.95, sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le)) / 1000) or histogram_quantile(0.95, sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{source_app}}.{{source_workload_namespace}} P95 ",
+            "range": true,
+            "refId": "C",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "(histogram_quantile(0.99, sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le)) / 1000) or histogram_quantile(0.99, sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{source_app}}.{{source_workload_namespace}} P99",
+            "range": true,
+            "refId": "D",
+            "step": 2
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Request Duration",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "ms",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        },
+        "hiddenSeries": false,
+        "id": 95,
+        "legend": {
+          "alignAsTable": false,
+          "avg": false,
+          "current": false,
+          "hideEmpty": true,
+          "max": false,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.50, sum(irate(istio_request_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P50",
+            "range": true,
+            "refId": "A",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.90, sum(irate(istio_request_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P90 ",
+            "range": true,
+            "refId": "B",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.95, sum(irate(istio_request_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P95 ",
+            "range": true,
+            "refId": "C",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.99, sum(irate(istio_request_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app, source_workload_namespace, le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P99 ",
+            "range": true,
+            "refId": "D",
+            "step": 2
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Request Size",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 14
+        },
+        "hiddenSeries": false,
+        "id": 96,
+        "legend": {
+          "alignAsTable": false,
+          "avg": false,
+          "current": false,
+          "hideEmpty": true,
+          "max": false,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.50, sum(irate(istio_response_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app,source_workload_namespace,le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{source_app}}.{{source_workload_namespace}}P50",
+            "range": true,
+            "refId": "A",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.90, sum(irate(istio_response_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app,source_workload_namespace,le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P90",
+            "range": true,
+            "refId": "B",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.95, sum(irate(istio_response_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app,source_workload_namespace,le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app }}.{{ source_workload_namespace }} P95",
+            "range": true,
+            "refId": "C",
+            "step": 2
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.99, sum(irate(istio_response_bytes_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[1m])) by (source_app,source_workload_namespace,le))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ source_app}}.{{ source_workload_namespace }} P99 ",
+            "range": true,
+            "refId": "D",
+            "step": 2
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Response Size",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "logBase": 1,
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      }
+    ],
+    "preload": false,
+    "refresh": "",
+    "schemaVersion": 40,
+    "tags": [
+      "integration",
+      "ASM",
+      "prometheus",
+      "httpgateway"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "istio-ingressgateway",
+            "value": "istio-ingressgateway"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-GCRYa6Hk"
+          },
+          "definition": "query_result(sum(istio_requests_total{reporter=\"source\",source_workload_namespace=\"istio-system\"}) by (source_app))",
+          "includeAll": false,
+          "label": "ASM_Gateway_Name",
+          "name": "asm_gateway_name",
+          "options": [],
+          "query": {
+            "qryType": 3,
+            "query": "query_result(sum(istio_requests_total{reporter=\"source\",source_workload_namespace=\"istio-system\"}) by (source_app))",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regex": "/.*app=\"([^\"]*).*/",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Cloud ASM Istio Http Gateway",
+    "uid": "5495437431802631-17669917-64-2",
+    "version": 7,
+    "weekStart": ""
+  }
+}

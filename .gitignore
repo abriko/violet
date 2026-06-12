@@ -1,0 +1,11 @@
+.DS_Store
+**/*SECRET.yaml
+**/*secret.yaml
+
+**/node_modules/
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.grid { display:grid; grid-template-columns: 1.3fr 0.7fr; gap: 8pt; margin-top: 6pt; height: 176pt; }
+.arch-wrap { display:flex; flex-direction:column; }
+.arch-main { flex: 1; }
+.right-stack { display:flex; flex-direction:column; gap: 5pt; }
+.mini-title { font-family: var(--font-sans-bold); font-size: 9pt; color: var(--accent); line-height:1.15; }
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Appendix C · architecture & security governance</p>
+    <p class="slide-no">14</p>
+  </div>
+  <h1 class="title">Detailed architecture and governance design</h1>
+  <div class="grid">
+    <div class="arch-wrap">
+      <div class="image-frame arch-main">
+        <img src="../assets/aiops-architecture.excalidraw.png" alt="AIOps architecture diagram">
+      </div>
+    </div>
+    <div class="right-stack">
+      <div class="card highlight">
+        <p class="small-label accent-label">What this appendix clarifies</p>
+        <ul class="bullets" style="margin-top:6pt;">
+          <li>Shared agent layer and orchestration structure</li>
+          <li>Human gate placement for production-sensitive actions</li>
+          <li>Governance controls built into the operating flow</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="mini-title">Detailed blueprint document</p>
+        <p class="inline-link" style="margin-top:6pt; font-size:6.5pt; line-height:1.15;">https://manulife-asia.atlassian.net/wiki/spaces/HKDO/pages/1648525895/AIOps+blueprints</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-row has-logo">
+    <p class="footer-note">Detailed architecture and governance appendix</p>
+    <p class="footer-note">Appendix C</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

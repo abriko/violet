@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 18pt; }
+.risk-card { min-height: 122pt; }
+.risk-title { font-family: var(--font-sans-bold); font-size: 11.5pt; color: var(--accent); line-height: 1.24; }
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Appendix B · risks & mitigation</p>
+    <p class="slide-no">13</p>
+  </div>
+  <h1 class="title">Key risks are known — and already bounded by practical mitigation</h1>
+  <div class="risk-grid">
+    <div class="card risk-card">
+      <p class="small-label">Risk 01</p>
+      <p class="risk-title" style="margin-top:6pt;">Copilot Studio RAG remains a black box</p>
+      <p class="body-muted" style="margin-top:10pt;">Start with documentation reorganization now; keep a self-hosted RAG fallback if the black-box limit becomes material.</p>
+    </div>
+    <div class="card risk-card">
+      <p class="small-label">Risk 02</p>
+      <p class="risk-title" style="margin-top:6pt;">No CMDB / Service Catalog baseline today</p>
+      <p class="body-muted" style="margin-top:10pt;">Make Service Catalog MVP part of phase 1 instead of treating it as a dependency someone else must solve first.</p>
+    </div>
+    <div class="card risk-card">
+      <p class="small-label">Risk 03</p>
+      <p class="risk-title" style="margin-top:6pt;">LLM variability may produce unsafe repair suggestions</p>
+      <p class="body-muted" style="margin-top:10pt;">Use evidence chains, confidence thresholds, and mandatory human-in-the-loop approval for production actions.</p>
+    </div>
+    <div class="card risk-card">
+      <p class="small-label">Risk 04</p>
+      <p class="risk-title" style="margin-top:6pt;">Cloud billing tags are not aligned enough for deeper UC3 work</p>
+      <p class="body-muted" style="margin-top:10pt;">Run tag validation and data-quality cleanup before moving into UC3 phase 2 automation.</p>
+    </div>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

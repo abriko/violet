@@ -1,0 +1,3 @@
+Cluster Name,Namespace,Container Name,Cpu Requested Cores,Cpu Limit Cores,Cpu Cores Utilization (95%),Memory Requested Bytes,Memory Limit Bytes,Maxusedmemory,Memory Working Set Utilization
+aks-eas-hkg-dev,ns-hkg-customer-system,csms-listener-service-5-0-18-snapshot,4,6,59,4096,8192,647.6640625,4.1355133056640625
+aks-eas-hkg-dev,ns-hkg-customer-system,crm-sf-bff-service-2-1-117-snapshot,2,4,0.19921875,4096,8192,872.91796875,10.267829895019531

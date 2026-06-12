@@ -1,0 +1,3932 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "logical-architecture-overview",
+    "url": "/d/5328/logical-architecture-overview",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-12-05T09:08:38+08:00",
+    "updated": "2026-04-03T17:14:27+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "liwang_adm@mfcgcr.com",
+    "version": 9,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 78,
+    "folderUid": "ffehbbj5lyjggc",
+    "folderTitle": "HK ADO",
+    "folderUrl": "/dashboards/f/ffehbbj5lyjggc/hk-ado",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 60,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Alb-Resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigwRate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gw-resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 11,
+          "x": 0,
+          "y": 0
+        },
+        "id": 57,
+        "options": {
+          "infinitePan": false,
+          "inlineEditing": true,
+          "panZoom": false,
+          "root": {
+            "background": {
+              "color": {
+                "fixed": "transparent"
+              }
+            },
+            "border": {
+              "color": {
+                "fixed": "dark-green"
+              }
+            },
+            "constraint": {
+              "horizontal": "left",
+              "vertical": "top"
+            },
+            "elements": [
+              {
+                "background": {
+                  "color": {
+                    "field": "apigwRate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "apigwRate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 3.814697265625e-07,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 628,
+                      "y": 169.00001525878906
+                    },
+                    "target": {
+                      "x": 0.005714634486607143,
+                      "y": -0.9689836692798455
+                    },
+                    "targetName": "alb-rate",
+                    "targetOriginal": {
+                      "x": 629.1999988555908,
+                      "y": 132.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "apigw-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 743,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "fill": {
+                    "fixed": "#D9D9D9"
+                  },
+                  "path": {
+                    "fixed": "img/icons/unicons/add-user.svg",
+                    "mode": "fixed"
+                  }
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "yellow"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 72.46875,
+                      "y": 46.984375
+                    },
+                    "target": {
+                      "x": 0.09179528838342811,
+                      "y": 1.0400250156347717
+                    },
+                    "targetName": "alb-qps-valu",
+                    "targetOriginal": {
+                      "x": 173,
+                      "y": 84
+                    },
+                    "vertices": [
+                      {
+                        "x": -0.012620465222596751,
+                        "y": 0.4380750547435627
+                      },
+                      {
+                        "x": 1.1591544917625116,
+                        "y": 0.4380750547435627
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "User",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 41.984375,
+                  "left": 45,
+                  "rotation": 0,
+                  "top": 5,
+                  "width": 54.9375
+                },
+                "type": "icon"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 629,
+                      "y": 83
+                    },
+                    "target": {
+                      "x": 0.856655290102389,
+                      "y": 0.47599553405284706
+                    },
+                    "targetName": "User",
+                    "targetOriginal": {
+                      "x": 96,
+                      "y": 16
+                    },
+                    "vertices": [
+                      {
+                        "x": -0.28893058161350843,
+                        "y": 1
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 743,
+                  "rotation": 0,
+                  "top": 91,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb-Resp ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-Resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 354,
+                  "top": 82,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW RPS ："
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 47,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW-Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-Resq",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 354,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "GW Suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 628,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 628,
+                  "top": 91,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "gw-resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "gw-resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 3.141515395220588e-07,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 429.5000305175781,
+                      "y": 205.00001525878906
+                    },
+                    "target": {
+                      "x": -0.030588666130514707,
+                      "y": -0.9694763147105105
+                    },
+                    "targetName": "alb-resp",
+                    "targetOriginal": {
+                      "x": 429.1999988555908,
+                      "y": 134.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "gw-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 454,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm RPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Asm-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 45,
+                  "rotation": 0,
+                  "top": 337,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK RPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Ack-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 45,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 45,
+                  "rotation": 0,
+                  "top": 571,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm-Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Asm-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 354,
+                  "top": 328,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App-Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "app-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 354,
+                  "rotation": 0,
+                  "top": 571,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK-Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Ack-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 354,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Asm-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 628,
+                  "rotation": 0,
+                  "top": 337,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 628,
+                  "rotation": 0,
+                  "top": 571,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ACK-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 628,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Asm QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Asm QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "yellow"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 167.5,
+                      "y": 381
+                    },
+                    "target": {
+                      "x": -0.012987012987012988,
+                      "y": 1
+                    },
+                    "targetName": "ACK-qps",
+                    "targetOriginal": {
+                      "x": 167,
+                      "y": 445
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Asm-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 147,
+                  "rotation": 0,
+                  "top": 337,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ack qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "yellow"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 167.5,
+                      "y": 495
+                    },
+                    "target": {
+                      "x": 0.012987012987012988,
+                      "y": 1.04
+                    },
+                    "targetName": "App-qps",
+                    "targetOriginal": {
+                      "x": 168,
+                      "y": 564
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ACK-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 147,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "app qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": -0.5,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 167,
+                      "y": 621
+                    },
+                    "target": {
+                      "x": 0.05,
+                      "y": -1.08
+                    },
+                    "targetName": "App-Rate",
+                    "targetOriginal": {
+                      "x": 785,
+                      "y": 623
+                    },
+                    "vertices": [
+                      {
+                        "x": 0,
+                        "y": 22
+                      },
+                      {
+                        "x": 1,
+                        "y": 22
+                      }
+                    ]
+                  },
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0.5,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 207,
+                      "y": 621
+                    },
+                    "target": {
+                      "x": 0.075,
+                      "y": -1.08
+                    },
+                    "targetName": "APP-Resp",
+                    "targetOriginal": {
+                      "x": 497,
+                      "y": 614
+                    },
+                    "vertices": [
+                      {
+                        "x": 0,
+                        "y": -2.7142857142857144
+                      },
+                      {
+                        "x": 1,
+                        "y": -2.7142857142857144
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 147,
+                  "rotation": 0,
+                  "top": 571,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "app resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 429.5,
+                      "y": 565
+                    },
+                    "target": {
+                      "x": -0.011764705882352941,
+                      "y": -0.96
+                    },
+                    "targetName": "ACK-Resp",
+                    "targetOriginal": {
+                      "x": 428,
+                      "y": 494
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "APP-Resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 454,
+                  "rotation": 0,
+                  "top": 571,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ack resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 494,
+                      "y": 442
+                    },
+                    "target": {
+                      "x": 0,
+                      "y": -1.04
+                    },
+                    "targetName": "ASM-QPS",
+                    "targetOriginal": {
+                      "x": 495,
+                      "y": 379
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ACK-Resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 454,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "asm resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "asm resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 3.141515395220588e-07,
+                      "y": 1.0000006103515624
+                    },
+                    "sourceOriginal": {
+                      "x": 428.5000305175781,
+                      "y": 325
+                    },
+                    "target": {
+                      "x": -0.007059254365808823,
+                      "y": -1.047999267578125
+                    },
+                    "targetName": "gw-resp",
+                    "targetOriginal": {
+                      "x": 429.1999988555908,
+                      "y": 256.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ASM-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 454,
+                  "top": 328,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ack rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 3.814697265625e-07,
+                      "y": 1.0000006103515624
+                    },
+                    "sourceOriginal": {
+                      "x": 689,
+                      "y": 444.9999694824219
+                    },
+                    "target": {
+                      "x": -0.022856794084821427,
+                      "y": -0.967999267578125
+                    },
+                    "targetName": "Asm-Rate",
+                    "targetOriginal": {
+                      "x": 687.1999988555908,
+                      "y": 374.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ACK-Rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 743,
+                  "rotation": 0,
+                  "top": 451,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "app rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 688,
+                      "y": 565
+                    },
+                    "target": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "targetName": "ACK-Rate",
+                    "targetOriginal": {
+                      "x": 689,
+                      "y": 495
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App-Rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 743,
+                  "top": 571,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "asm rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "asm rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "green"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 3.814697265625e-07,
+                      "y": 1.0000006103515624
+                    },
+                    "sourceOriginal": {
+                      "x": 688,
+                      "y": 325
+                    },
+                    "target": {
+                      "x": -0.022856794084821427,
+                      "y": -1.007999267578125
+                    },
+                    "targetName": "apigw-rate",
+                    "targetOriginal": {
+                      "x": 688.1999988555908,
+                      "y": 255.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Asm-Rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 743,
+                  "rotation": 0,
+                  "top": 337,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Alb-Resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Alb-Resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dotted"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 50,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "sourceOriginal": {
+                      "x": 390.5,
+                      "y": 83
+                    },
+                    "target": {
+                      "x": 0.8930602957906713,
+                      "y": -0.5720133978414589
+                    },
+                    "targetName": "User",
+                    "targetOriginal": {
+                      "x": 97,
+                      "y": 38
+                    },
+                    "vertices": [
+                      {
+                        "x": -0.3526405451448041,
+                        "y": 1
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 454,
+                  "top": 82,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "apigw-qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "apigw-qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "yellow"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 169.5,
+                      "y": 258
+                    },
+                    "target": {
+                      "x": 0.03896103896103896,
+                      "y": 1.04
+                    },
+                    "targetName": "Asm-qps",
+                    "targetOriginal": {
+                      "x": 169,
+                      "y": 330
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "api-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 147,
+                  "rotation": 0,
+                  "top": 211,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "yellow"
+                    },
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": -0.0001626777803868806,
+                      "y": -0.9999996945951745
+                    },
+                    "sourceOriginal": {
+                      "x": 169.46249389648438,
+                      "y": 134.96250915527344
+                    },
+                    "target": {
+                      "x": 0.044155764889407464,
+                      "y": 0.992000732421875
+                    },
+                    "targetName": "api-qps",
+                    "targetOriginal": {
+                      "x": 170.19999885559082,
+                      "y": 205.1999969482422
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-qps-valu",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 147,
+                  "rotation": 0,
+                  "top": 91,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb RPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 45,
+                  "rotation": 0,
+                  "top": 91,
+                  "width": 100
+                },
+                "type": "text"
+              }
+            ],
+            "name": "Element 1764124104531",
+            "oneClickMode": "off",
+            "placement": {
+              "height": 100,
+              "left": 0,
+              "rotation": 0,
+              "top": 0,
+              "width": 100
+            },
+            "type": "frame"
+          },
+          "showAdvancedTypes": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-QPS",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}[5m]))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "legendFormat": "Alb-Resp",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyClusterQps{promInstanceId=\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigw-qps",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyDownstreamSuccessRate{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigwRate",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "\r\nround(sum(AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"})\r\n/\r\nsum(\r\n AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\n))\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-rate",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyApiRtAvg{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "gw-resp",
+            "range": true,
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "round(sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m])))",
+            "hide": false,
+            "legendFormat": "Asm QPS",
+            "range": true,
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "(sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\",source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le) / 1000) or sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le)",
+            "hide": false,
+            "legendFormat": "asm resp",
+            "range": true,
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\",response_code=~\"2..\"}[5m])/sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m])",
+            "hide": false,
+            "legendFormat": "asm rate",
+            "range": true,
+            "refId": "I"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "round(sum(irate(apiserver_request_total{subresource !~ \".*/healthz$|/livez$|/readyz$\"}[5m])))",
+            "hide": false,
+            "legendFormat": "ack qps",
+            "range": true,
+            "refId": "J"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "avg (sum by (verb) (irate(apiserver_request_duration_seconds_bucket{verb!~\"WATCH|CONNECT\",resource!=\"\",subresource!~\".*/healthz$|/livez$|/readyz$\"}[5m])))",
+            "hide": false,
+            "legendFormat": "ack resp",
+            "range": true,
+            "refId": "K"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum(irate(apiserver_request_total{code=~\"20.*\",verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))/sum(irate(apiserver_request_total{verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))",
+            "hide": false,
+            "legendFormat": "ack rate",
+            "range": true,
+            "refId": "L"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_count_raw{service=~\"$Service\",rpc!~\".*/liveness$\",}[50m])) or vector(0)",
+            "hide": false,
+            "legendFormat": "app qps",
+            "range": true,
+            "refId": "M"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"$Service\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\",}[$__range]))/sum(sum_over_time_lorc(arms_app_requests_count_raw{service=\"$Service\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\"}[$__range])) or vector(0)",
+            "hide": false,
+            "legendFormat": "app resp",
+            "range": true,
+            "refId": "N"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"$Service\",rpc!~\".*/liveness$\"}[$__range]) or vector(1))/sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",app=\"$Service\",rpc!~\".*/liveness$\"}[$__range]) or vector(1)) ",
+            "hide": false,
+            "legendFormat": "app rate",
+            "range": true,
+            "refId": "O"
+          }
+        ],
+        "title": "ALB-->APIGW",
+        "type": "canvas"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "blue",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 11,
+          "y": 0
+        },
+        "id": 65,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 1,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "orientation": "auto",
+          "showValue": "always",
+          "stacking": "normal",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 100
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "avg_over_time(AliyunAlb_LoadBalancerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}[5m])",
+            "interval": "5m",
+            "legendFormat": "alb qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Req (Count/5m)",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 5,
+          "x": 15,
+          "y": 0
+        },
+        "id": 64,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "sum(AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"})\r\n/\r\nsum(\r\n AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\n)\r\n",
+            "legendFormat": "alb rate",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Suc rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "负载均衡实例后端应答时间(ms)",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "id": 67,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}",
+            "interval": "1m",
+            "legendFormat": "Alb resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Backend Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 11,
+          "y": 5
+        },
+        "id": 66,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "orientation": "auto",
+          "showValue": "never",
+          "stacking": "none",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 100
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyApiQps{apiName=~\"$GWSVC\"}",
+            "interval": "5m",
+            "legendFormat": "gw qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Req (Count/5m)",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 0.8
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 5,
+          "x": 15,
+          "y": 5
+        },
+        "id": 69,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(AliyunCnapigateway_EnvoyDownstreamSuccessRate,0.01)",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Suc rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "网关Operation请求平均时延",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 5
+        },
+        "id": 68,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyApiRtAvg{apiName=~\"$GWSVC\"}",
+            "interval": "1m",
+            "legendFormat": "gw resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 11,
+          "y": 10
+        },
+        "id": 62,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "orientation": "auto",
+          "showValue": "auto",
+          "stacking": "none",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 100
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m]))",
+            "interval": "5m",
+            "legendFormat": "asm qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Req (Count/5m)",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "axisSoftMax": 1,
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 5,
+          "x": 15,
+          "y": 10
+        },
+        "id": 63,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(istio_requests_total{destination_app=\"$ASMSVC\",response_code=~\"2..\"}[5m]))/sum(sum_over_time(istio_requests_total{destination_app=\"$ASMSVC\"}[5m]))",
+            "interval": "",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Suc Rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "semi-dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 10
+        },
+        "id": 70,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (callType) (arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})/sum by (callType) (arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})",
+            "interval": "1m",
+            "legendFormat": "Asm resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 11,
+          "y": 15
+        },
+        "id": 59,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 1,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "orientation": "auto",
+          "showValue": "never",
+          "stacking": "none",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 100
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_count_raw{service=~\"$Service\",service!=\"\",rpc!~\".*/liveness$\",}[5m]) or vector(0)) ",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "interval": "5m",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "APP Req (Count/5m)",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "hk-ado-jarvis-ai-service-dev",
+              "mode": "outer"
+            }
+          }
+        ],
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "max": 1,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 5,
+          "x": 15,
+          "y": 15
+        },
+        "id": 60,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum (sum_over_time_lorc(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"$Service\"}[5m]))/sum (sum_over_time_lorc(arms_requests_by_status_count_raw{source=\"apm\",app=\"$Service\"}[5m]))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "App Suc Rate",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "hk-ado-jarvis-ai-service-dev",
+              "mode": "outer"
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "green",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 15
+        },
+        "id": 71,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (callType) (arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{service=\"$Service\",callKind=~\"$incallKind\",rpc!~\".*/liveness$\"})/sum by (callType) (arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{service=\"$Service\",callKind=~\"$incallKind\",rpc!~\".*/liveness$\"}) or vector(0)",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "App Resp",
+        "type": "timeseries"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "cmee",
+      "alb",
+      "scene:middleware",
+      "addon:name:cloud-alb",
+      "addon:version:0.0.3",
+      "env:Cloud",
+      "env:type:Cloud",
+      "dashboard:name:cmee-alb-overview"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "cn-hongkong",
+            "value": "cn-hongkong"
+          },
+          "hide": 2,
+          "name": "regionId",
+          "options": [
+            {
+              "selected": true,
+              "text": "cn-hongkong",
+              "value": "cn-hongkong"
+            }
+          ],
+          "query": "cn-hongkong",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "ns-hkg-ods-system",
+            "value": "ns-hkg-ods-system"
+          },
+          "label": "ProjectName",
+          "name": "NameSpace",
+          "options": [
+            {
+              "selected": false,
+              "text": "Jarvis",
+              "value": "ns-hkg-agent-system"
+            },
+            {
+              "selected": true,
+              "text": "ODS",
+              "value": "ns-hkg-ods-system"
+            },
+            {
+              "selected": false,
+              "text": "ATAS",
+              "value": "ns-gft-atas-system"
+            },
+            {
+              "selected": false,
+              "text": "DCS",
+              "value": "ns-hkg-dcs-system"
+            }
+          ],
+          "query": "Jarvis : ns-hkg-agent-system, ODS : ns-hkg-ods-system,ATAS : ns-gft-atas-system,DCS : ns-hkg-dcs-system,",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "hk-ods-product-fund-service",
+            "value": "hk-ods-product-fund-service"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+          "includeAll": true,
+          "label": "AppName",
+          "name": "Service",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(?!.*(?:demo|test|gateway)).*$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "alb-6hxc4lt42z4cjh0dg0",
+            "value": "alb-6hxc4lt42z4cjh0dg0"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+          "hide": 2,
+          "includeAll": false,
+          "name": "loadBalancerId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerProtocol",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+            "refId": "${datasource}-listenerProtocol-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerPort",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+            "refId": "${datasource}-listenerPort-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "ruleId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+            "refId": "${datasource}-ruleId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "serverGroupId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+            "refId": "${datasource}-serverGroupId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/^prom-rw-d446eea044878595b90a806d83e4/",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": "istio-ingressgateway",
+            "value": "istio-ingressgateway"
+          },
+          "hide": 2,
+          "label": "asm_gateway_name",
+          "name": "asm_gateway_name",
+          "options": [
+            {
+              "selected": true,
+              "text": "istio-ingressgateway",
+              "value": "istio-ingressgateway"
+            }
+          ],
+          "query": "istio-ingressgateway",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+          "description": "",
+          "hide": 2,
+          "label": "pid",
+          "name": "Pid",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+          "hide": 2,
+          "label": "asmsvc",
+          "name": "ASMSVC",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(.*?)(?:-dev|-prod|-prd|-uat)$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+          "hide": 2,
+          "label": "asmavc",
+          "name": "GWSVC",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(hk-ado-jarvis).*?$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|server",
+            "value": "http|rpc|consumer|custom_entry|server"
+          },
+          "hide": 2,
+          "label": "incallKind",
+          "name": "incallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|server",
+              "value": "http|rpc|consumer|custom_entry|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|server",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+            "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+          },
+          "hide": 2,
+          "label": "outcallKind",
+          "name": "outcallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+              "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+            }
+          ],
+          "query": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|schedule|server",
+            "value": "http|rpc|consumer|custom_entry|schedule|server"
+          },
+          "hide": 2,
+          "label": "fullIncallKinds",
+          "name": "fullIncallKinds",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|schedule|server",
+              "value": "http|rpc|consumer|custom_entry|schedule|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|schedule|server",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "rw-b2336b29445cb338f8201822a7b7",
+            "value": "rw-b2336b29445cb338f8201822a7b7"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+          "description": "",
+          "hide": 2,
+          "label": "promInstanceId",
+          "name": "PromInstanceId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Logical Architecture Overview",
+    "uid": "5328",
+    "version": 9,
+    "weekStart": ""
+  }
+}

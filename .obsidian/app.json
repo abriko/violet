@@ -1,0 +1,24 @@
+{
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "strictLineBreaks": false,
+  "spellcheck": false,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "absolute",
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "9 - Assets/Others",
+  "propertiesInDocument": "source",
+  "readableLineLength": false,
+  "spellcheckDictionary": [
+    "Cerby"
+  ],
+  "tabSize": 8,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

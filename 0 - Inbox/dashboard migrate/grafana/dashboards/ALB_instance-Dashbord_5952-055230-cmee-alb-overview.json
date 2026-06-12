@@ -1,0 +1,2689 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "alb-instance-dashbord",
+    "url": "/d/5952-055230-cmee-alb-overview/alb-instance-dashbord",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:12+08:00",
+    "updated": "2026-04-10T16:46:07+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 19,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 6,
+    "folderUid": "global-v2-cn-5495437431802631-uugqtqwk_",
+    "folderTitle": "mfc-glprom-nprd-cloudservice",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-uugqtqwk_/mfc-glprom-nprd-cloudservice",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 136,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 57,
+        "panels": [],
+        "title": "Over view",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 0,
+          "y": 1
+        },
+        "id": 56,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "count(cloud_monitor_instance_info{product=\"alb\"})",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Total instances ",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "AppCode"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 253
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "loadBalancerName"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 246
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "resourceGroupName"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 231
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "listenerPort"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "LB_HTTPCode5XX"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 177
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Backend_SVC_ResponseTime"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 20,
+          "x": 4,
+          "y": 1
+        },
+        "id": 58,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "group (cloud_monitor_instance_info{product=~\"alb\"}) by(id,loadBalancerName,resourceGroupName)",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "group (cloud_monitor_instance_tag{product=~\"alb\",key=~\"AppCode\"}) by(id,value)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "ceil(avg(AliyunAlb_LoadBalancerActiveConnection{}) by(id)) ",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "ceil(avg(AliyunAlb_LoadBalancerHTTPCode5XX{}) by(id))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "ceil(avg(AliyunAlb_ServerGroupHTTPCodeUpstream5XX{}) by(id)) ",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "F"
+          }
+        ],
+        "title": "Instance list",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "Value": true,
+                "Value #A": true,
+                "Value #B": true,
+                "__name__": true,
+                "addressType": true,
+                "app": true,
+                "bandwidthCapacity": true,
+                "dnsName": true,
+                "id": true,
+                "job": true,
+                "listenerProtocol": true,
+                "loadBalancerId": true,
+                "measure": true,
+                "measure_desc": true,
+                "namespace": true,
+                "period": true,
+                "product": true,
+                "promEnvId": true,
+                "promInstanceId": true,
+                "regionId": true,
+                "resourceGroupId": true,
+                "service": true,
+                "unique_cluster_account": true,
+                "unique_cluster_id": true,
+                "unique_cluster_name": true,
+                "unique_cluster_region": true,
+                "userId": true,
+                "vpcId": true
+              },
+              "includeByName": {},
+              "indexByName": {
+                "Time": 2,
+                "Value #A": 5,
+                "Value #B": 6,
+                "id": 3,
+                "loadBalancerName": 0,
+                "resourceGroupName": 4,
+                "value": 1
+              },
+              "renameByName": {
+                "Value #B": "",
+                "Value #C": "ActiveConnection",
+                "Value #D": "LB_HTTPCode5XX",
+                "Value #E": "Backend_SVC_HTTPCode5XX",
+                "Value #F": "Backend_SVC_ResponseTime",
+                "value": "AppCode"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 19,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 8
+            },
+            "id": 2,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerOutBits{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Load balancing instance outbound bandwidth",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerInBits{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Load balancing instance inbound bandwidth",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Traffic (bits/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 8
+            },
+            "id": 3,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Number of healthy servers in the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerUnHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of unhealthy servers in the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Health Check (pcs)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 8
+            },
+            "id": 4,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 2XX load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 3XX load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 4XX load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 5XX load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "HTTP Status Code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 44
+            },
+            "id": 5,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCode500{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 500 load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCode502{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 502 load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCode503{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 503 load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCode504{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 504 load balancing instances per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "HTTP5XX Status Code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 44
+            },
+            "id": 6,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 2XX load balancing instances per second backend",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 3XX load balancing instances per second backend",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 4XX load balancing instances per second backend",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of 5XX load balancing instances per second backend",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "Backend HTTP Status Code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 44
+            },
+            "id": 25,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPFixedResponse{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of custom responses per second in the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Custom Reponses (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 53
+            },
+            "id": 8,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerHTTPRedirect{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Load Number of redirects per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Redirects (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 53
+            },
+            "id": 9,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerQPS{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of requests per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Requests (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 53
+            },
+            "id": 10,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleNonStickyRequest{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of non-sticky requests per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Non-sticky Requests (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 62
+            },
+            "id": 11,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerUpstreamResponseTime{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Backend response time for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend Response Time (milliseconds)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 62
+            },
+            "id": 12,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerActiveConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of active connections for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Active Connections (pcs)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 62
+            },
+            "id": 31,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerRejectedConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of dropped connections per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of Dropped Connections (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 71
+            },
+            "id": 14,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerNewConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of new connections per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": " New connections (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 71
+            },
+            "id": 15,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerClientTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of TLS handshake failures per second for the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "TLS handshake failed connections (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 71
+            },
+            "id": 34,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerUpstreamConnectionError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of failed connections per second for the backend of the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend connection failures (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 80
+            },
+            "id": 17,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_LoadBalancerUpstreamTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"}",
+                "interval": "",
+                "legendFormat": "Number of TLS handshake failures per second for the backend of the load balancing instance",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend TLS handshake failures (Count/s)",
+            "type": "graph"
+          }
+        ],
+        "title": "Instance",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 37,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 90
+            },
+            "id": 20,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerOutBits{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Monitor outgoing bandwidth",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerInBits{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Monitor incoming bandwidth",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Traffic (bits/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 90
+            },
+            "id": 21,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of healthy servers monitored",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerUnHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of unhealthy servers monitored",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Health checks (number)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 90
+            },
+            "id": 22,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 2XX monitored per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 3XX monitored per second",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 4XX monitored per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 5XX monitored per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "HTTP status code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 99
+            },
+            "id": 23,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode500{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 500 monitored per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode502{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Number of 502 monitored per second",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode503{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": " Listening for 503s per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCode504{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for 504s per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "HTTP5XX status code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 99
+            },
+            "id": 24,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCodeUpstream2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for 2XXs per second on the backend",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCodeUpstream3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for 3XXs per second on the backend",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for 4XXs per second on the backend",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for 5XXs per second on the backend",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "Backend HTTP status code (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 99
+            },
+            "id": 7,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPFixedResponse{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for custom repons per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Custom reponses (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 108
+            },
+            "id": 26,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerHTTPFixedRedirect{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for redirects per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Redirects (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 108
+            },
+            "id": 27,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerQPS{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Requests (Count/s) ",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 108
+            },
+            "id": 28,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerNonStickyRequest{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for non-sticky requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of non-sticky requests (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 117
+            },
+            "id": 29,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerUpstreamResponseTime{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for backend response time",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend response time (milliseconds)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 117
+            },
+            "id": 30,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerActiveConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for active connections",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of active connections (counts)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 117
+            },
+            "id": 13,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerRejectedConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for dropped connections per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of dropped connections (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 126
+            },
+            "id": 32,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerNewConnection{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for new connections per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of new connections (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 126
+            },
+            "id": 33,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerClientTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for TLS handshake failed connections per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of TLS handshake failures (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 126
+            },
+            "id": 16,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerUpstreamConnectionError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for backend connection failures per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of backend connection failures (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 135
+            },
+            "id": 35,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ListenerUpstreamTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"}",
+                "interval": "",
+                "legendFormat": "Listening for TLS handshake failed connections per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of backend TLS handshake failures (count/s)",
+            "type": "graph"
+          }
+        ],
+        "title": "Monitoring",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "id": 46,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 253
+            },
+            "id": 38,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "Number of servers with healthy forwarding rules",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleUnHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "Number of servers with unhealthy forwarding rules",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Health check (counts)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 253
+            },
+            "id": 39,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleHTTPCodeUpstream2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "Number of 2XXs per second on the backend for forwarding rules",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleHTTPCodeUpstream3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "Number of servers with unhealthy forwarding rules ,3XX",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "4XX forwarding rule backend per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "5XX forwarding rule backend per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "Backend HTTP status code (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 253
+            },
+            "id": 49,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleQPS{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "forwarding rule requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of requests (count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 262
+            },
+            "id": 41,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleNonStickyRequest{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "forwarding rule non-sticky requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of non-sticky requests (count/s) s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 262
+            },
+            "id": 42,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleUpstreamResponseTime{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "forwarding rule backend response time",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend response time (milliseconds)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 262
+            },
+            "id": 43,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleUpstreamConnectionError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "forwarding rule backend connection failures per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend connection failures (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 271
+            },
+            "id": 44,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_RuleUpstreamTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",ruleId=~\"$ruleId\"}",
+                "interval": "",
+                "legendFormat": "forwarding rule backend TLS handshake failures per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend TLS handshake failures (Count/s)",
+            "type": "graph"
+          }
+        ],
+        "title": "Forwarding rules",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 55,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 11
+            },
+            "id": 47,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "healthy servers in the server group",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupUnHealthyHostCount{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "unhealthy servers in the server group",
+                "queryType": "randomWalk",
+                "refId": "B"
+              }
+            ],
+            "title": "Health checks (pcs)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 11
+            },
+            "id": 48,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupHTTPCodeUpstream2XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "2XX server group backend per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupHTTPCodeUpstream3XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "3XX server group backend per second",
+                "queryType": "randomWalk",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "4XX server group backend per second",
+                "queryType": "randomWalk",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "5XX server group backend per second",
+                "queryType": "randomWalk",
+                "refId": "D"
+              }
+            ],
+            "title": "Backend HTTP status codes (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 11
+            },
+            "id": 40,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupQPS{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "server group requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of requests (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 20
+            },
+            "id": 50,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupNonStickyRequest{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "server group non-sticky requests per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Number of non-sticky requests (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 8,
+              "y": 20
+            },
+            "id": 51,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupUpstreamResponseTime{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "server group backend response time",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend response time (milliseconds)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 16,
+              "y": 20
+            },
+            "id": 52,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupUpstreamConnectionError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "server group backend connection failures per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend connection failures (Count/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 8,
+              "x": 0,
+              "y": 29
+            },
+            "id": 53,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunAlb_ServerGroupUpstreamTLSNegotiationError{regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\",serverGroupId=~\"$serverGroupId\"}",
+                "interval": "",
+                "legendFormat": "server group backend TLS handshake failures per second",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Backend TLS handshake failures (Count/s)",
+            "type": "graph"
+          }
+        ],
+        "title": "Server groups",
+        "type": "row"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "cn-hongkong",
+            "value": "cn-hongkong"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\"}, regionId)",
+          "hide": 2,
+          "includeAll": false,
+          "name": "regionId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\"}, regionId)",
+            "refId": "${datasource}-regionId-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-alb-nprod-hkg-dev-int",
+            "value": "mfc-alb-nprod-hkg-dev-int"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerName)",
+          "includeAll": true,
+          "label": "loadBalancerName",
+          "name": "loadBalancername",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerName)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"},listenerProtocol)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerProtocol",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\"},listenerProtocol)",
+            "refId": "${datasource}-listenerProtocol-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerPort",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+            "refId": "${datasource}-listenerPort-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "ruleId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+            "refId": "${datasource}-ruleId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "serverGroupId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerName=~\"$loadBalancername\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+            "refId": "${datasource}-serverGroupId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nprd-hkg-cloudservice",
+            "value": "jXu2wByNz"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-nprd-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "ALB instance-Dashbord",
+    "uid": "5952-055230-cmee-alb-overview",
+    "version": 19,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AIOps Visual Deck Player</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #0f172a; font-family: "Manulife JH Sans", Arial, sans-serif; color: #F8FAFC; overflow: hidden; }
+  #stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #frame-wrap { width: 960px; height: 540px; position: relative; transform-origin: center center; }
+  iframe { width: 960px; height: 540px; border: 0; display: block; background: #FFFFFF; box-shadow: 0 0 40px rgba(6,199,186,0.14); }
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: #06C7BA; z-index: 10; transition: width 180ms ease; }
+  #counter { position: fixed; bottom: 18px; right: 24px; font-size: 11px; letter-spacing: 2px; color: #94A3B8; z-index: 10; }
+  #counter .current { color: #06C7BA; font-weight: 700; font-size: 13px; }
+  #nav-hint { position: fixed; bottom: 18px; left: 24px; font-size: 10px; letter-spacing: 1.4px; color: #64748B; z-index: 10; }
+  #nav-hint kbd { background: #1E293B; border: 1px solid #334155; border-radius: 2px; padding: 1px 5px; margin: 0 2px; font-family: inherit; font-size: 10px; color: #CBD5E1; }
+  #overview { position: fixed; inset: 0; background: rgba(2,6,23,0.94); z-index: 20; display: none; padding: 40px; overflow: auto; }
+  #overview.visible { display: block; }
+  #overview h2 { font-size: 12px; letter-spacing: 4px; color: #06C7BA; margin: 0 0 24px 0; text-align: center; }
+  #thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; max-width: 1400px; margin: 0 auto; }
+  .thumb { background: #0F172A; border: 1px solid #1E3A5F; cursor: pointer; overflow: hidden; }
+  .thumb.active { border-color: #06C7BA; }
+  .thumb-head { padding: 6px 10px; background: #082246; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 1.5px; }
+  .thumb-no { color: #06C7BA; font-weight: 700; }
+  .thumb-title { color: #E2E8F0; }
+  .thumb-frame { position: relative; width: 100%; padding-top: 56.25%; background: #fff; }
+  .thumb-frame iframe { position: absolute; top: 0; left: 0; width: calc(100% / 0.29); height: calc(100% / 0.29); transform: scale(0.29); transform-origin: top left; border: 0; }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="stage"><div id="frame-wrap"><iframe id="slide-frame" src=""></iframe></div></div>
+<div id="counter"><span class="current">01</span> / <span id="total">--</span></div>
+<div id="nav-hint"><kbd>←</kbd><kbd>→</kbd> navigate · <kbd>O</kbd> overview</div>
+<div id="overview"><h2>OVERVIEW</h2><div id="thumbs"></div></div>
+<script>
+const TITLES = {
+  1: 'Cover',
+  2: 'Current strain',
+  3: 'Core judgment',
+  4: 'Live proof',
+  5: 'Strategic tracks',
+  6: 'Governance',
+  7: 'Roadmap',
+  8: 'Resource ask',
+  9: 'Decisions',
+ 10: 'Appendix A',
+ 11: 'Appendix B',
+ 12: 'Appendix C',
+ 13: 'Closing'
+};
+const SLIDE_PATTERN = n => `slides/slide${String(n).padStart(2, '0')}.html`;
+const SLIDE_W = 960, SLIDE_H = 540;
+const frame = document.getElementById('slide-frame');
+const wrap = document.getElementById('frame-wrap');
+const progress = document.getElementById('progress');
+const counter = document.querySelector('#counter .current');
+const totalEl = document.getElementById('total');
+const overview = document.getElementById('overview');
+const thumbs = document.getElementById('thumbs');
+let current = 1; let TOTAL = 13;
+const pad = n => String(n).padStart(2, '0');
+function goTo(n) { current = Math.max(1, Math.min(TOTAL, n)); frame.src = SLIDE_PATTERN(current); counter.textContent = pad(current); progress.style.width = `${(current / TOTAL) * 100}%`; highlight(); }
+function fitStage() { const scale = Math.min(window.innerWidth / SLIDE_W, window.innerHeight / SLIDE_H) * 0.94; wrap.style.transform = `scale(${scale})`; }
+function buildThumbs() { for (let i = 1; i <= TOTAL; i++) { const div = document.createElement('div'); div.className='thumb'; div.dataset.n=i; const head=document.createElement('div'); head.className='thumb-head'; const no=document.createElement('span'); no.className='thumb-no'; no.textContent=pad(i); const title=document.createElement('span'); title.className='thumb-title'; title.textContent=TITLES[i]||''; head.appendChild(no); head.appendChild(title); const frameWrap=document.createElement('div'); frameWrap.className='thumb-frame'; const ifr=document.createElement('iframe'); ifr.src=SLIDE_PATTERN(i); frameWrap.appendChild(ifr); div.appendChild(head); div.appendChild(frameWrap); div.onclick=()=>{ overview.classList.remove('visible'); goTo(i); }; thumbs.appendChild(div);} }
+function highlight() { document.querySelectorAll('.thumb').forEach(t => t.classList.toggle('active', Number(t.dataset.n) === current)); }
+document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') goTo(current + 1); if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') goTo(current - 1); if (e.key === 'o' || e.key === 'O') overview.classList.toggle('visible'); });
+window.addEventListener('resize', fitStage);
+buildThumbs(); totalEl.textContent = pad(TOTAL); fitStage(); goTo(1);
+</script>
+</body>
+</html>

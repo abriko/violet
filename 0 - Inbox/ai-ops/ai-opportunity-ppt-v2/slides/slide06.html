@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20pt;
+  margin-top: 14pt;
+}
+
+/* 每列从上到下：label → now → arrow → ai → note */
+.metric-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 3px solid #E8E9EF;
+  padding-left: 14pt;
+}
+
+.col-label {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 10pt;
+}
+
+.num-now {
+  font-family: var(--font-sans-bold);
+  font-size: 40pt;
+  line-height: 1;
+  color: #8E90A2;
+  text-decoration: line-through;
+  text-decoration-color: #EC6453;
+  text-decoration-thickness: 3px;
+}
+
+.num-neutral {
+  font-family: var(--font-sans-bold);
+  font-size: 40pt;
+  line-height: 1;
+  color: #002060;
+}
+
+.num-caption {
+  font-size: 8pt;
+  color: var(--muted);
+  margin-top: 3pt;
+  margin-bottom: 10pt;
+}
+
+.right-arrow {
+  font-size: 22pt;
+  color: var(--muted);
+  line-height: 1;
+  margin: 0 10pt;
+  align-self: center;
+}
+
+/* resolution time 横排容器 */
+.time-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0;
+  margin-top: 6pt;
+}
+
+.num-ai {
+  font-family: var(--font-sans-bold);
+  font-size: 44pt;
+  line-height: 1;
+  color: #06C7BA;
+}
+
+.num-ai-caption {
+  font-size: 8pt;
+  color: var(--muted);
+  margin-top: 3pt;
+}
+
+.trend-tag {
+  display: inline-block;
+  margin-top: 12pt;
+  padding: 3pt 9pt;
+  background: #FFF3F2;
+  border: 1px solid #EC6453;
+  border-radius: 20pt;
+  font-size: 8pt;
+  color: #EC6453;
+  font-family: var(--font-sans-bold);
+}
+
+.trend-note {
+  font-size: 8pt;
+  color: var(--muted);
+  margin-top: 5pt;
+}
+
+.context-list {
+  margin-top: 12pt;
+  font-size: 9pt;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+.context-list li {
+  margin-bottom: 4pt;
+  padding-left: 2pt;
+}
+
+.anchor-row {
+  margin-top: 12pt;
+  padding: 7pt 12pt;
+  background: #002060;
+  color: #FFFFFF;
+}
+
+.anchor-row p {
+  font-family: var(--font-sans-bold);
+  font-size: 10pt;
+  line-height: 1.4;
+}
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Return on investment · 1 of 2</p>
+    <p class="slide-no">06</p>
+  </div>
+  <h1 class="title">Pipeline AI cuts resolution time from hours to seconds.</h1>
+
+  <div class="two-col">
+
+    <!-- 左列：Incident Volume -->
+    <div class="metric-col">
+      <p class="col-label">Monthly build / deploy incidents</p>
+      <p class="num-neutral">50</p>
+      <p class="num-caption">avg per month today</p>
+      <div class="trend-tag"><p>↑ Growing with AliCloud migration</p></div>
+      <p class="trend-note">Manual capacity does not scale with volume increase.</p>
+    </div>
+
+    <!-- 右列：Resolution Time 横排 NOW → AI -->
+    <div class="metric-col">
+      <p class="col-label">Avg resolution time</p>
+      <div class="time-row">
+        <div>
+          <p class="num-now">1.7h</p>
+          <p class="num-caption">now · fully manual</p>
+        </div>
+        <p class="right-arrow">→</p>
+        <div>
+          <p class="num-ai">&lt;30s</p>
+          <p class="num-ai-caption">AI target · 90% of cases</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <ul class="context-list bullets">
+    <li>Every incident today is a blocking human investigation — engineers cannot ship until it is resolved.</li>
+    <li>AliCloud migration is actively increasing incident frequency; the trend will continue through H2.</li>
+    <li>Pipeline AI targets 90% auto-resolved in &lt;30 seconds — engineers see a diagnosis, not a war room.</li>
+  </ul>
+
+  <div class="anchor-row">
+    <p>1.7 hours of human firefighting → 30 seconds of AI diagnosis. The team gets back to building.</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

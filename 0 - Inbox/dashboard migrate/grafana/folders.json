@@ -1,0 +1,67 @@
+[
+  {
+    "id": -1,
+    "uid": "sharedwithme",
+    "title": "Shared with me"
+  },
+  {
+    "id": 49,
+    "uid": "df555aqrx83cwe",
+    "title": "Dashbord-Incubation"
+  },
+  {
+    "id": 84,
+    "uid": "bfhn1wwtcqfb4d",
+    "title": "DB ALL"
+  },
+  {
+    "id": 201,
+    "uid": "afmhol5iowkjkb",
+    "title": "Devops"
+  },
+  {
+    "id": 78,
+    "uid": "ffehbbj5lyjggc",
+    "title": "HK ADO"
+  },
+  {
+    "id": 77,
+    "uid": "efatdkhu5st8ge",
+    "title": "HK Arbs"
+  },
+  {
+    "id": 80,
+    "uid": "afh2hj7s4mw3ka",
+    "title": "HK ATAS"
+  },
+  {
+    "id": 173,
+    "uid": "efj4f8d31patcc",
+    "title": "HK DCS"
+  },
+  {
+    "id": 195,
+    "uid": "afjxw8qiz33lse",
+    "title": "HK FUW"
+  },
+  {
+    "id": 82,
+    "uid": "efh65m2ld0ykgc",
+    "title": "HK ICHS"
+  },
+  {
+    "id": 6,
+    "uid": "global-v2-cn-5495437431802631-uugqtqwk_",
+    "title": "mfc-glprom-nprd-cloudservice"
+  },
+  {
+    "id": 30,
+    "uid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "title": "mfc-glprom-nprod-ackcluster"
+  },
+  {
+    "id": 45,
+    "uid": "global-v2-cn-5495437431802631-acb2imwt_",
+    "title": "mfc-glprom-nprod-application"
+  }
+]

@@ -1,0 +1,2066 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "interface",
+    "url": "/d/5495437431802631-17369231-803/interface",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-11-24T14:50:42+08:00",
+    "updated": "2026-04-03T17:13:20+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 9,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 45,
+    "folderUid": "global-v2-cn-5495437431802631-acb2imwt_",
+    "folderTitle": "mfc-glprom-nprod-application",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-acb2imwt_/mfc-glprom-nprod-application",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": false,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "limit": 100,
+          "name": "Annotations & Alerts",
+          "showIn": 0,
+          "tags": [],
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 2,
+    "id": 41,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 121,
+        "panels": [],
+        "title": "Indicator summary",
+        "type": "row"
+      },
+      {
+        "columns": [],
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Displays the machine indicators that carry the interface R in the selected time period.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 114,
+        "options": {},
+        "pluginVersion": "11.5.1",
+        "showHeader": true,
+        "sort": {
+          "col": 4,
+          "desc": true
+        },
+        "styles": [
+          {
+            "$$hashKey": "object:1064",
+            "alias": "Time",
+            "align": "auto",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "hidden"
+          },
+          {
+            "$$hashKey": "object:1065",
+            "alias": "Machine",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "link": false,
+            "linkTargetBlank": false,
+            "linkTooltip": "",
+            "linkUrl": "",
+            "pattern": "host",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:1066",
+            "alias": "Number of requests",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #A",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:1067",
+            "alias": "Number of errors",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #B",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:1068",
+            "alias": "Average time consumption",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #C",
+            "thresholds": [],
+            "type": "number",
+            "unit": "s"
+          },
+          {
+            "$$hashKey": "object:1069",
+            "alias": "Exception number",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #G",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "$$hashKey": "object:1070",
+            "alias": "75-digit time-consuming",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #D",
+            "thresholds": [],
+            "type": "number",
+            "unit": "s"
+          },
+          {
+            "$$hashKey": "object:1071",
+            "alias": "Time-consuming for the 90th perclarge",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #E",
+            "thresholds": [],
+            "type": "number",
+            "unit": "s"
+          },
+          {
+            "$$hashKey": "object:1072",
+            "alias": "99-digit time-consuming",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #F",
+            "thresholds": [],
+            "type": "number",
+            "unit": "s"
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "sum by (host) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of requests",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (host) (sum_over_time_lorc(arms_app_requests_error_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of errors",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (host) (sum_over_time_lorc(arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))/sum by (host) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Average time consumption",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (host) (sum_over_time_lorc(arms_exception_requests_count_raw{service=\"$service\",rpc=\"$rpc\"}[$__range])) or on (host) (group by (host) (max_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))-1)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Exception number",
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "max by (host) (max_over_time_lorc(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",quantile=\"0.75\"}[$__range])) or on (host) (group by (host) (max_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))-1)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "70th perclarge",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "max by (host) (max_over_time_lorc(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",quantile=\"0.9\"}[$__range])) or on (host) (group by (host) (max_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))-1)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "90th perclarge",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "max by (host) (max_over_time_lorc(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",quantile=\"0.99\"}[$__range])) or on (host) (group by (host) (max_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"http|rpc|custom_entry|consumer|server\"}[$__range]))-1)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "99th perclarge",
+            "refId": "F"
+          }
+        ],
+        "title": "Machine Dimension-Indicator List (Selected Time Period)",
+        "transform": "table",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "host"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "indexByName": {},
+              "renameByName": {
+                "Time": "",
+                "Value #A": "Number of requests",
+                "Value #B": "Number of errors",
+                "Value #C": "Average time consumption",
+                "Value #D": "75-digit time-consuming",
+                "Value #E": "Time-consuming for the 90th perclarge",
+                "Value #F": "99-digit time-consuming",
+                "Value #G": "Exception number",
+                "host": "Machine",
+                "rpc": "Interface",
+                "service": "Application"
+              }
+            }
+          }
+        ],
+        "type": "table-old"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 95,
+        "panels": [],
+        "title": "Overview",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 11
+        },
+        "hiddenSeries": false,
+        "id": 122,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "(sum by (callType) (arms_app_requests_error_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"rpc_client|http_client|db|sql|nosql|cache|producer|client\"}) or label_replace(sum(arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"rpc|http|custom_entry|consumer|server\"})- sum(arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"rpc_client|http_client|db|sql|nosql|cache|producer|client\"}),\"callType\",\"other\",\"callType\",\".*\"))/ on () group_left() sum(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",callKind=~\"rpc|http|custom_entry|consumer|server\"})",
+            "interval": "1m",
+            "legendFormat": "{{callType}}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Interface Time-consuming Stacking Chart",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 11
+        },
+        "hiddenSeries": false,
+        "id": 87,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (callType) (sum_over_time_lorc(arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",callKind=~\"rpc|http|custom_entry|consumer|server\"}[1m]))/sum by (callType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",callKind=~\"rpc|http|custom_entry|consumer|server\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "{{callType}} Entry",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Response time/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 19
+        },
+        "hiddenSeries": false,
+        "id": 86,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "sum by (callType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",callKind=~\"rpc|http|custom_entry|consumer|server\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "{{callType}} Entry",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of requests/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 19
+        },
+        "hiddenSeries": false,
+        "id": 89,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "sum by (status) (sum_over_time_lorc(arms_requests_by_status_count_raw{service=\"$service\",callKind=\"http\",rpc=\"$rpc\",host=~\"$host\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "{{status}}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "HTTP-status code statistics",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 27
+        },
+        "hiddenSeries": false,
+        "id": 103,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",quantile=\"0.75\"})",
+            "interval": "1m",
+            "legendFormat": "p75",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",quantile=\"0.9\"})",
+            "interval": "1m",
+            "legendFormat": "p90",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_http_requests_latency_seconds{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",quantile=\"0.99\"})",
+            "interval": "1m",
+            "legendFormat": "p99",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Response time-score indicator",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 27
+        },
+        "hiddenSeries": false,
+        "id": 88,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null as zero",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (callType) (sum_over_time_lorc(arms_app_requests_error_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",rpc=\"$rpc\",host=~\"$host\",callKind=~\"rpc|http|custom_entry|consumer|server\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "{{callType}} Entry",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of errors/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 35
+        },
+        "id": 112,
+        "panels": [],
+        "title": "Link upstream",
+        "type": "row"
+      },
+      {
+        "columns": [],
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Displays the indicators related to the upstream service of the interface R deployed on machine N (default is All, which means all machines) in the selected time period.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 36
+        },
+        "id": 99,
+        "options": {},
+        "pluginVersion": "11.5.1",
+        "showHeader": true,
+        "sort": {
+          "col": 4,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "align": "auto",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "hidden"
+          },
+          {
+            "alias": "Interface",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "pattern": "pRpc",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "Application",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "parent",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "uniq",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "Number of requests (cumulative for selected time period)",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #A",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          },
+          {
+            "alias": "Average time consumption (selected period)",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #B",
+            "thresholds": [],
+            "type": "number",
+            "unit": "s"
+          },
+          {
+            "alias": "Number of errors (cumulative for selected periods)",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #C",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "label_join(sum by (prpc,parent) (sum_over_time_lorc(arms_app_requests_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",host=~\"$host\",parent!=\"\",parent!=\"nil\"}[$__range])),\"uniq\",\"-\",\"parent\",\"prpc\")",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[$__range]),\"uniq\",\"-\",\"parent\",\"prpc\"))/sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[$__range]),\"uniq\",\"-\",\"parent\",\"prpc\"))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Time-consuming",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_error_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[$__range]),\"uniq\",\"-\",\"parent\",\"prpc\"))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of errors",
+            "refId": "C"
+          }
+        ],
+        "title": "Link upstream",
+        "transform": "table",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "uniq"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "Time 1": true,
+                "Time 2": true,
+                "Time 3": true,
+                "uniq": true
+              },
+              "indexByName": {
+                "Time 1": 6,
+                "Time 2": 7,
+                "Time 3": 8,
+                "Value #A": 3,
+                "Value #B": 4,
+                "Value #C": 5,
+                "parent": 1,
+                "prpc": 2,
+                "uniq": 0
+              },
+              "renameByName": {
+                "Value #A": "Number of requests",
+                "Value #B": "Response time",
+                "Value #C": "Number of errors",
+                "pRpc": "Interface",
+                "parent": "Application",
+                "prpc": "Interface"
+              }
+            }
+          }
+        ],
+        "type": "table-old"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 42
+        },
+        "hiddenSeries": false,
+        "id": 108,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (parent,prpc) (sum_over_time_lorc(arms_app_requests_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "1m",
+            "legendFormat": "{{parent}}:{{prpc}}",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of requests/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 50
+        },
+        "hiddenSeries": false,
+        "id": 115,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "sum by (parent,prpc) (sum_over_time_lorc(arms_app_requests_error_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "1m",
+            "legendFormat": "{{parent}}:{{prpc}}",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of errors/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 59
+        },
+        "hiddenSeries": false,
+        "id": 110,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (parent,prpc) (sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"\",prpc!=\"nil\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[1m]))/sum by (parent,prpc) (sum_over_time_lorc(arms_app_requests_count_raw{service=\"$service\",rpc=\"$rpc\",prpc!=\"nil\",prpc!=\"\",parent!=\"\",parent!=\"nil\",host=~\"$host\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "1m",
+            "legendFormat": "{{parent}}=>{{prpc}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Time consuming/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 67
+        },
+        "id": 101,
+        "panels": [],
+        "title": "Link downstream",
+        "type": "row"
+      },
+      {
+        "columns": [],
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "Displays the relevant indicators of downstream services called by interface r deployed on machine n (default is All, indicating all machines) in the selected time period.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 68
+        },
+        "id": 102,
+        "options": {},
+        "pluginVersion": "11.5.1",
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "align": "auto",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "label_join(sum by (service,rpc) (sum_over_time_lorc(arms_app_requests_count_raw{prpc=\"$rpc\",parent=\"$service\"}[$__range])),\"uniq\",\"-\",\"service\",\"rpc\")",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_seconds_raw{parent=\"$service\",prpc=\"$rpc\"}[$__range]),\"uniq\",\"-\",\"service\",\"rpc\"))/sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_count_raw{parent=\"$service\",prpc=\"$rpc\"}[$__range]),\"uniq\",\"-\",\"service\",\"rpc\"))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Time-consuming",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (uniq) (label_join(sum_over_time_lorc(arms_app_requests_error_count_raw{parent=\"$service\",prpc=\"$rpc\"}[$__range]),\"uniq\",\"-\",\"service\",\"rpc\"))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of errors",
+            "refId": "C"
+          }
+        ],
+        "title": "Link downstream",
+        "transform": "table",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "uniq"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "Time 1": true,
+                "Time 2": true,
+                "Time 3": true,
+                "uniq": true
+              },
+              "indexByName": {
+                "Time": 1,
+                "Value #A": 4,
+                "Value #B": 5,
+                "Value #C": 6,
+                "rpc": 3,
+                "service": 2,
+                "uniq": 0
+              },
+              "renameByName": {
+                "Value #A": "Number of requests",
+                "Value #B": "Response time",
+                "Value #C": "Number of errors",
+                "pRpc": "Interface",
+                "parent": "Application",
+                "rpc": "Interface",
+                "service": "Application"
+              }
+            }
+          }
+        ],
+        "type": "table-old"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 77
+        },
+        "hiddenSeries": false,
+        "id": 109,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (service,rpc) (sum_over_time_lorc(arms_app_requests_count_raw{prpc=\"$rpc\",parent=\"$service\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "1m",
+            "legendFormat": "{{service}}:{{rpc}}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of requests/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 86
+        },
+        "hiddenSeries": false,
+        "id": 117,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (service,rpc) (sum_over_time_lorc(arms_app_requests_seconds_raw{parent=\"$service\",prpc=\"$rpc\"}[1m]))/sum by (service,rpc) (sum_over_time_lorc(arms_app_requests_count_raw{parent=\"$service\",prpc=\"$rpc\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{service}}:{{rpc}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Time consuming/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 95
+        },
+        "hiddenSeries": false,
+        "id": 116,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum by (service,rpc) (sum_over_time_lorc(arms_app_requests_error_count_raw{parent=\"$service\",prpc=\"$rpc\"}[1m]))",
+            "format": "time_series",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{service}}:{{rpc}}",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Number of errors/minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      }
+    ],
+    "preload": false,
+    "refresh": "",
+    "schemaVersion": 40,
+    "tags": [
+      "arms_app",
+      "arms_metrics"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "nonprod",
+            "value": "nonprod"
+          },
+          "label": "Selecte Env",
+          "name": "env",
+          "options": [
+            {
+              "selected": true,
+              "text": "nonprod",
+              "value": "nonprod"
+            },
+            {
+              "selected": false,
+              "text": "uat",
+              "value": "uat"
+            },
+            {
+              "selected": false,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": false,
+              "text": "sit",
+              "value": "sit"
+            }
+          ],
+          "query": "nonprod,uat,dev,sit",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "hk-ado-misc-service-2-sit",
+            "value": "hk-ado-misc-service-2-sit"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(arms_system_cpu_idle,service)",
+          "includeAll": false,
+          "label": "Services",
+          "name": "service",
+          "options": [],
+          "query": {
+            "query": "label_values(arms_system_cpu_idle,service)",
+            "refId": "arms_metrics_cn-hangzhou_cloud_hangzhou_1084900439941126_b3821b-service-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",callKind=~\"rpc|http|consumer|custom_entry|server\"},rpc)",
+          "includeAll": true,
+          "label": "Interface",
+          "multi": true,
+          "name": "rpc",
+          "options": [],
+          "query": {
+            "query": "label_values(arms_app_requests_count_ign_destid_endpoint_ppid_prpc{service=\"$service\",callKind=~\"rpc|http|consumer|custom_entry|server\"},rpc)",
+            "refId": "arms_metrics_cn-hangzhou_cloud_hangzhou_1084900439941126_b3821b-rpc-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(arms_system_cpu_idle{service=\"$service\"},host)",
+          "includeAll": true,
+          "label": "Host",
+          "name": "host",
+          "options": [],
+          "query": {
+            "query": "label_values(arms_system_cpu_idle{service=\"$service\"},host)",
+            "refId": "arms_metrics_cn-hangzhou_cloud_hangzhou_1084900439941126_b3821b-host-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nonprod-hkg-application",
+            "value": "-_KRSjivz"
+          },
+          "hide": 2,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/mfc-glprom-${env}-hkg-application/",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Interface",
+    "uid": "5495437431802631-17369231-803",
+    "version": 9,
+    "weekStart": ""
+  }
+}

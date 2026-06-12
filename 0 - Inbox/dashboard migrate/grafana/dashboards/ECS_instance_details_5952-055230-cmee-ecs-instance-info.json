@@ -1,0 +1,1911 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "ecs-instance-details",
+    "url": "/d/5952-055230-cmee-ecs-instance-info/ecs-instance-details",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:13+08:00",
+    "updated": "2026-04-01T11:21:00+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 5,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 159,
+    "folderUid": "efhql1a4c2qrka",
+    "folderTitle": "Unused",
+    "folderUrl": "/dashboards/f/efhql1a4c2qrka/unused",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 147,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 27,
+        "panels": [],
+        "title": "Overview",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 60
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 0,
+          "y": 1
+        },
+        "id": 19,
+        "maxDataPoints": 100,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto",
+          "text": {}
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "avg(AliyunEcs_CPUUtilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "ECS Average CPU Utilization",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 60
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 6,
+          "y": 1
+        },
+        "id": 21,
+        "maxDataPoints": 100,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto",
+          "text": {}
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "avg(AliyunEcs_cpu_total{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}) ",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "ECS CPU Total",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 60
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 12,
+          "y": 1
+        },
+        "id": 20,
+        "maxDataPoints": 100,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto",
+          "text": {}
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "avg(AliyunEcs_memory_usedutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "ECS Average Memory Utilization",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 60
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 18,
+          "y": 1
+        },
+        "id": 22,
+        "maxDataPoints": 100,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto",
+          "text": {}
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "avg(AliyunEcs_diskusage_utilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "ECS Diskusage Utilization",
+        "type": "gauge"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 6
+        },
+        "hiddenSeries": false,
+        "id": 61,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "AliyunEcs_load_1m{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+            "interval": "",
+            "legendFormat": "{{hostName}}/{{instanceName}}#1m",
+            "queryType": "randomWalk",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "AliyunEcs_load_5m{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{hostName}}/{{instanceName}}#5m",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "AliyunEcs_load_15m{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{hostName}}/{{instanceName}}#15m",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "System Load Average",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:60",
+            "format": "none",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:61",
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "count"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 6
+        },
+        "hiddenSeries": false,
+        "id": 63,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "exemplar": true,
+            "expr": "AliyunEcs_net_tcpconnection{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+            "interval": "",
+            "legendFormat": "{{hostName}}/{{instanceName}}#{{state}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Net Tcp Connection",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "count",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 12,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "scaleDistribution": {
+                    "type": "linear"
+                  }
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 15
+            },
+            "id": 2,
+            "options": {
+              "calculate": true,
+              "calculation": {
+                "yBuckets": {
+                  "mode": "size",
+                  "value": "10"
+                }
+              },
+              "cellGap": 2,
+              "cellValues": {},
+              "color": {
+                "exponent": 0.5,
+                "fill": "#ea6460",
+                "mode": "opacity",
+                "reverse": false,
+                "scale": "exponential",
+                "scheme": "Oranges",
+                "steps": 128
+              },
+              "exemplars": {
+                "color": "rgba(255,0,255,0.7)"
+              },
+              "filterValues": {
+                "le": 1e-09
+              },
+              "legend": {
+                "show": false
+              },
+              "rowsFrame": {
+                "layout": "auto"
+              },
+              "showValue": "never",
+              "tooltip": {
+                "mode": "single",
+                "showColorScale": false,
+                "yHistogram": false
+              },
+              "yAxis": {
+                "axisPlacement": "left",
+                "max": "100",
+                "min": "0",
+                "reverse": false,
+                "unit": "percent"
+              }
+            },
+            "pluginVersion": "11.5.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_CPUUtilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+              }
+            ],
+            "title": "CPU Utilization Heatmap",
+            "type": "heatmap"
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "links": []
+              },
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 15
+            },
+            "hiddenSeries": false,
+            "id": 14,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "11.5.1",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_cpu_idle{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "instant": false,
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Current CPU Idle",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percent",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          }
+        ],
+        "title": "CPU",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 10,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 45
+            },
+            "id": 15,
+            "options": {},
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_memory_usedutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "instant": false,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+              }
+            ],
+            "title": "Memory Utilization Heatmap",
+            "type": "heatmap"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 45
+            },
+            "id": 16,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_memory_usedutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Memory Utilization",
+            "type": "graph"
+          }
+        ],
+        "title": "Memory",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 6,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 54
+            },
+            "id": 17,
+            "options": {},
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_diskusage_utilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+              }
+            ],
+            "title": "Disk Utilization Heatmap",
+            "type": "heatmap"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 54
+            },
+            "id": 23,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_diskusage_utilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Disk Utilization",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 62
+            },
+            "id": 57,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_DiskReadBPS{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Disk Read Bps",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 62
+            },
+            "id": 54,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_DiskWriteBPS{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Disk Write Bps",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "cps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 70
+            },
+            "id": 58,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_DiskReadIOPS{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Disk Read IOPS",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "cps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 70
+            },
+            "id": 59,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_DiskWriteIOPS{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "Disk Write IOPS",
+            "type": "graph"
+          }
+        ],
+        "title": "Disk",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 29,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 39
+            },
+            "id": 30,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_InternetInRate{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Internet In Rate",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 39
+            },
+            "id": 31,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_InternetOutRate{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Internet Out Rate",
+            "type": "graph"
+          }
+        ],
+        "title": "Internet",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "id": 64,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 39
+            },
+            "id": 65,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "exemplar": true,
+                "expr": "AliyunEcs_IntranetInRate{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Intranet In Rate",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "links": []
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 39
+            },
+            "id": 66,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_IntranetOutRate{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "refId": "A"
+              }
+            ],
+            "title": "Current Intranet Out Rate",
+            "type": "graph"
+          }
+        ],
+        "title": "Intranet",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 19
+        },
+        "id": 33,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "watt"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 40
+            },
+            "id": 51,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_instance_gpu_power_readings_power_draw{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Power Readings Power Draw",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 48
+            },
+            "id": 35,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_decoder_utilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Decoder Utilization",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 48
+            },
+            "id": 37,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_encoder_utilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Encoder Utilization",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "celsius"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 56
+            },
+            "id": 39,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_gpu_temperature{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Temperature",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 56
+            },
+            "id": 41,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_gpu_usedutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Used Utilization",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "decbytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 64
+            },
+            "id": 43,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_memory_freespace{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Memory Free Space",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 64
+            },
+            "id": 45,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_memory_freeutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Memory Free Utilization",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "decbytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 72
+            },
+            "id": 47,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_memory_usedspace{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Memory Used Space",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {},
+                "unit": "percent"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 72
+            },
+            "id": 49,
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0-pre",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunEcs_gpu_memory_usedutilization{instanceId=~\"$instanceId\",nodeIp=~\"$nodeIp\",${tagKey}=~\"$tagValue\"}",
+                "interval": "",
+                "legendFormat": "{{hostName}}/{{instanceName}}",
+                "queryType": "randomWalk",
+                "refId": "A"
+              }
+            ],
+            "title": "GPU Memory Used Utilization",
+            "type": "graph"
+          }
+        ],
+        "title": "GPU",
+        "type": "row"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "scene:host",
+      "cmee",
+      "ecs",
+      "env:Cloud",
+      "env:type:Cloud",
+      "addon:version:0.0.1",
+      "addon:name:cloud-ecs",
+      "prometheus",
+      "dashboard:name:cmee-ecs-instance-info",
+      "addon:version:0.0.6"
+    ],
+    "templating": {
+      "list": [
+        {
+          "allValue": ".+",
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunEcs_CPUUtilization{regionId!=\"--\"}, regionId)",
+          "includeAll": true,
+          "label": "Region",
+          "multi": true,
+          "name": "regionId",
+          "options": [],
+          "query": "label_values(AliyunEcs_CPUUtilization{regionId!=\"--\"}, regionId)",
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\"},instanceName)",
+          "includeAll": true,
+          "label": "InstanceName",
+          "name": "instanceName",
+          "options": [],
+          "query": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\"},instanceName)",
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": ".+",
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\",instanceName=~\"$instanceName\"}, nodeIp)",
+          "includeAll": true,
+          "label": "NodeIP",
+          "multi": true,
+          "name": "nodeIp",
+          "options": [],
+          "query": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\",instanceName=~\"$instanceName\"}, nodeIp)",
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": ".+",
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\",instanceName=~\"$instanceName\",nodeIp=~\"$nodeIp\"}, instanceId)",
+          "includeAll": true,
+          "label": "InstanceID",
+          "multi": true,
+          "name": "instanceId",
+          "options": [],
+          "query": "label_values(AliyunEcs_CPUUtilization{regionId=~\"$regionId\",instanceName=~\"$instanceName\",nodeIp=~\"$nodeIp\"}, instanceId)",
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": "job",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(cloud_monitor_instance_tag{regionId=~\"$regionId\",product=\"ecs\" },key)",
+          "description": "Supports ECS tag filtering with the prefix format of \"o11y.aliyun.dev/\", such as \"o11y.aliyun.dev/key1:value1\".",
+          "includeAll": true,
+          "label": "TagKey",
+          "name": "tagKey",
+          "options": [],
+          "query": "label_values(cloud_monitor_instance_tag{regionId=~\"$regionId\",product=\"ecs\" },key)",
+          "refresh": 1,
+          "regex": "/o11y.aliyun.dev/(.*)/",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": ".+",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "query_result(cloud_monitor_instance_tag{key=~\"o11y.aliyun.dev/$tagKey\",regionId=~\"$regionId\",product=\"ecs\"}>0)",
+          "includeAll": true,
+          "label": "TagValue",
+          "multi": true,
+          "name": "tagValue",
+          "options": [],
+          "query": "query_result(cloud_monitor_instance_tag{key=~\"o11y.aliyun.dev/$tagKey\",regionId=~\"$regionId\",product=\"ecs\"}>0)",
+          "refresh": 2,
+          "regex": "/.*value=\"(.*)\"}/",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nprd-hkg-cloudservice",
+            "value": "jXu2wByNz"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-nprd-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-5m",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "ECS instance details",
+    "uid": "5952-055230-cmee-ecs-instance-info",
+    "version": 5,
+    "weekStart": ""
+  }
+}

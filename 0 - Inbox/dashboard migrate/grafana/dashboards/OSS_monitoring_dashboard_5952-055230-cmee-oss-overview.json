@@ -1,0 +1,1919 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "oss-monitoring-dashboard",
+    "url": "/d/5952-055230-cmee-oss-overview/oss-monitoring-dashboard",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:12+08:00",
+    "updated": "2026-04-01T11:02:00+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 3,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 6,
+    "folderUid": "global-v2-cn-5495437431802631-uugqtqwk_",
+    "folderTitle": "mfc-glprom-nprd-cloudservice",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-uugqtqwk_/mfc-glprom-nprd-cloudservice",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 130,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 9,
+        "panels": [],
+        "title": "Overview",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 22,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserAvailability{userId=~\"$VarUserId\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Availability-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserSuccessRate{userId=~\"$VarUserId\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Success rate-{{userId}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User availability and success rate (%)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 23,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserTotalRequestCount{userId=~\"$VarUserId\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Total number of requests-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserSuccessCount{userId=~\"$VarUserId\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Number of successful requests-{{userId}}",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserValidRequestCount{userId=~\"$VarUserId\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Number of valid requests-{{userId}}",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User request status (number)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 20,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(AliyunOss_InternetRecvBandwidth{userId=~\"$VarUserId\"}) / 8 / 1024 / 1024",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Public network inbound bandwidth-$VarUserId",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(AliyunOss_InternetSendBandwidth{userId=~\"$VarUserId\"}) / 8 / 1024 / 1024",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Public network outbound bandwidth-$VarUserId",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User public network bandwidth (MB/s)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 21,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(AliyunOss_IntranetRecvBandwidth{userId=~\"$VarUserId\"}) / 8 / 1024 / 1024",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Intranet inbound bandwidth-$VarUserId",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "sum(AliyunOss_IntranetRecvBandwidth{userId=~\"$VarUserId\"}) / 8 / 1024 / 1024",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Intranet outbound bandwidth-$VarUserId",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User intranet bandwidth (MB/s)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 6,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserCdnRecv",
+            "interval": "",
+            "legendFormat": "C DN inflow-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserCdnSend",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Cdn outflow-{{userId}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User CDN traffic (Byte)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 19,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserSyncRecv",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Regional replication inflow-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserSyncSend",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Regional replication outflow-{{userId}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User cross-region replication traffic (Byte)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 24,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserInternetRecv",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Public network inflow-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserInternetSend",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Public network outflow-{{userId}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User public network traffic (Byte)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 25,
+        "interval": "60s",
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserIntranetRecv",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Intranet inflow-{{userId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunOss_UserIntranetSend",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Intranet outflow-{{userId}}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "User intranet traffic (Byte)",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 11,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 0,
+              "y": 18
+            },
+            "id": 15,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_InternetRecv{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Public network inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_InternetSend{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Public network outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "Public network traffic (Byte)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 6,
+              "y": 18
+            },
+            "id": 13,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_IntranetRecv{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Intranet inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_IntranetSend{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Intranet outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "Intranet traffic (Byte)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 12,
+              "y": 18
+            },
+            "id": 17,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_SyncRecv{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Cross-region replication inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_SyncSend{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Cross-region replication outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "Cross-region replication traffic (Byte)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 18,
+              "y": 18
+            },
+            "id": 18,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_CdnRecv{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Cdn inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_CdnSend{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Cdn outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "CDN traffic (Byte)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 26
+            },
+            "id": 16,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_InternetRecvBandwidth{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"} / 8 / 1024",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Public network inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_InternetSendBandwidth{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"} / 8 / 1024",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Public network outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "Public network bandwidth (KB/s)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 26
+            },
+            "id": 14,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_IntranetRecvBandwidth{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"} / 8 / 1024",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Intranet inflow-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_IntranetSendBandwidth{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"} / 8 / 1024",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Intranet outflow-{{BucketName}}",
+                "refId": "B"
+              }
+            ],
+            "title": "Intranet traffic (Byte) Network bandwidth (KB/s)",
+            "type": "graph"
+          }
+        ],
+        "title": "Traffic monitoring",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "id": 4,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 0,
+              "y": 35
+            },
+            "id": 28,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_HeadObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_HeadObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxHeadObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxHeadObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{Bucket Name}}",
+                "refId": "D"
+              }
+            ],
+            "title": "HeadObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 6,
+              "y": 35
+            },
+            "id": 27,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_GetObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_GetObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxGetObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxGetObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "GetObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 12,
+              "y": 35
+            },
+            "id": 29,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_PutObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_PutObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxPutObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxPutObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "PutObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 18,
+              "y": 35
+            },
+            "id": 30,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_PostObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_PostObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxPostObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxPostObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "PostObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 0,
+              "y": 44
+            },
+            "id": 2,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_AppendObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_AppendObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxAppendObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxAppendObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "AppendObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 6,
+              "y": 44
+            },
+            "id": 26,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_CopyObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_CopyObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxCopyObjectE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxCopyObjectServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "CopyObject request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 12,
+              "y": 44
+            },
+            "id": 32,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_UploadPartE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Maximum-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_UploadPartServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxUploadPartE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxUploadPartServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "UploadPart request delay (ms)",
+            "type": "graph"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 6,
+              "x": 18,
+              "y": 44
+            },
+            "id": 31,
+            "interval": "60s",
+            "options": {
+              "alertThreshold": true
+            },
+            "pluginVersion": "7.4.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_UploadPartCopyE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "interval": "",
+                "legendFormat": "Maximum-server-{{BucketName}}",
+                "refId": "A"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_UploadPartCopyServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-end-to-end-{{BucketName}}",
+                "refId": "B"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxUploadPartCopyE2eLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Average-server-{{BucketName}}",
+                "refId": "C"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${datasource}"
+                },
+                "expr": "AliyunOss_MaxUploadPartCopyServerLatency{userId=~\"$VarUserId\", BucketName=~\"$VarBucketName\"}",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "Maximum-end-to-end-{{BucketName}}",
+                "refId": "D"
+              }
+            ],
+            "title": "UploadPartCopy request delay (ms)",
+            "type": "graph"
+          }
+        ],
+        "title": "Performance monitoring",
+        "type": "row"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "addon:name:cloud-oss",
+      "dashboard:name:cmee-oss-overview",
+      "scene:middleware",
+      "cmee",
+      "env:Cloud",
+      "env:type:Cloud",
+      "prometheus",
+      "oss",
+      "addon:version:0.0.6"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\"}, regionId)",
+          "includeAll": true,
+          "multi": true,
+          "name": "regionId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\"}, regionId)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\",regionId=~\"$regionId\"}, BucketName)",
+          "includeAll": true,
+          "multi": true,
+          "name": "VarBucketName",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\",regionId=~\"$regionId\"}, BucketName)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "5382339173871454",
+            "value": "5382339173871454"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\"}, userId)",
+          "includeAll": false,
+          "name": "VarUserId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunOss_InternetRecvBandwidth|AliyunOss_IntranetRecvBandwidth|AliyunOss_InternetRecv|AliyunOss_IntranetRecv\"}, userId)",
+            "refId": "${datasource}-VarUserId-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nprd-hkg-cloudservice",
+            "value": "jXu2wByNz"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-nprd-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "OSS monitoring dashboard",
+    "uid": "5952-055230-cmee-oss-overview",
+    "version": 3,
+    "weekStart": ""
+  }
+}

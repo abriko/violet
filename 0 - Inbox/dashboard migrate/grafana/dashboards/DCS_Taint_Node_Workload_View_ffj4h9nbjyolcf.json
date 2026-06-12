@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "dcs-taint-node-workload-view",
+    "url": "/d/ffj4h9nbjyolcf/dcs-taint-node-workload-view",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-15T10:52:44+08:00",
+    "updated": "2026-04-15T10:52:44+08:00",
+    "updatedBy": "lamarwei_adm@mfcgcr.com",
+    "createdBy": "lamarwei_adm@mfcgcr.com",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 173,
+    "folderUid": "efj4f8d31patcc",
+    "folderTitle": "HK DCS",
+    "folderUrl": "/dashboards/f/efj4f8d31patcc/hk-dcs",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "id": 176,
+    "panels": [
+      {
+        "datasource": "Prometheus",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "kube_node_spec_taint{cluster=\"mfc-glprom-dev-hkg-ackcluster\", value=\"dcs\", node=~\"$node\"}",
+            "format": "table"
+          }
+        ],
+        "title": "DCS Nodes",
+        "type": "table"
+      }
+    ],
+    "schemaVersion": 37,
+    "templating": {
+      "list": [
+        {
+          "datasource": "Prometheus",
+          "includeAll": true,
+          "multi": true,
+          "name": "node",
+          "query": "label_values(kube_node_spec_taint{cluster=\"mfc-glprom-dev-hkg-ackcluster\", value=\"dcs\"}, node)",
+          "refresh": 1,
+          "type": "query"
+        }
+      ]
+    },
+    "timezone": "browser",
+    "title": "DCS Taint Node Workload View",
+    "uid": "ffj4h9nbjyolcf",
+    "version": 1
+  }
+}

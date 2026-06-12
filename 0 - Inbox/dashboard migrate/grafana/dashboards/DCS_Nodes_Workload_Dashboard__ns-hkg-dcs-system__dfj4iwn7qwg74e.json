@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "dcs-nodes-workload-dashboard-ns-hkg-dcs-system",
+    "url": "/d/dfj4iwn7qwg74e/dcs-nodes-workload-dashboard-ns-hkg-dcs-system",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-15T11:11:06+08:00",
+    "updated": "2026-04-15T11:11:06+08:00",
+    "updatedBy": "lamarwei_adm@mfcgcr.com",
+    "createdBy": "lamarwei_adm@mfcgcr.com",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 173,
+    "folderUid": "efj4f8d31patcc",
+    "folderTitle": "HK DCS",
+    "folderUrl": "/dashboards/f/efj4f8d31patcc/hk-dcs",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "editable": true,
+    "id": 182,
+    "panels": [
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster",
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "count by (node) (kube_node_spec_taint{unique_cluster_name=\"mfc-ack-dev-hkg-gcr-01\", value=\"dcs\", node=~\"$node\"})",
+            "format": "table"
+          }
+        ],
+        "title": "DCS Taint Nodes",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "Value": true
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster",
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "targets": [
+          {
+            "expr": "kube_pod_owner{cluster=\"mfc-ack-dev-hkg-gcr-01\", namespace=\"ns-hkg-dcs-system\", owner_kind=\"Deployment\"} * on(pod, namespace) group_left(node) (kube_pod_info{cluster=\"mfc-ack-dev-hkg-gcr-01\", namespace=\"ns-hkg-dcs-system\", node=~\"$node\"})",
+            "format": "table"
+          }
+        ],
+        "title": "Node → Deployment → Pod",
+        "type": "table"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster",
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "targets": [
+          {
+            "expr": "count by (node) (kube_pod_info{cluster=\"mfc-ack-dev-hkg-gcr-01\", namespace=\"ns-hkg-dcs-system\", node=~\"$node\"})"
+          }
+        ],
+        "title": "Pod Count per Node",
+        "type": "stat"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster",
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "targets": [
+          {
+            "expr": "sum by (node, pod, container) (rate(container_cpu_usage_seconds_total{cluster=\"mfc-ack-dev-hkg-gcr-01\", namespace=\"ns-hkg-dcs-system\", image!=\"\"}[5m]) * on(pod, namespace) group_left(node) kube_pod_info{cluster=\"mfc-ack-dev-hkg-gcr-01\", namespace=\"ns-hkg-dcs-system\", node=~\"$node\"})",
+            "format": "table"
+          }
+        ],
+        "title": "Container CPU Usage (5m)",
+        "type": "table"
+      }
+    ],
+    "refresh": "30s",
+    "schemaVersion": 37,
+    "templating": {
+      "list": [
+        {
+          "allValue": ".*",
+          "datasource": "mfc-glprom-dev-hkg-ackcluster",
+          "includeAll": true,
+          "multi": true,
+          "name": "node",
+          "query": "label_values(kube_node_spec_taint{unique_cluster_name=\"mfc-ack-dev-hkg-gcr-01\", value=\"dcs\"}, node)",
+          "refresh": 1,
+          "sort": 1,
+          "type": "query"
+        }
+      ]
+    },
+    "timezone": "browser",
+    "title": "DCS Nodes Workload Dashboard (ns-hkg-dcs-system)",
+    "uid": "dfj4iwn7qwg74e",
+    "version": 1
+  }
+}

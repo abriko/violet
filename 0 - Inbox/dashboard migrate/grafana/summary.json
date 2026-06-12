@@ -1,0 +1,37 @@
+{
+  "grafana_url": "https://grafana-np.gcr.manulife.com",
+  "grafana_version": "v11.5.1 (Aliyun-dev)",
+  "total_folders": 13,
+  "total_dashboards": 125,
+  "total_datasources": 42,
+  "folder_afmhol5iowkjkb_status": "EXISTS but EMPTY - folder 'Devops' was created 2026-05-19 and has 0 dashboards",
+  "dashboards_by_folder": {
+    "mfc-glprom-nprod-ackcluster": 14,
+    "HK DCS": 17,
+    "Dashbord-Incubation": 7,
+    "mfc-glprom-nprd-cloudservice": 25,
+    "Unused": 22,
+    "mfc-glprom-nprod-application": 5,
+    "HK ADO": 3,
+    "HK ATAS": 1,
+    "HK ICHS": 1,
+    "HK Arbs": 1,
+    "Expired": 3,
+    "HK FUW": 1,
+    "General": 1,
+    "DB ALL": 24
+  },
+  "export_capabilities": {
+    "dashboard_json_export": "YES - /api/dashboards/uid/{uid}",
+    "datasource_list": "YES - /api/datasources",
+    "folder_list": "YES - /api/folders",
+    "search": "YES - /api/search",
+    "provisioning_export": "Requires admin - /api/admin/provisioning/dashboards/export"
+  },
+  "authentication_method": "Browser SSO via Playwright MCP Extension (AliCloud IDaaS)",
+  "limitations": [
+    "Non-prod environment - data may not reflect production",
+    "No direct API token - requires browser-based auth via Playwright Extension",
+    "Folder 'Devops' (afmhol5iowkjkb) is empty - dashboards may need to be migrated INTO it"
+  ]
+}

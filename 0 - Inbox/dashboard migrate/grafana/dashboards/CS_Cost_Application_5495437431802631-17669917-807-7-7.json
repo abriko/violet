@@ -1,0 +1,3405 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "cs-cost-application",
+    "url": "/d/5495437431802631-17669917-807-7-7/cs-cost-application",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-14T18:41:10+08:00",
+    "updated": "2026-04-03T15:50:32+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 8,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 30,
+    "folderUid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "folderTitle": "mfc-glprom-nprod-ackcluster",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-ugjfwpzz_/mfc-glprom-nprod-ackcluster",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 21,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 36,
+        "panels": [
+          {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 1
+            },
+            "id": 34,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "## App View of Cost Analysis.\ncost and resource analysis of pods, selected by Namespace and pod's LabelSelector. \nversion: v1.0.4. [Help Doc](https://help.aliyun.com/document_detail/215497.html) \n\nThis cost is without discount.\n\n##### How to config LabelSelector: \nLabelSelector is for pod's metadata label key-value. \nformat support: \n```app=ack-cost-exporter``` \n```app:ack-cost-exporter``` \n\n \nif your pod label key have: ```/```、```.```、```-```, you need transport it to ```_```, and input should delete all ```\"``` \ne.g. \npod label: \n```\"sparkoperator.k8s.io/submission-id\":\"db08a66a-c0b7-4d32-8013-02ac4f8eff4c\"``` \nyou can input LabelSelector: \n```sparkoperator_k8s_io_submission_id:db08a66a-c0b7-4d32-8013-02ac4f8eff4c``` ",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.5.1",
+            "title": "",
+            "type": "text"
+          }
+        ],
+        "title": "Application Cost Dashboard Usage-Current Filter Criteria: Namespace: ($Namespace) WorkloadType: ($ControllerType) WorkloadName: ($ControllerName) LabelKey: ($LabelKey) LabelValue: ($LabelValue)",
+        "type": "row"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 62,
+        "panels": [],
+        "title": "",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 12,
+          "x": 0,
+          "y": 2
+        },
+        "id": 58,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "scalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n",
+            "fields": [
+              {
+                "jsonPath": ""
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Current CPU Weight",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 12,
+          "x": 12,
+          "y": 2
+        },
+        "id": 59,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "scalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))",
+            "fields": [
+              {
+                "jsonPath": ""
+              }
+            ],
+            "instant": true,
+            "method": "GET",
+            "queryParams": "",
+            "range": false,
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Current Memory Weight",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Cost applied by the selected time range of the market\n\nWhich is calculate by Σ(Pod Request/Node Capacity)*EachNodePrice\n\nWarning:\n\nThis is a estimate data by compute resource.\nIf there is \"No Data\", please wait for at least one hour's data.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 3,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "light-green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 0,
+          "y": 4
+        },
+        "id": 18,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(\n\n(\n#cpu分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0) by (pod) * ($__interval_ms/1000) \n* \n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#内存分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0) by (pod) * ($__interval_ms/1000) \n*\n#内存权重\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#ECI成本\nsum(sum(label_replace(label_replace(pod_current_price{exported_namespace=~\"$Namespace\"}, \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\"), \"pod\", \"$1\", \"exported_pod\", \"(.*)\")) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0 ) by (pod) * ($__interval_ms/1000) \n\n+\n\n# GPU节点\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, PodName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0 ) by (pod) * ($__interval_ms/1000)\n\n)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod))",
+            "format": "time_series",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(\n\n(\n#cpu分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n* \n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#内存分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n*\n#内存权重\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#ECI成本\nsum(sum(label_replace(label_replace(max_over_time(pod_current_price{exported_namespace=~\"$Namespace\"}[$__interval]), \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\"), \"pod\", \"$1\", \"exported_pod\", \"(.*)\")) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod) \n\n+\n\n# GPU节点\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, PodName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod)\n\n)\n\n* on(pod) group_left max(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\"}[3599s:15s])) by(pod) * 15\n\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval])) by (replicaset) \n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Application Cost",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Max / Min Pod Num in this time range.",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": ""
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Max"
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Min"
+              },
+              "properties": [
+                {
+                  "id": "min"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 8,
+          "y": 4
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 25
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "count(sum(kube_pod_info{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) > 0)",
+            "format": "time_series",
+            "hide": true,
+            "interval": "60",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_info{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) )",
+            "format": "time_series",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "Minimum number of copies",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "count(sum(kube_pod_info{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n > 0)",
+            "format": "time_series",
+            "hide": false,
+            "interval": "60",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Apply current number of copies",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "labelsToFields": false,
+              "reducers": [
+                "lastNotNull",
+                "max",
+                "min"
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Last *": false
+              },
+              "indexByName": {},
+              "renameByName": {
+                "All values": "",
+                "Field": "",
+                "Last": "Current",
+                "Last *": "Current number of copies:",
+                "Max": "Maximum number of copies:",
+                "Min": "Minimum number of copies:"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Cluster Ratio (Resource Ratio of Cluster) = CPU request of pods / CPU request of cluster.\n\nNamespace Ratio (Resource Ratio of Namespace) = CPU request of pods / CPU request of selected namespace.",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": ""
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 16,
+          "y": 4
+        },
+        "id": 56,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 25
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})",
+            "interval": "",
+            "legendFormat": "Percentable cluster:",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n) / sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"})",
+            "interval": "",
+            "legendFormat": "Namespace occupied:",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Application accounts for the entire cluster/namespace resource utilization",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Price of each CPU Core of pods.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": ""
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 0,
+          "y": 7
+        },
+        "id": 39,
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {},
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "\nmax(node_current_price) by (node) * on(node)\n\nmax((sum(max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod, node)\n\n * on(pod) group_left sum(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n * on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n \n / on(pod) group_left sum(max_over_time(kube_pod_container_resource_requests_cpu_cores[$__interval])) by (pod))\n) by (node)\n\n* 3600",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{node}}",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Hourly cost of the node",
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Uptime is pods's total runtime (hours).\nCore*Hours is pods's total CPU core*hours.",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "light-blue",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 8,
+          "y": 7
+        },
+        "id": 19,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 25
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "# sum(max(max_over_time(kube_pod_info[$__interval])) by(pod) * on(pod) group_right max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval]) * on (pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\nsum(max(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}[3599s:15s])) by(pod) * 15 / 3600\n* on(pod) group_left max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on (pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Cumulative application running time (hours):",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right \nmax(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\"}[3599s:15s])) by(pod) * 15 / 3600\n* on(pod) group_left max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on (pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod))",
+            "format": "time_series",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "When the application consumes total cores (Core * Hour):",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Application running time/total number of core-time resources consumed",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "CPU / Memory Utilization of pods.\nUsage / Request.",
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "light-blue",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 85
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 16,
+          "y": 7
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 25
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)) \n/ \nsum(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod))",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "CPU：",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)) \n/ \nsum(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod))",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Memory：",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (gpu, NodeName)) by (NodeName)) by (PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod))",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "GPU Memory：",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Computing Resource Utilization",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CPU usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 159
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Memory usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 137
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pod run time (hours)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pod Cost Per Core Hour (total cost per selected time range)"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                },
+                {
+                  "id": "unit",
+                  "value": "$"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Estimated cost of the pod"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "$"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 134
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total number of cores consumed by the pod (Cost Per Core Hour)"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "Core*Hour"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Node"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 196
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": "GPU.*率"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "noValue",
+                  "value": "No GPU Used"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "GPU memory allocation rate"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 177
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "GPU memory usage"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 154
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 24,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Pod的预估费用"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum( rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, node) / on (pod) group_left sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) \n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod) > 0",
+            "format": "table",
+            "interval": "3600",
+            "legendFormat": "CPU_Util",
+            "queryType": "randomWalk",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, node) / on(pod) group_left sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} ) by (pod) * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) \n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod) > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "MEM_Util",
+            "queryType": "randomWalk",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "\nsum(max(node_current_price) by (node) / on (node) group_left max(max_over_time(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}[$__interval]))by(node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod)\n\n * on(pod) group_right sum(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n * on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n \n / on(pod) sum(max_over_time(kube_pod_container_resource_requests_cpu_cores[$__interval])) by (pod) * ($__interval_ms/1000) > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "# sum(max(max_over_time(kube_pod_info[$__interval])) by(pod,node) * on(pod) group_left max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod,node) \n# * on (pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n# * on(pod) group_left max(\n# label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n# or \n# max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n# ) by (pod) > 0\nmax(max_over_time(kube_pod_info{node!=\"\"}[$__interval])) by(pod,node) * on(pod) group_left \nmax(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}[3599s:15s])) by(pod) * 15 / 3600\n* on(pod) group_left max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on (pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Core*Hour",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) \n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (node, pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "GPU_Used_Utilization",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) \n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (node, pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "GPU_Alloc_Utilization",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "(\n#cpu分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n* \n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#内存分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n*\n#内存权重\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#ECI成本\nsum(sum(label_replace(label_replace(max_over_time(pod_current_price{exported_namespace=~\"$Namespace\"}[$__interval]), \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\"), \"pod\", \"$1\", \"exported_pod\", \"(.*)\")) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod) \n\n+\n\n# GPU节点\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, PodName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod)\n\n)\n\n* on(pod) group_left max(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\"}[3599s:15s])) by(pod) * 15\n\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval])) by (replicaset) \n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "",
+            "refId": "H"
+          }
+        ],
+        "title": "Pod Dimension Business Cost Analysis",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "NodeName": {
+                  "aggregations": []
+                },
+                "PodName": {
+                  "aggregations": []
+                },
+                "Value": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #B": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #C": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #F": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #G": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #H": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "node": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Value #D (sum)": true
+              },
+              "indexByName": {
+                "Value #A (sum)": 7,
+                "Value #B (lastNotNull)": 4,
+                "Value #C (lastNotNull)": 3,
+                "Value #D (lastNotNull)": 6,
+                "Value #E (lastNotNull)": 2,
+                "Value #G (lastNotNull)": 5,
+                "Value #H (sum)": 8,
+                "node": 1,
+                "pod": 0
+              },
+              "renameByName": {
+                "Value #A (sum)": "Pod run time (hours)",
+                "Value #B (lastNotNull)": "CPU usage",
+                "Value #C (lastNotNull)": "Memory usage",
+                "Value #D (lastNotNull)": "GPU memory allocation rate",
+                "Value #D (sum)": "Estimated cost of pod (old)",
+                "Value #E (lastNotNull)": "Pod Cost Per Core Hour (total cost per selected time range)",
+                "Value #F (sum)": "Total number of cores consumed by the pod (Cost Per Core Hour)",
+                "Value #G (lastNotNull)": "GPU memory usage",
+                "Value #H (sum)": "Estimated cost of the pod",
+                "Value (lastNotNull)": "",
+                "node": "Node",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Cost (Cost Per Hour) is the total cost of pods per hour.\nCost Per Core * Hour is the Price of each CPU Core.\n \n\nWhich is calculate by Σ(Pod Request/Node Capacity)*EachNodePrice\n\nWarning:\n\nThis is a estimate data by compute resource.\nIf there is \"No Data\", please wait for at least one hour's data.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 26,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "$$hashKey": "object:375",
+            "alias": "Cost (Cost Per Hour)",
+            "color": "#5794F2"
+          },
+          {
+            "$$hashKey": "object:376",
+            "alias": "Core Price (Cost Per Core * Hour)",
+            "color": "#FF9830"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n\n(\n#cpu分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"cpu\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n* \n#cpu权重\nscalar((vector($cost_allocation_method) == 1) or\n(vector($cost_allocation_method) == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*($CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#内存分摊成本\nsum(sum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity{job=\"_kube-state-metrics\", resource=\"memory\"}) by (node) * on(node) max(kube_node_labels{label_aliyun_accelerator_nvidia_name=\"\"}) by (node) * on(node) group_right max_over_time(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0) by (pod) \n*\n#内存权重\nscalar((vector($cost_allocation_method) + 1 == 1) or\n(vector($cost_allocation_method) - 1 == 0) or\n(vector($cost_allocation_method) == -1)*vector(-1)*(1-$CPUWeight/100) or\n(sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"}))/(sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"cpu\"})+sum(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\"})/sum(kube_node_status_capacity{job=\"_kube-state-metrics\",resource=\"memory\"})))\n\n+ \n\n#ECI成本\nsum(sum(label_replace(label_replace(max_over_time(pod_current_price{exported_namespace=~\"$Namespace\"}[$__interval]), \"namespace\", \"$1\", \"exported_namespace\", \"(.*)\"), \"pod\", \"$1\", \"exported_pod\", \"(.*)\")) by (pod) * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod) \n\n+\n\n# GPU节点\nsum(max(node_current_price) by (node) * on (node) group_right label_replace(label_replace(sum(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,NamespaceName,AllocateMode,PodName) / on(NodeName) group_left sum(max_over_time(DCGM_CUSTOM_DEV_FB_TOTAL{}[29s])) by (NodeName)) by (NodeName, PodName), \"node\", \"$1\", \"NodeName\", \"(.*)\"), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(node) group_left kube_node_labels{label_aliyun_accelerator_nvidia_name!=\"\"} * on(pod) group_right max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) or max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * 0 ) by (pod)\n\n)\n\n* on(pod) group_left max(sum_over_time(kube_pod_status_phase{phase=~\"Running\", job=\"_kube-state-metrics\"}[3599s:15s])) by(pod) * 15\n\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval])) by (replicaset) \n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod))",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "Estimated Cost (Per Hour)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "avg(\n\nsum(max(node_current_price) by (node) / on (node) group_left max(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"})by(node) * on(node) group_right kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod)\n\n * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n \n / on(pod) sum(kube_pod_container_resource_requests_cpu_cores) by (pod)\n \n \n) * 3600",
+            "interval": "3600",
+            "legendFormat": "Unit price per core hour (Cost Per Core * Hour)",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Apply estimated spending trends",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:395",
+            "decimals": 2,
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:396",
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "decimals": 0,
+        "description": "Trend of up pods's count.",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 8,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "$$hashKey": "object:477",
+            "alias": "Numbers of Pods",
+            "color": "#5794F2"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "count(sum(kube_pod_info{namespace=~\"$Namespace\"})by(pod) * on(pod) group_right max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue})by(pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Number of Pods",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Application Pod Scale Trend",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:484",
+            "decimals": 0,
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:485",
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 26
+        },
+        "id": 6,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests{job=\"_kube-state-metrics\", namespace=~\"$Namespace\", resource=\"cpu\"}) by(pod) * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod) )\n\n# sum(sum(max_over_time(kube_pod_container_resource_requests{job=\"_kube-state-metrics\", namespace=~\"$Namespace\", resource=\"cpu\"}[$__interval])) by(pod) * on(pod) group_right sum(max_over_time(kube_pod_labels{$FormatKeyValue}[$__interval])) by(pod) * on (pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n# * on(pod) group_left max(\n# label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n# or \n# max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n# ) by (pod))",
+            "interval": "300",
+            "legendFormat": "CPU resource requests (Core)",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(rate (container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[1m])) by(pod) * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod))",
+            "interval": "300",
+            "legendFormat": "CPU Usage (Core)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "CPU Requests & Usage Trends",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 26
+        },
+        "id": 4,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(kube_pod_container_resource_requests{job=\"_kube-state-metrics\", namespace=~\"$Namespace\",resource=\"memory\"}) by(pod) * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) \n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n ) / 1024 / 1024 / 1024",
+            "hide": false,
+            "interval": "300",
+            "legendFormat": "Memory resource requests",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"})by(pod) * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n ) / 1024 / 1024 / 1024",
+            "hide": false,
+            "interval": "300",
+            "legendFormat": "Memory usage",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Memory Requests & Usage Trends",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "mbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 26
+        },
+        "id": 60,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum( label_replace(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s]))) by (PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n ) ",
+            "hide": false,
+            "interval": "300",
+            "legendFormat": "GPU memory resource requests (Allocated)",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum( label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\") * on(pod) group_right max(kube_pod_labels{$FormatKeyValue}) by(pod) * on (pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n ) ",
+            "hide": false,
+            "interval": "300",
+            "legendFormat": "GPU memory resource usage (Allocated)",
+            "queryType": "randomWalk",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GPU memory requests & usage trends",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Projected savings:"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 0,
+          "y": 34
+        },
+        "id": 42,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_payAsYouGo_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_payAsYouGo_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all pay-as-you-go expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Projected savings:"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 3,
+          "y": 34
+        },
+        "id": 43,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_payByPeriod_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_payByPeriod_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "C"
+          }
+        ],
+        "title": "Forecast nodes are all annual and monthly expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "$"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Projected savings:"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 34
+        },
+        "id": 44,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_spot_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(\n (sum(node_spot_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n* 3600 <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all Spot Spending",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 6,
+          "x": 9,
+          "y": 34
+        },
+        "id": 41,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(node_current_price) by (node, chargeType) * on(node) group_left\n\nmax((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(pod) group_left sum(kube_pod_container_resource_requests_cpu_cores) by (pod))\n) by (node)\n) by (chargeType)\n* 3600",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "{{chargeType}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(node_current_price) by (node, chargeType) * on(node) group_left\n\nmax((sum(max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod, node)\n\n * on(pod) group_left sum(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n * on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n \n / on(pod) group_left sum(max_over_time(kube_pod_container_resource_requests_cpu_cores[$__interval])) by (pod))\n) by (node)\n) by (chargeType)\n* 3600",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{chargeType}}",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Payment policy statistics of the node where the application resides",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "$/ Hour"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 9,
+          "x": 15,
+          "y": 34
+        },
+        "id": 45,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(node_current_price) by (node, chargeType) * on(node) group_left\n\nmax((sum(max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}[$__interval])) by (pod, node)\n\n * on(pod) group_left sum(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left sum(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n * on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n \n / on(pod) group_left sum(max_over_time(kube_pod_container_resource_requests_cpu_cores[$__interval])) by (pod))\n) by (node)\n) by (chargeType)\n* 3600",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "[node] :{{ node}}-[billing policy] :{{ chargeType}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Hourly cost/payment policy statistics of the node where the application resides",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 0,
+          "y": 39
+        },
+        "id": 46,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_payAsYouGo_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_payAsYouGo_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "C"
+          }
+        ],
+        "title": "Forecast nodes are all pay-as-you-go expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Projected savings:"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 3,
+          "y": 39
+        },
+        "id": 47,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_payByPeriod_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_payByPeriod_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "\n sum(\n (sum(node_payByPeriod_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nmax((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "a",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nmax((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)",
+            "hide": true,
+            "interval": "3600",
+            "legendFormat": "b",
+            "range": true,
+            "refId": "D"
+          }
+        ],
+        "title": "Forecast nodes are all annual and monthly expenses.",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Projected savings:"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 3,
+          "x": 6,
+          "y": 39
+        },
+        "id": 48,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "titleSize": 17,
+            "valueSize": 40
+          },
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_spot_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) > 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Excess:",
+            "range": false,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(\n sum(\n (sum(node_spot_price) by (node) - sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n) \n\n/\n\nsum(\n (sum(node_current_price{}) by (node)) * on(node)\n\nsum((sum(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\",namespace=~\"$Namespace\"}) by (pod, node)\n\n * on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n \n / on(node) group_left sum(kube_node_status_capacity_cpu_cores{job=\"_kube-state-metrics\"}) by (node))\n) by (node)\n)\n) <= 0",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Savings:",
+            "range": false,
+            "refId": "B"
+          }
+        ],
+        "title": "Forecast nodes are all Spot Spending",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Sorted by CPU Request.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "decimals": 3,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*CPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "Core"
+                },
+                {
+                  "id": "noValue",
+                  "value": "Request not configured"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*Memory.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                },
+                {
+                  "id": "noValue",
+                  "value": "Request not configured"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*GPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "mbytes"
+                },
+                {
+                  "id": "noValue",
+                  "value": "No GPU Used"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 44
+        },
+        "id": 50,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "CPU资源请求量Request"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(max_over_time(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}[$__interval])) by (pod, container)) by (pod) * on(pod) max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "# sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n# * on(pod) group_left max(\n# label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n# or \n# max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n# ) by (pod)\n# > 0\nsum(max(max_over_time(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"}[$__interval])) by (pod, container)) by (pod) * on(pod) max(max_over_time(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}[$__interval])) by (pod) * on(pod) group_left max(max_over_time(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}[$__interval])) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(label_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\")) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n* on(pod) group_left max(\n label_replace(max_over_time(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}[$__interval]), \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left max(max_over_time(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}[$__interval]) ) by(replicaset)\n or \n max_over_time(kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}[$__interval])\n ) by (pod)\n > 0",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Pod resource request volume ranking",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "last"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "last"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Value #A (lastNotNull)": "GPU memory resource request Allocated(Request)",
+                "Value #D (last)": "CPU resource request Request",
+                "Value #E (last)": "Memory resource request volume Request",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Sorted by CPU Usage.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*率.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Maximum CPU resource usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "Core"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Maximum Memory Resource Usage"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*GPU.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "noValue",
+                  "value": "No GPU Used"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 44
+        },
+        "id": 52,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "CPU资源利用率(Usage / Request)"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) \n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)\n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (node, pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Pod Resource Usage Ranking-Sorted by CPU Usage",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #B": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #C": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "max"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "max"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Value #A (lastNotNull)": "CPU Resource Utilization (Usage / Request)",
+                "Value #A (mean)": "CPU resource usage",
+                "Value #B (lastNotNull)": "Memory resource utilization (Usage / Request)",
+                "Value #B (mean)": "Memory resource usage",
+                "Value #C (lastNotNull)": "GPU memory usage (Usage / Allocated)",
+                "Value #D (last)": "CPURequest(Cores)",
+                "Value #D (max)": "Maximum CPU resource usage",
+                "Value #E (last)": "MemoryRequest(GiB)",
+                "Value #E (max)": "Maximum Memory Resource Usage",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource_ack}"
+        },
+        "description": "Sort by WasteRate.\nWasteRate = 1 - CPUUtilization\n\nCPUUtilization = CPUUsage / CPURequest\n\nMemroyUtilization = MemoryUsage / MemroyRequest",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": true,
+              "inspect": false
+            },
+            "decimals": 3,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byRegexp",
+                "options": ".*率.*"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 54
+        },
+        "id": 54,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "资源闲置率(Pod未被使用的计算资源占已分配资源的比重)"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "sum(max(container_memory_working_set_bytes{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_memory_bytes{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n \nlabel_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) \n\n/ on(node) group_left \n\nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n\n) by (pod)\n * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "legendFormat": "{{pod}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource_ack}"
+            },
+            "expr": "(\n1 \n\n- \n## 1. CPU 利用率\n(\n sum(max(rate(container_cpu_usage_seconds_total{namespace=~\"$Namespace\", namespace!=\"\",container !=\"\",container!=\"POD\"}[2m])) by (pod, container)) by (pod) / sum(max(kube_pod_container_resource_requests_cpu_cores{job=\"_kube-state-metrics\", namespace=~\"$Namespace\"} > 0) by (pod, container)) by (pod) * on(pod) max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * on(pod) group_left max(kube_pod_status_phase{namespace=~\"$Namespace\", phase=~\"Running\", job=\"_kube-state-metrics\"}) by (pod) \n > 0\n or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0\n)\n\n- \n\n## 2. GPU显存利用率\n\n(\n sum(label_replace(label_replace(sum(floor(max_over_time(DCGM_CUSTOM_PROCESS_MEM_USED{NamespaceName=~\"$Namespace\"}[29s]))) by (NodeName,PodName), \"pod\", \"$1\", \"PodName\", \"(.*)\"), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n* on(pod) group_left max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) \n/ on(node) group_left \nlabel_replace(sum(max_over_time(DCGM_CUSTOM_CONTAINER_MEM_ALLOCATED{NamespaceName=~\"$Namespace\"}[29s])) by (NodeName), \"node\", \"$1\", \"NodeName\", \"(.*)\") \n) by (pod) > 0\n or max(kube_pod_labels{namespace=~\"$Namespace\", $FormatKeyValue}) by (pod) * 0\n)\n) * on(pod) group_left max(\n label_replace(kube_pod_info{job=\"_kube-state-metrics\", created_by_kind=\"ReplicaSet\"}, \"replicaset\", \"$1\", \"created_by_name\", \"(.+)\") * on(replicaset) group_left() max(kube_replicaset_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\",owner_name=~\"$ControllerName\"}) by (replicaset) \n or \n kube_pod_owner{job=\"_kube-state-metrics\", owner_kind=~\"$ControllerType\", owner_name=~\"$ControllerName\"}\n ) by (pod)",
+            "format": "table",
+            "hide": false,
+            "interval": "3600",
+            "legendFormat": "{{pod}}",
+            "refId": "G"
+          }
+        ],
+        "title": "Pod resource idle ranking",
+        "transformations": [
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Time": {
+                  "aggregations": []
+                },
+                "Value #A": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #B": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #C": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #D": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #E": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #F": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Value #G": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "bloom7b1-deepspeed-alpha-custom-serving-67584945c6-827kv": {
+                  "aggregations": [
+                    "lastNotNull"
+                  ],
+                  "operation": "aggregate"
+                },
+                "pod": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "Value #A (lastNotNull)": 3,
+                "Value #C (lastNotNull)": 1,
+                "Value #F (lastNotNull)": 2,
+                "Value #G (lastNotNull)": 4,
+                "pod": 0
+              },
+              "renameByName": {
+                "Value #A (last)": "MaxCPUUsage(Cores)",
+                "Value #A (lastNotNull)": "GPU memory usage (Usage / Allocated)",
+                "Value #B (last)": "MaxMemoryUsage(GiB)",
+                "Value #C (last)": "MaxCPUUtilization",
+                "Value #C (lastNotNull)": "CPU Usage (Usage / Request)",
+                "Value #D (last)": "CPURequest(Cores)",
+                "Value #E (last)": "MemoryRequest(GiB)",
+                "Value #F (last)": "MaxMemoryUtilization",
+                "Value #F (lastNotNull)": "Memory Usage (Usage / Request)",
+                "Value #G (lastNotNull)": "Resource idle rate (the proportion of unused computing resources of the pod to allocated resources)",
+                "pod": "Pod name"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": "5m",
+    "schemaVersion": 40,
+    "tags": [
+      "prometheus"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "uat",
+            "value": "uat"
+          },
+          "description": "",
+          "label": "Selecte Env",
+          "name": "env",
+          "options": [
+            {
+              "selected": true,
+              "text": "uat",
+              "value": "uat"
+            },
+            {
+              "selected": false,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": false,
+              "text": "sit",
+              "value": "sit"
+            }
+          ],
+          "query": "uat,dev,sit",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-uat-hkg-ackcluster",
+            "value": "VTUAY-6Nz"
+          },
+          "hide": 2,
+          "label": "ACK",
+          "name": "datasource_ack",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/^mfc-glprom-${env}-hkg-ackcluster/",
+          "type": "datasource"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "ns-gft-atas-system",
+            "value": "ns-gft-atas-system"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "label_values(kube_pod_info, namespace)",
+          "includeAll": true,
+          "label": "Namespace (Namespace)",
+          "name": "Namespace",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info, namespace)",
+            "refId": "xingji-test-pro-zhangjiakou-20240131_1251182063904492_a37ee8-Namespace-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "$__all",
+            "value": "$__all"
+          },
+          "includeAll": true,
+          "label": "Workload type",
+          "name": "ControllerType",
+          "options": [
+            {
+              "selected": false,
+              "text": "Deployment",
+              "value": "Deployment"
+            },
+            {
+              "selected": false,
+              "text": "StatefulSet",
+              "value": "StatefulSet"
+            },
+            {
+              "selected": false,
+              "text": "DaemonSet",
+              "value": "DaemonSet"
+            },
+            {
+              "selected": false,
+              "text": "Job",
+              "value": "Job"
+            }
+          ],
+          "query": "Deployment : Deployment, StatefulSet : StatefulSet, DaemonSet : DaemonSet, Job : Job",
+          "type": "custom"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "label_values({__name__=~\"kube_(pod|replicaset)_owner\", job=\"_kube-state-metrics\", namespace=~\"$Namespace\", owner_kind=~\"$ControllerType\"}, owner_name)",
+          "includeAll": true,
+          "label": "Workload Name",
+          "name": "ControllerName",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"kube_(pod|replicaset)_owner\", job=\"_kube-state-metrics\", namespace=~\"$Namespace\", owner_kind=~\"$ControllerType\"}, owner_name)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "description": "e.g: app:nginx-1",
+          "label": "Label Pair Filter (LabelSelector)",
+          "name": "LabelSelector",
+          "options": [
+            {
+              "selected": true,
+              "text": "",
+              "value": ""
+            }
+          ],
+          "query": "",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "query_result(label_replace(label_replace(vector(1), \"key_value\", \"$LabelSelector\", \"$LabelSelector\", \".*\"), \"key_value\", \"label_$1\", \"key_value\", \"(.*)[=|:]+(.*)\")) ",
+          "hide": 2,
+          "includeAll": false,
+          "label": "LabelKey",
+          "name": "LabelKey",
+          "options": [],
+          "query": {
+            "query": "query_result(label_replace(label_replace(vector(1), \"key_value\", \"$LabelSelector\", \"$LabelSelector\", \".*\"), \"key_value\", \"label_$1\", \"key_value\", \"(.*)[=|:]+(.*)\")) ",
+            "refId": "xingji-test-pro-zhangjiakou-20240131_1251182063904492_a37ee8-LabelKey-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "/.*key_value=\"(.*)\".*/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "query_result(label_replace(label_replace(vector(1), \"key_value\", \"$LabelSelector\", \"$LabelSelector\", \".*\"), \"key_value\", \"$2\", \"key_value\", \"(.*)[=|:]+(.*)\")) ",
+          "hide": 2,
+          "includeAll": false,
+          "label": "LabelValue",
+          "name": "LabelValue",
+          "options": [],
+          "query": {
+            "query": "query_result(label_replace(label_replace(vector(1), \"key_value\", \"$LabelSelector\", \"$LabelSelector\", \".*\"), \"key_value\", \"$2\", \"key_value\", \"(.*)[=|:]+(.*)\")) ",
+            "refId": "xingji-test-pro-zhangjiakou-20240131_1251182063904492_a37ee8-LabelValue-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "/.*key_value=\"[ ]{0,}(.*)\".*/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource_ack}"
+          },
+          "definition": "query_result(label_replace(vector(1), \"key_value\", \"$LabelKey=~\\\"$LabelValue\\\"\", \"$LabelKey\", \".*\"))",
+          "hide": 2,
+          "includeAll": false,
+          "label": "FormatKeyValue",
+          "name": "FormatKeyValue",
+          "options": [],
+          "query": {
+            "query": "query_result(label_replace(vector(1), \"key_value\", \"$LabelKey=~\\\"$LabelValue\\\"\", \"$LabelKey\", \".*\"))",
+            "refId": "xingji-test-pro-zhangjiakou-20240131_1251182063904492_a37ee8-FormatKeyValue-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": ".*key_value=\"([\\w]+=~[\\w|\\S]+)\".*",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "1",
+            "value": "1"
+          },
+          "includeAll": false,
+          "label": "cost allocation model",
+          "name": "cost_allocation_method",
+          "options": [
+            {
+              "selected": true,
+              "text": "CPU模型",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "内存模型",
+              "value": "0"
+            },
+            {
+              "selected": false,
+              "text": "CPU-内存混合模型（推荐权重）",
+              "value": "-10000"
+            },
+            {
+              "selected": false,
+              "text": "CPU-内存混合模型（自定义权重）",
+              "value": "-1"
+            }
+          ],
+          "query": "CPU模型 : 1, 内存模型 : 0, CPU-内存混合模型（推荐权重） : -10000, CPU-内存混合模型（自定义权重） : -1",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "100",
+            "value": "100"
+          },
+          "description": "Cost allocation model takes effect after \"CPU-memory hybrid model (custom weight)\" is selected",
+          "label": "CPU Weight Setting (%)",
+          "name": "CPUWeight",
+          "options": [
+            {
+              "selected": true,
+              "text": "100",
+              "value": "100"
+            }
+          ],
+          "query": "100",
+          "type": "textbox"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "CS Cost Application",
+    "uid": "5495437431802631-17669917-807-7-7",
+    "version": 8,
+    "weekStart": ""
+  }
+}

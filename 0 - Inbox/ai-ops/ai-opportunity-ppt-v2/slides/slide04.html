@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.slide { overflow: hidden; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; margin-top: 14pt; position: relative; z-index: 2; }
+.proof-card { min-height: 214pt; display: flex; flex-direction: column; justify-content: space-between; }
+.metric-row { display: flex; justify-content: space-between; gap: 8pt; margin-top: 10pt; align-items: stretch; }
+.metric-box { flex: 1; border: 1pt solid var(--border); background: rgba(255,255,255,0.98); padding: 8pt; display: flex; flex-direction: column; justify-content: space-between; min-height: 56pt; }
+.metric-box p { margin: 0; }
+.proof-title { font-family: var(--font-sans-bold); font-size: 13pt; color: var(--accent); line-height: 1.2; }
+.metric-text { font-family: var(--font-sans-bold); line-height: 1.12; letter-spacing: -0.1pt; }
+.metric-text.before { font-size: 13.5pt; color: var(--coral); }
+.metric-text.now { font-size: 13.5pt; color: var(--accent-2); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Live proof</p>
+    <p class="slide-no">04</p>
+  </div>
+  <h1 class="title">This direction is already producing working proof</h1>
+  <p class="subtitle" style="margin-top:8pt; max-width: 500pt;">Two low-cost implementations have already validated the path.</p>
+  <div class="cols">
+    <div class="card proof-card">
+      <div>
+        <p class="small-label accent-label">Live proof 01</p>
+        <p class="proof-title" style="margin-top:6pt;">Pipeline AI L1</p>
+        <ul class="bullets" style="margin-top:10pt;">
+          <li>Pipeline failure triggers RCA automatically.</li>
+          <li>Result is written back into Jenkins build description.</li>
+          <li>First-level diagnosis now lands in under 30 seconds.</li>
+        </ul>
+      </div>
+      <div class="metric-row">
+        <div class="metric-box">
+          <p class="small-label">Before</p>
+          <p class="big-number coral" style="font-size:18pt; margin-top:4pt;">15–60 min</p>
+        </div>
+        <div class="metric-box">
+          <p class="small-label">Now</p>
+          <p class="big-number green" style="font-size:18pt; margin-top:4pt;">&lt; 30 sec</p>
+        </div>
+      </div>
+    </div>
+    <div class="card proof-card highlight">
+      <div>
+        <p class="small-label accent-label">Live proof 02</p>
+        <p class="proof-title" style="margin-top:6pt;">miniops 1.0</p>
+        <ul class="bullets" style="margin-top:10pt;">
+          <li>Release flow is coordinated from one interface.</li>
+          <li>Multiple pipeline steps are no longer kicked off one by one.</li>
+          <li>The team is already using it to simplify day-to-day delivery work.</li>
+        </ul>
+      </div>
+      <div class="metric-row">
+        <div class="metric-box">
+          <p class="small-label">Before</p>
+          <p class="metric-text before" style="margin-top:4pt;">Dozens of repetitive steps</p>
+        </div>
+        <div class="metric-box">
+          <p class="small-label">Now</p>
+          <p class="metric-text now" style="margin-top:4pt;">One key</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

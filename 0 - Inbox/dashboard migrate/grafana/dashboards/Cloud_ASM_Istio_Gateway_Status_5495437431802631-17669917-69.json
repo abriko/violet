@@ -1,0 +1,851 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "cloud-asm-istio-gateway-status",
+    "url": "/d/5495437431802631-17669917-69/cloud-asm-istio-gateway-status",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-14T18:41:09+08:00",
+    "updated": "2026-04-03T15:45:15+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 3,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 30,
+    "folderUid": "global-v2-cn-5495437431802631-ugjfwpzz_",
+    "folderTitle": "mfc-glprom-nprod-ackcluster",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-ugjfwpzz_/mfc-glprom-nprod-ackcluster",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Monitors Kubernetes cluster using Prometheus. Shows overall cluster CPU / Memory / Filesystem usage as well as individual pod, containers, systemd services statistics. Uses cAdvisor metrics only.",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 16,
+    "links": [
+      {
+        "asDropdown": true,
+        "icon": "external link",
+        "tags": [],
+        "targetBlank": true,
+        "title": "K8S-Dashboards",
+        "type": "dashboards"
+      }
+    ],
+    "panels": [
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 7,
+          "x": 0,
+          "y": 0
+        },
+        "id": 39,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# $deployment",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.5.1",
+        "title": "IstioGateway",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 7,
+          "y": 0
+        },
+        "id": 36,
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "count(sum(container_memory_working_set_bytes{pod_name=~\"$Pod\",namespace=\"$namespace\"}) by(pod_name))",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Pod Number",
+        "type": "stat"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "description": "Number of resource definition copies",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 11,
+          "y": 0
+        },
+        "id": 43,
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "avg(kube_deployment_spec_replicas{deployment=\"$deployment\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "spec_replicas",
+        "type": "stat"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "description": "Current memory working set (working set) usage",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 14,
+          "y": 0
+        },
+        "id": 42,
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (container_memory_working_set_bytes{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Pod Mem Used",
+        "type": "stat"
+      },
+      {
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "description": "The default value is 0 if there is no quota.",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 19,
+          "y": 0
+        },
+        "id": 47,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (container_spec_memory_limit_bytes{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"})",
+            "interval": "",
+            "legendFormat": "",
+            "queryType": "randomWalk",
+            "refId": "A"
+          }
+        ],
+        "title": "Pod memory limit ",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "decimals": 3,
+        "description": "Pod memory usage details. Current memory working set (working set) usage, resource-memory resource usage, limit-allocated memory resource quota,",
+        "editable": true,
+        "error": false,
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "hiddenSeries": false,
+        "id": 25,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "paceLength": 10,
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (kube_pod_container_resource_limits_memory_bytes{pod_name=\"$podOne\",namespace=\"$namespace\"})>0",
+            "interval": "",
+            "legendFormat": "limit",
+            "refId": "B"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (kube_pod_container_resource_requests_memory_bytes{pod_name=\"$podOne\",namespace=\"$namespace\"})>0",
+            "interval": "",
+            "legendFormat": "request",
+            "refId": "C"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (container_memory_working_set_bytes{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"}) by (pod_name)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 5,
+            "legendFormat": "{{ pod_name }}",
+            "metric": "container_memory_usage:sort_desc",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Pods memory usage",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "decimals": 3,
+        "description": "Details of pod cpu usage, total amount of pod CPU usage, request-number of cores used by CPU, limit-amount of CPU resources allocated",
+        "editable": true,
+        "error": false,
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "height": "",
+        "hiddenSeries": false,
+        "id": 17,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "paceLength": 10,
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (kube_pod_container_resource_limits_cpu_cores{pod_name=\"$podOne\",namespace=\"$namespace\"})>0",
+            "interval": "",
+            "legendFormat": "limit",
+            "refId": "B"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (kube_pod_container_resource_requests_cpu_cores{pod_name=\"$podOne\",namespace=\"$namespace\"})>0",
+            "interval": "",
+            "legendFormat": "request",
+            "refId": "C"
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"}[1m])) by (pod_name)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 5,
+            "legendFormat": "{{ pod_name }}",
+            "metric": "container_cpu",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Pods CPU usage",
+        "tooltip": {
+          "msResolution": true,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "none",
+            "label": "cores",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+        "decimals": 2,
+        "description": "Container Network Received Data Volume-Container Network Transmitted Data Volume",
+        "editable": true,
+        "error": false,
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "height": "200px",
+        "hiddenSeries": false,
+        "id": 32,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": false,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "paceLength": 10,
+        "percentage": false,
+        "pluginVersion": "11.5.1",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "sum (rate (container_network_receive_bytes_total{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"}[1m])) by (pod_name)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "Received {{pod_name}}",
+            "metric": "network",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+            "expr": "- sum (rate (container_network_transmit_bytes_total{image!=\"\",pod_name=~\"$Pod\",namespace=\"$namespace\"}[1m])) by (pod_name)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "Sent {{pod_name}}",
+            "metric": "network",
+            "refId": "B",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Network I/O pressure",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 0,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "Bps",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "Bps",
+            "logBase": 1,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      }
+    ],
+    "preload": false,
+    "refresh": "5s",
+    "schemaVersion": 40,
+    "tags": [
+      "IstioGateway",
+      "ASM",
+      "prometheus"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "dev",
+            "value": "dev"
+          },
+          "description": "",
+          "label": "Selecte Env",
+          "name": "evn",
+          "options": [
+            {
+              "selected": true,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": true,
+              "text": "dev",
+              "value": "dev"
+            },
+            {
+              "selected": false,
+              "text": "sit",
+              "value": "sit"
+            }
+          ],
+          "query": "dev,dev,sit",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+          "definition": "label_values(kube_pod_info{namespace=\"istio-system\"}, namespace)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "namespace",
+          "name": "namespace",
+          "options": [],
+          "query": "label_values(kube_pod_info{namespace=\"istio-system\"}, namespace)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+          "definition": "query_result(sum(istio_requests_total{reporter=\"source\",source_workload_namespace='$namespace'}) by (source_app))",
+          "includeAll": false,
+          "label": "ASM_Gateway_Name",
+          "name": "deployment",
+          "options": [],
+          "query": "query_result(sum(istio_requests_total{reporter=\"source\",source_workload_namespace='$namespace'}) by (source_app))",
+          "refresh": 2,
+          "regex": "/.*app=\"([^\"]*).*/",
+          "type": "query"
+        },
+        {
+          "allValue": "$deployment-[^-]+-[^-]+$",
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+          "definition": "label_values(kube_pod_info{namespace=~'$namespace',pod=~\"$deployment-[^-]+-[^-]+$\"} ,pod_name)",
+          "includeAll": true,
+          "label": "Pod",
+          "multi": true,
+          "name": "Pod",
+          "options": [],
+          "query": "label_values(kube_pod_info{namespace=~'$namespace',pod=~\"$deployment-[^-]+-[^-]+$\"} ,pod_name)",
+          "refresh": 2,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "datasource": "mfc-glprom-dev-hkg-ackcluster-01_5495437431802631_b763f4",
+          "definition": "query_result(kube_pod_info{namespace=~'$namespace',pod =~\"$Pod\",pod=~\"$deployment-[^-]+-[^-]+$\"} >0)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "podOne",
+          "name": "podOne",
+          "options": [],
+          "query": "query_result(kube_pod_info{namespace=~'$namespace',pod =~\"$Pod\",pod=~\"$deployment-[^-]+-[^-]+$\"} >0)",
+          "refresh": 1,
+          "regex": "/.*pod=\"(.*)\",pod_ip.*/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": 2,
+          "label": "datasource",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/mfc-glprom-${env}-hkg-ackcluster.*/",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-5m",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Cloud ASM Istio Gateway Status",
+    "uid": "5495437431802631-17669917-69",
+    "version": 3,
+    "weekStart": ""
+  }
+}

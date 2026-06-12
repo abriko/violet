@@ -1,0 +1,3666 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "alb",
+    "url": "/d/5328-18fd57-cmee-alb-overview/alb",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-11-25T14:11:32+08:00",
+    "updated": "2025-12-03T16:14:14+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "liwang_adm@mfcgcr.com",
+    "version": 138,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 49,
+    "folderUid": "df555aqrx83cwe",
+    "folderTitle": "Dashbord-Incubation",
+    "folderUrl": "/dashboards/f/df555aqrx83cwe/dashbord-incubation",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 51,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Alb-Resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-QPS"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "cps"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigwRate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigw-qps"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "c/s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gw-resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 57,
+        "options": {
+          "infinitePan": false,
+          "inlineEditing": true,
+          "panZoom": false,
+          "root": {
+            "background": {
+              "color": {
+                "fixed": "transparent"
+              }
+            },
+            "border": {
+              "color": {
+                "fixed": "dark-green"
+              }
+            },
+            "constraint": {
+              "horizontal": "left",
+              "vertical": "top"
+            },
+            "elements": [
+              {
+                "background": {
+                  "color": {
+                    "field": "http-200",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Alb-Resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.985809326171875,
+                  "left": 414,
+                  "top": 25,
+                  "width": 74.98579406738281
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "apigw-qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "apigw-qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "api-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 202,
+                  "top": 157,
+                  "width": 70.96590423583984
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "apigwRate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 26,
+                  "text": {
+                    "field": "apigwRate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "apigw-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 652,
+                  "top": 157,
+                  "width": 93.96306610107422
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "fill": {
+                    "fixed": "#D9D9D9"
+                  },
+                  "path": {
+                    "fixed": "img/icons/unicons/add-user.svg",
+                    "mode": "fixed"
+                  }
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "User",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 41.9886360168457,
+                  "left": 12,
+                  "top": 89,
+                  "width": 54.95738220214844
+                },
+                "type": "icon"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb5xx",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 664,
+                  "top": 25,
+                  "width": 70
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-qps-valu",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 202,
+                  "top": 25,
+                  "width": 76.9602279663086
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.985809326171875,
+                  "left": 88,
+                  "top": 25,
+                  "width": 99.98579406738281
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb-Resp ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-Resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.985809326171875,
+                  "left": 314,
+                  "top": 25,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 88,
+                  "top": 157,
+                  "width": 99.99999237060547
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW-Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-Resq",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 314,
+                  "top": 157,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "GW Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "GW Suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 555,
+                  "top": 157,
+                  "width": 90.99431610107422
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Alb Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 548,
+                  "top": 25,
+                  "width": 90.99431610107422
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 20,
+                  "text": {
+                    "field": "gw-resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "gw-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 414,
+                  "top": 157,
+                  "width": 66.98866271972656
+                },
+                "type": "metric-value"
+              }
+            ],
+            "name": "Element 1764124104531",
+            "oneClickMode": "off",
+            "placement": {
+              "height": 100,
+              "left": 0,
+              "rotation": 0,
+              "top": 0,
+              "width": 100
+            },
+            "type": "frame"
+          },
+          "showAdvancedTypes": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}[5m]))+1",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-QPS",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}[5m]))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "legendFormat": "Alb-Resp",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyClusterQps{promInstanceId=\"$PromInstanceId\"}[5m]))+1",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigw-qps",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyDownstreamSuccessRate{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigwRate",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "\r\nsum(AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"})\r\n/\r\nsum(\r\n AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\n)\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-rate",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyApiRtAvg{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "gw-resp",
+            "range": true,
+            "refId": "F"
+          }
+        ],
+        "title": "ALB-->APIGW",
+        "type": "canvas"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "blue",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "id": 65,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 1,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "always",
+          "stacking": "normal",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 200
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}",
+            "interval": "5m",
+            "legendFormat": "QPS",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB QPS (Count/s)",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "id": 64,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}",
+            "legendFormat": "Http-4XX",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "Http-5XX",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "ALB-HTTP 4xx & 5xx Status Code (Count/s)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "负载均衡实例后端应答时间(ms)",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "id": 67,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}",
+            "legendFormat": "time",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Backend Response Time (milliseconds)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "{__name__=\"AliyunCnapigateway_EnvoyOperationQps\", apiEnv=\"_reserved_\", apiName=\"hk-ado-jarvis\", apiOperation=\"hk-ado-jarvis-generic-service\", apiVersion=\"_origin_\", app=\"cmee-exporter\", chargeType=\"POSTPAY\", id=\"gw-d2con4em1hkjpsjthh2g\", instanceId=\"gw-d2con4em1hkjpsjthh2g\", instanceName=\"mfc-apigw-nprod-hkg-uat-01\", job=\"cmee-exporter-pods\", measure=\"EnvoyOperationQps\", measure_desc=\"网关Operation QPS Unit:count/s\", namespace=\"env-cloud-cn-hongkong-5382339173871454\", period=\"60\", product=\"cnapigateway\", promEnvId=\"env-cloud-cn-hongkong-5382339173871454\", promInstanceId=\"rw-83f8a21d40da8b5c4dffe50b6ac5\", regionId=\"cn-hongkong\", service=\"cnapigateway\", spec=\"apigw.small.x2\", status=\"Running\", unique_cluster_account=\"Resource_MFC-AL-HKShareSvc-HKCOMMON-UAT\", unique_cluster_id=\"rw-83f8a21d40da8b5c4dffe50b6ac5\", unique_cluster_name=\"云服务-cn-hongkong\", unique_cluster_region=\"cn-hongkong\", userId=\"5382339173871454\"}"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 12,
+          "y": 5
+        },
+        "id": 66,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyOperationQps{apiOperation=~\"$ASMSVC\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "APIGW Operation QPS",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 16,
+          "y": 5
+        },
+        "id": 69,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyDownstreamSuccessRate",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW ",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "网关Operation请求平均时延",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "{__name__=\"AliyunCnapigateway_EnvoyOperationRtAvg\", apiEnv=\"_reserved_\", apiName=\"Jarvis\", apiOperation=\"hk-ado-jarvis-generic-service\", apiVersion=\"_origin_\", app=\"cmee-exporter\", chargeType=\"POSTPAY\", id=\"gw-d1lpk8em1hkkokf93r40\", instanceId=\"gw-d1lpk8em1hkkokf93r40\", instanceName=\"mfc-apigw-nprod-hkg-dev-01\", job=\"cmee-exporter-pods\", measure=\"EnvoyOperationRtAvg\", measure_desc=\"网关Operation请求平均时延 Unit:ms\", namespace=\"env-cloud-cn-hongkong-5952831470055230\", period=\"60\", product=\"cnapigateway\", promEnvId=\"env-cloud-cn-hongkong-5952831470055230\", promInstanceId=\"rw-b2336b29445cb338f8201822a7b7\", regionId=\"cn-hongkong\", service=\"cnapigateway\", spec=\"apigw.small.x1\", status=\"Running\", unique_cluster_account=\"Resource_MFC-AL-HKShareSvc-HKCOMMON-NonProd\", unique_cluster_id=\"rw-b2336b29445cb338f8201822a7b7\", unique_cluster_name=\"Cloud Services-cn-hongkong\", unique_cluster_region=\"cn-hongkong\", userId=\"5952831470055230\"}"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 5
+        },
+        "id": 68,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyOperationRtAvg{apiOperation=~\"$ASMSVC\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Average latency of gateway operation requests",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Alb-Resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-QPS"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "cps"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigwRate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigw-qps"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "c/s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gw-resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 71,
+        "options": {
+          "infinitePan": false,
+          "inlineEditing": true,
+          "panZoom": false,
+          "root": {
+            "background": {
+              "color": {
+                "fixed": "transparent"
+              }
+            },
+            "border": {
+              "color": {
+                "fixed": "dark-green"
+              }
+            },
+            "constraint": {
+              "horizontal": "left",
+              "vertical": "top"
+            },
+            "elements": [
+              {
+                "background": {
+                  "color": {
+                    "field": "asm resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "asm resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 426,
+                  "top": 6,
+                  "width": 74.98579406738281
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ack qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "api-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 221,
+                  "top": 95,
+                  "width": 70.98011016845703
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 26,
+                  "text": {
+                    "field": "ack rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "apigw-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 626,
+                  "top": 95,
+                  "width": 93.96306610107422
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "asm rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "asm rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 623,
+                  "top": 6,
+                  "width": 70
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Asm QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Asm QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-qps-valu",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 221,
+                  "top": 6,
+                  "width": 76.98863220214844
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 126,
+                  "top": 6,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm Resp ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb-Resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 326,
+                  "top": 6,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 126,
+                  "top": 95,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Apigw-Resq",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 298,
+                  "top": 95,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "ACK rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "GW Suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 526,
+                  "top": 95,
+                  "width": 90.99431610107422
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Asm Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Alb suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 536,
+                  "top": 6,
+                  "width": 90.99431610107422
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ack resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 20,
+                  "text": {
+                    "field": "ack resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "gw-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 420,
+                  "top": 95,
+                  "width": 86.96019744873047
+                },
+                "type": "metric-value"
+              }
+            ],
+            "name": "Element 1764124104531",
+            "oneClickMode": "off",
+            "placement": {
+              "height": 100,
+              "left": 0,
+              "rotation": 0,
+              "top": 0,
+              "width": 100
+            },
+            "type": "frame"
+          },
+          "showAdvancedTypes": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "round(sum(irate(istio_requests_total{reporter=~\"source\",app=~\"$ASMSVC\"}[5m])))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "legendFormat": "Asm QPS",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "(sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le) / 1000) or sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le)",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "asm resp",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\",response_code=~\"2..\"}[5m])/sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m])",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "asm rate",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum(irate(apiserver_request_total{subresource !~ \".*/healthz$|/livez$|/readyz$\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "ack qps",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "avg (sum by (verb) (irate(apiserver_request_duration_seconds_bucket{verb!~\"WATCH|CONNECT\",resource!=\"\",subresource!~\".*/healthz$|/livez$|/readyz$\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "ack resp",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum(irate(apiserver_request_total{code=~\"20.*\",verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))/sum(irate(apiserver_request_total{verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "ack rate",
+            "range": true,
+            "refId": "F"
+          }
+        ],
+        "title": "ASM-->ACK",
+        "type": "canvas"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 12,
+          "y": 10
+        },
+        "id": 62,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (destination_app)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",destination_app=~\"$ASMSVC\"}[$__range]))",
+            "interval": "5m",
+            "legendFormat": "{{ASMSVC}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM-QPS",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-GCRYa6Hk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "200"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 16,
+          "y": 10
+        },
+        "id": 63,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-GCRYa6Hk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (response_code)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",destination_app=~\"$ASMSVC\"}[$__range]))",
+            "interval": "5m",
+            "legendFormat": "{{ASMSVC}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM-http",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "semi-dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 10
+        },
+        "id": 70,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "fullHighlight": false,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "auto",
+          "stacking": "none",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 200
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (callType) (arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})/sum by (callType) (arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})",
+            "interval": "5m",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Panel Title",
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Alb-Resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-QPS"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "cps"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigwRate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigw-qps"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "c/s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gw-resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app duration"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "max",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 0,
+          "y": 15
+        },
+        "id": 72,
+        "options": {
+          "infinitePan": false,
+          "inlineEditing": true,
+          "panZoom": false,
+          "root": {
+            "background": {
+              "color": {
+                "fixed": "transparent"
+              }
+            },
+            "border": {
+              "color": {
+                "fixed": "dark-green"
+              }
+            },
+            "constraint": {
+              "horizontal": "left",
+              "vertical": "top"
+            },
+            "elements": [
+              {
+                "background": {
+                  "color": {
+                    "field": "app duration",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app duration",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 435,
+                  "top": 8,
+                  "width": 74.98579406738281
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "app rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 636,
+                  "top": 8,
+                  "width": 70
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "app qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "#000000"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "app qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-qps-valu",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 230,
+                  "top": 8,
+                  "width": 76.98863220214844
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App QPS ："
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App QPS",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 135,
+                  "top": 8,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App Resp :"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App Resq",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 328,
+                  "top": 8,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "App Suc rate:"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "App suc rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 49.98579406738281,
+                  "left": 545,
+                  "top": 8,
+                  "width": 90.99431610107422
+                },
+                "type": "text"
+              }
+            ],
+            "name": "Element 1764124104531",
+            "oneClickMode": "off",
+            "placement": {
+              "height": 100,
+              "left": 0,
+              "rotation": 0,
+              "top": 0,
+              "width": 100
+            },
+            "type": "frame"
+          },
+          "showAdvancedTypes": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_count_raw{service=~\"$Service\",rpc!~\".*/liveness$\",}[50m])) or vector(0)",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "app qps",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"$Service\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\",}[$__range]))/sum(sum_over_time_lorc(arms_app_requests_count_raw{service=\"$Service\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\"}[$__range])) or vector(0)",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "app duration",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by()(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"$Service\",rpc!~\".*/liveness$\"}[30m]))/sum by()(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",app=\"$Service\",rpc!~\".*/liveness$\"}[30m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "app rate",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "App",
+        "type": "canvas"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 12,
+          "y": 15
+        },
+        "id": 59,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_count_raw{service=~\"$Service\",service!=\"\",rpc!~\".*/liveness$\",}[5m])) or vector(0)",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "legendFormat": "{{service}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "APP RPS/5min",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "hk-ado-jarvis-ai-service-dev",
+              "mode": "outer"
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 16,
+          "y": 15
+        },
+        "id": 60,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum by(status) (sum_over_time_lorc(arms_requests_by_status_count_raw{source=\"apm\",status=~\"4..|5..\",app=\"$Service\"}[$__range])) or vector(0)",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "{{status}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "4xx/5xx",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "hk-ado-jarvis-ai-service-dev",
+              "mode": "outer"
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 20,
+          "y": 15
+        },
+        "id": 61,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "repeat": "Service",
+        "repeatDirection": "h",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(sum(sum_over_time_lorc(arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{pid=\"$Pid\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server|consumer|schedule\",source=\"apm\", }[$__range]))/sum(sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{pid=\"$Pid\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server|consumer|schedule\",source=\"apm\", }[$__range]))) or vector(0)",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "Time",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Average Duration",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "Value",
+              "mode": "outer"
+            }
+          }
+        ],
+        "type": "timeseries"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "cmee",
+      "alb",
+      "scene:middleware",
+      "addon:name:cloud-alb",
+      "addon:version:0.0.3",
+      "env:Cloud",
+      "env:type:Cloud",
+      "dashboard:name:cmee-alb-overview"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "cn-hongkong",
+            "value": "cn-hongkong"
+          },
+          "hide": 2,
+          "name": "regionId",
+          "options": [
+            {
+              "selected": true,
+              "text": "cn-hongkong",
+              "value": "cn-hongkong"
+            }
+          ],
+          "query": "cn-hongkong",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "ns-hkg-agent-system",
+            "value": "ns-hkg-agent-system"
+          },
+          "label": "ProjectName",
+          "name": "NameSpace",
+          "options": [
+            {
+              "selected": true,
+              "text": "Jarvis",
+              "value": "ns-hkg-agent-system"
+            },
+            {
+              "selected": false,
+              "text": "ODS",
+              "value": "ns-hkg-ods-system"
+            },
+            {
+              "selected": false,
+              "text": "ATAS",
+              "value": "ns-gft-atas-system"
+            },
+            {
+              "selected": false,
+              "text": "DCS",
+              "value": "ns-hkg-dcs-system"
+            }
+          ],
+          "query": "Jarvis : ns-hkg-agent-system, ODS : ns-hkg-ods-system,ATAS : ns-gft-atas-system,DCS : ns-hkg-dcs-system,",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "hk-ado-jarvis-ai-service-dev",
+            "value": "hk-ado-jarvis-ai-service-dev"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+          "includeAll": true,
+          "label": "AppName",
+          "name": "Service",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(?!.*(?:demo|test|gateway)).*$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "alb-rasnz2xy1g4s0hgih4",
+            "value": "alb-rasnz2xy1g4s0hgih4"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mfc-glprom-nprd-hkg-cloudservice"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+          "includeAll": false,
+          "name": "loadBalancerId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regex": "/alb-rasnz2xy1g4s0hgih4/",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mfc-glprom-nprd-hkg-cloudservice"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerProtocol",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+            "refId": "${datasource}-listenerProtocol-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mfc-glprom-nprd-hkg-cloudservice"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerPort",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+            "refId": "${datasource}-listenerPort-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mfc-glprom-nprd-hkg-cloudservice"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "ruleId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+            "refId": "${datasource}-ruleId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mfc-glprom-nprd-hkg-cloudservice"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "serverGroupId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+            "refId": "${datasource}-serverGroupId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/^prom-rw-d446eea044878595b90a806d83e4/",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": "istio-ingressgateway",
+            "value": "istio-ingressgateway"
+          },
+          "hide": 2,
+          "label": "asm_gateway_name",
+          "name": "asm_gateway_name",
+          "options": [
+            {
+              "selected": true,
+              "text": "istio-ingressgateway",
+              "value": "istio-ingressgateway"
+            }
+          ],
+          "query": "istio-ingressgateway",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "1mm3p0vpt8e@f4d5e0b549a258a",
+            "value": "1mm3p0vpt8e@f4d5e0b549a258a"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+          "description": "",
+          "hide": 2,
+          "label": "pid",
+          "name": "Pid",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "hk-ado-jarvis-ai-service",
+            "value": "hk-ado-jarvis-ai-service"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+          "hide": 2,
+          "label": "asmavc",
+          "name": "ASMSVC",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(.*?)(?:-dev|-uat)$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|server",
+            "value": "http|rpc|consumer|custom_entry|server"
+          },
+          "hide": 2,
+          "label": "incallKind",
+          "name": "incallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|server",
+              "value": "http|rpc|consumer|custom_entry|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|server",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+            "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+          },
+          "hide": 2,
+          "label": "outcallKind",
+          "name": "outcallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+              "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+            }
+          ],
+          "query": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|schedule|server",
+            "value": "http|rpc|consumer|custom_entry|schedule|server"
+          },
+          "hide": 2,
+          "label": "fullIncallKinds",
+          "name": "fullIncallKinds",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|schedule|server",
+              "value": "http|rpc|consumer|custom_entry|schedule|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|schedule|server",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "rw-b2336b29445cb338f8201822a7b7",
+            "value": "rw-b2336b29445cb338f8201822a7b7"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+          "description": "",
+          "hide": 2,
+          "label": "promInstanceId",
+          "name": "PromInstanceId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "ALB",
+    "uid": "5328-18fd57-cmee-alb-overview",
+    "version": 138,
+    "weekStart": ""
+  }
+}

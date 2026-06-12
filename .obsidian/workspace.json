@@ -1,0 +1,281 @@
+{
+  "main": {
+    "id": "0e9ba358cea6bcf6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a76e7e4c505b3126",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16b64573ac59e3af",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/Kanban-main/!dea 💡.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "!dea 💡"
+            }
+          },
+          {
+            "id": "0af572b15f1a905f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "0 - Inbox/Main.base",
+                "viewName": "Kanban"
+              },
+              "pinned": true,
+              "icon": "columns",
+              "title": "Main"
+            }
+          },
+          {
+            "id": "f2b1b3a4ed2865ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/Kanban-main/!dea 💡.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "!dea 💡"
+            }
+          },
+          {
+            "id": "4a885d7ce7838f67",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/ai-ops/aiops-blueprint.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "aiops-blueprint"
+            }
+          },
+          {
+            "id": "a00e05ffe0b90f93",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/Kanban-main/MTP pipeline.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MTP pipeline"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "54e99ba334adb4cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "f581331ce44cd91a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e34587b1f895d1af",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "902661f774b5047f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 235.5
+  },
+  "right": {
+    "id": "4847b22a05ce3268",
+    "type": "split",
+    "children": [
+      {
+        "id": "f4b67154f8af9877",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e77fa54c86e5340",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "0 - Inbox/Main.base",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Main"
+            }
+          },
+          {
+            "id": "ea9727e18d558ed9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "0 - Inbox/ai-ops/deployment-agent-requirements.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for deployment-agent-requirements"
+            }
+          },
+          {
+            "id": "812821387217a396",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "0 - Inbox/ai-ops/deployment-agent-requirements.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from deployment-agent-requirements"
+            }
+          },
+          {
+            "id": "8bfcc6e0c747ddf5",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "61de78bf63cad758",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 232.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-excalidraw-plugin:New drawing": true,
+      "bases:Create new base": true,
+      "graph:Open graph view": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
+      "workspaces:Manage workspace layouts": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "e34587b1f895d1af",
+  "lastOpenFiles": [
+    "9 - Plugins/auto/cleanup-git-logs",
+    "9 - Plugins/auto",
+    "0 - Inbox/Main.base",
+    "0 - Inbox/ai-ops/aiops-blueprint.md",
+    "4 - Resources/AliCloud/阿里云资源命名规范-对比报告.md",
+    "4 - Resources/AliCloud",
+    "0 - Inbox/Kanban-main/!dea 💡.md",
+    "0 - Inbox/Kanban-main/Copilot Studio.md",
+    "0 - Inbox/Kanban-main/PIpeline AI.md",
+    "0 - Inbox/Kanban-main/AliCoud 梳理.md",
+    "0 - Inbox/Kanban-main/ACK upgrade.md",
+    "0 - Inbox/Kanban-main/ASM upgrade.md",
+    "0 - Inbox/ai-ops/deployment-agent-requirements.md",
+    "fetch_compare_confluence.py",
+    "0 - Inbox/ai-ops/deployment-agent-mvp-technical-review.md",
+    "4 - Resources/AI/Copilot Studio/answer-quality.md",
+    "0 - Inbox/Kanban-main/MTP pipeline.md",
+    "0 - Inbox/ai-ops/Drawing 2026-06-10 12.43.26.excalidraw.md",
+    "0 - Inbox/ai-ops/Deployment parts alignment.md",
+    "update_confluence_page.py",
+    "9 - Assets/Others/SCR-20260610-pkjy.png",
+    "9 - Assets/Others/SCR-20260610-jact.png",
+    "9 - Assets/Others/SCR-20260610-iztw.png",
+    "9 - Assets/Others/SCR-20260610-izpm.png",
+    "0 - Inbox/ai-ops/agent-migrate.md",
+    "0 - Inbox/Kanban-main/Service Catalog.md",
+    "0 - Inbox/Kanban-main/Grafana dashboard.md",
+    "0 - Inbox/dashboard migrate/after-migration.md",
+    "0 - Inbox/dashboard migrate/README.md",
+    "0 - Inbox/dashboard migrate/migration-plan.md",
+    "4 - Resources/AI/Copilot Studio/rovo-migrate/rovo.md",
+    "0 - Inbox/ai-ops/assets/5-design-principles.png",
+    "4 - Resources/DevOps/MiniOps/miniops_wiki_20260531_082445.md",
+    "4 - Resources/DevOps/MiniOps/miniops-web-app_wiki_20260531_083910.md",
+    "4 - Resources/DevOps/MiniOps",
+    "0 - Inbox/2.md",
+    "4 - Resources/DevOps/Service Catalog/Copy of AliCloud_Service_Request.xlsx",
+    "4 - Resources/DevOps/Service Catalog",
+    "4 - Resources/DevOps",
+    "4 - Resources/AI/Copilot Studio",
+    "0 - Inbox/ai-ops/agent-migrate/Untitled.md",
+    "9 - Assets/Others/snow-service-account.png",
+    "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/pain-point.png",
+    "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/aiops-architecture.excalidraw.png",
+    "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/5-design-principles.png",
+    "9 - Assets/Others/Pasted image 20260511130747.png",
+    "9 - Plugins/skills/axton-obsidian-visual-skills/obsidian-canvas-creator/assets/template-freeform-grouped.canvas",
+    "9 - Plugins/skills/axton-obsidian-visual-skills/obsidian-canvas-creator/assets/template-mindmap-simple.canvas"
+  ]
+}

@@ -1,0 +1,2400 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "09e233b",
+    "url": "/d/5952-055230-cmee-redis-community-cluster/09e233b",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-03-31T16:41:11+08:00",
+    "updated": "2026-04-01T11:14:58+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 84,
+    "folderUid": "bfhn1wwtcqfb4d",
+    "folderTitle": "DB ALL",
+    "folderUrl": "/dashboards/f/bfhn1wwtcqfb4d/db-all",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 103,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 41,
+        "interval": "60",
+        "options": {
+          "displayMode": "lcd",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "namePlacement": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {},
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "count(count by (instanceId) (AliyunKvstore_ShardingProxyCpuUsage))",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of Proxy instances ",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "count by (userId) (AliyunKvstore_ShardingProxyCpuUsage)",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of Proxy nodes ",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "count(count by (instanceId) (AliyunKvstore_ShardingCpuUsage))",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Number of Node instances",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "count by (userId) (AliyunKvstore_ShardingProxyCpuUsage)",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "Node Number of nodes ",
+            "refId": "D"
+          }
+        ],
+        "title": "Node resource allocation overview",
+        "type": "bargauge"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 6
+        },
+        "id": 37,
+        "panels": [],
+        "title": "Proxy monitoring indicators-Top$Top_Number",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 70
+                },
+                {
+                  "color": "red",
+                  "value": 85
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Utilization"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 357
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "regionId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 105
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Node ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 235
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Instance ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 179
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Instance Name"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 212
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 7
+        },
+        "id": 8,
+        "interval": "60",
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Usage rate"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingProxyCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Proxy-CPU usage (%)-Top$Top_Number",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "__name__": true,
+                "instanceId": true,
+                "rmgroup_id": true,
+                "rmgroup_name": true,
+                "tag_cloudmonitor_group": true,
+                "tag_cloudmonitorappgroup": true,
+                "tag_cmsgroup": true,
+                "tag_owner": true,
+                "userId": true
+              },
+              "indexByName": {},
+              "renameByName": {
+                "Value": "Utilization",
+                "desc": "Instance name",
+                "instanceId": "Instance ID",
+                "nodeId": "Node ID",
+                "regionId": ""
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 25000
+                },
+                {
+                  "color": "red",
+                  "value": 50000
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 7
+        },
+        "id": 12,
+        "interval": "60",
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {},
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingProxyTotalQps{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Proxy-Total QPS (pcs)-Top$Top_Number",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 14
+        },
+        "id": 10,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {},
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingProxyAvgRt{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Proxy-Average response time (us)-Top$Top_Number",
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 14
+        },
+        "id": 13,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {},
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingProxyIntranetIn{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Proxy-Inbound traffic rate (bits/s)-Top$Top_Number",
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 14
+        },
+        "id": 25,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {},
+          "valueMode": "color"
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingProxyIntranetOut{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Proxy-Outbound traffic rate (bits/s)-Top$Top_Number",
+        "type": "bargauge"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 35,
+        "panels": [],
+        "title": "Node monitoring indicators-Top$Top_Number",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 70
+                },
+                {
+                  "color": "red",
+                  "value": 85
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Usage rate"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 347
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "regionId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 105
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Node ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 234
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Instance ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 179
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Instance Name"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 214
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 0,
+          "y": 22
+        },
+        "id": 26,
+        "interval": "60",
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Usage rate"
+            }
+          ]
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Node-CPU usage (%)-Top$Top_Number",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "__name__": true,
+                "instanceId": true,
+                "rmgroup_id": true,
+                "rmgroup_name": true,
+                "tag_cloudmonitor_group": true,
+                "tag_cloudmonitorappgroup": true,
+                "tag_cmsgroup": true,
+                "tag_owner": true,
+                "userId": true
+              },
+              "indexByName": {},
+              "renameByName": {
+                "Value": "Utilization",
+                "desc": "Instance name",
+                "instanceId": "Instance ID",
+                "nodeId": "Node ID",
+                "regionId": ""
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 60
+                },
+                {
+                  "color": "red",
+                  "value": 75
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 12,
+          "y": 22
+        },
+        "id": 3,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingMemoryUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Node-Memory usage (%)-Top$Top_Number",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 28
+        },
+        "id": 4,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingAvgRt{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": " Node-Average response time (us)-Top$Top_Number",
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 28
+        },
+        "id": 28,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingMaxRt{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Node-Maximum response time (us)-Top$Top_Number",
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 28
+        },
+        "id": 6,
+        "interval": "60",
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingQPSUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "node-QPS usage (%)-Top$Top_Number",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "red",
+                  "value": 75
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "regionId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 102
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inbound bandwidth (KByte/s)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green"
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 51200
+                      },
+                      {
+                        "color": "red",
+                        "value": 102400
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 162
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inbound bandwidth usage (%)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green"
+                      },
+                      {
+                        "color": "orange",
+                        "value": 60
+                      },
+                      {
+                        "color": "red",
+                        "value": 75
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 168
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "desc"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 0,
+          "y": 35
+        },
+        "id": 31,
+        "interval": "60",
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingIntranetIn{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingIntranetInRatio{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "B"
+          }
+        ],
+        "title": "Node-Data node inflow bandwidth-Top$Top_Number",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "nodeId"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time 1": true,
+                "Time 2": true,
+                "__name__ 1": true,
+                "__name__ 2": true,
+                "desc 1": false,
+                "desc 2": true,
+                "instanceId 1": false,
+                "instanceId 2": true,
+                "regionId 2": true,
+                "rmgroup_id 1": true,
+                "rmgroup_id 2": true,
+                "rmgroup_name 1": true,
+                "rmgroup_name 2": true,
+                "tag_cloudmonitor_group 1": true,
+                "tag_cloudmonitor_group 2": true,
+                "tag_cloudmonitorappgroup 1": true,
+                "tag_cloudmonitorappgroup 2": true,
+                "tag_cmsgroup 1": true,
+                "tag_cmsgroup 2": true,
+                "tag_owner 1": true,
+                "tag_owner 2": true,
+                "userId 1": true,
+                "userId 2": true
+              },
+              "indexByName": {
+                "Time 1": 3,
+                "Time 2": 14,
+                "Value #A": 13,
+                "Value #B": 26,
+                "__name__ 1": 4,
+                "__name__ 2": 15,
+                "desc 1": 0,
+                "desc 2": 16,
+                "instanceId 1": 1,
+                "instanceId 2": 17,
+                "nodeId": 2,
+                "regionId 1": 5,
+                "regionId 2": 18,
+                "rmgroup_id 1": 6,
+                "rmgroup_id 2": 19,
+                "rmgroup_name 1": 7,
+                "rmgroup_name 2": 20,
+                "tag_cloudmonitor_group 1": 8,
+                "tag_cloudmonitor_group 2": 21,
+                "tag_cloudmonitorappgroup 1": 9,
+                "tag_cloudmonitorappgroup 2": 22,
+                "tag_cmsgroup 1": 10,
+                "tag_cmsgroup 2": 23,
+                "tag_owner 1": 11,
+                "tag_owner 2": 24,
+                "userId 1": 12,
+                "userId 2": 25
+              },
+              "renameByName": {
+                "Value #A": "Inbound bandwidth (KByte/s)",
+                "Value #B": "Inbound bandwidth utilization (%)"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "red",
+                  "value": 75
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "regionId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 94
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inbound bandwidth (KByte/s)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green"
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 51200
+                      },
+                      {
+                        "color": "red",
+                        "value": 102400
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 168
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inbound bandwidth usage (%)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "mode": "gradient",
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green"
+                      },
+                      {
+                        "color": "orange",
+                        "value": 60
+                      },
+                      {
+                        "color": "red",
+                        "value": 75
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 181
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 12,
+          "x": 12,
+          "y": 35
+        },
+        "id": 33,
+        "interval": "60",
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingIntranetOut{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "topk($Top_Number, AliyunKvstore_ShardingIntranetOutRatio{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"})",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "{{desc}}.{{nodeId}}",
+            "refId": "B"
+          }
+        ],
+        "title": "Node-Data node outflow bandwidth-Top$Top_Number",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "nodeId"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time 1": true,
+                "Time 2": true,
+                "__name__ 1": true,
+                "__name__ 2": true,
+                "desc 1": false,
+                "desc 2": true,
+                "instanceId 1": false,
+                "instanceId 2": true,
+                "regionId 2": true,
+                "rmgroup_id 1": true,
+                "rmgroup_id 2": true,
+                "rmgroup_name 1": true,
+                "rmgroup_name 2": true,
+                "tag_cloudmonitor_group 1": true,
+                "tag_cloudmonitor_group 2": true,
+                "tag_cloudmonitorappgroup 1": true,
+                "tag_cloudmonitorappgroup 2": true,
+                "tag_cmsgroup 1": true,
+                "tag_cmsgroup 2": true,
+                "tag_owner 1": true,
+                "tag_owner 2": true,
+                "userId 1": true,
+                "userId 2": true
+              },
+              "indexByName": {
+                "Time 1": 3,
+                "Time 2": 14,
+                "Value #A": 13,
+                "Value #B": 26,
+                "__name__ 1": 4,
+                "__name__ 2": 15,
+                "desc 1": 0,
+                "desc 2": 16,
+                "instanceId 1": 1,
+                "instanceId 2": 17,
+                "nodeId": 2,
+                "regionId 1": 5,
+                "regionId 2": 18,
+                "rmgroup_id 1": 6,
+                "rmgroup_id 2": 19,
+                "rmgroup_name 1": 7,
+                "rmgroup_name 2": 20,
+                "tag_cloudmonitor_group 1": 8,
+                "tag_cloudmonitor_group 2": 21,
+                "tag_cloudmonitorappgroup 1": 9,
+                "tag_cloudmonitorappgroup 2": 22,
+                "tag_cmsgroup 1": 10,
+                "tag_cmsgroup 2": 23,
+                "tag_owner 1": 11,
+                "tag_owner 2": 24,
+                "userId 1": 12,
+                "userId 2": 25
+              },
+              "renameByName": {
+                "Value #A": "Inbound bandwidth (KByte/s)",
+                "Value #B": "Inbound bandwidth usage (%)"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 41
+        },
+        "id": 39,
+        "panels": [],
+        "title": "Detailed monitoring indicators",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 42
+        },
+        "id": 15,
+        "interval": "60",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "CPU usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 42
+        },
+        "id": 16,
+        "interval": "60",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingMemoryUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Memory usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 42
+        },
+        "id": 19,
+        "interval": "60",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingAvgRt{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Response time (us)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 42
+        },
+        "id": 20,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingUsedQPS{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "QPS (pcs)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 50
+        },
+        "id": 17,
+        "interval": "60",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingHitRate{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Hit rate (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 50
+        },
+        "id": 18,
+        "interval": "60",
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingConnectionUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of connections usage (%)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 50
+        },
+        "id": 21,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingIntranetIn{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Inflow bandwidth (KByte/s)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 50
+        },
+        "id": 22,
+        "options": {
+          "alertThreshold": true
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingIntranetOut{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Outflow bandwidth (KByte/s)",
+        "type": "graph"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "center",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 58
+        },
+        "id": 24,
+        "interval": "60",
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "Node ID"
+            }
+          ]
+        },
+        "pluginVersion": "9.0.8",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingMemoryUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingAvgRt{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingIntranetIn{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "expr": "AliyunKvstore_ShardingIntranetOut{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\", nodeId=~\"$Node_NodeID\"}",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "E"
+          }
+        ],
+        "title": "Node details",
+        "transformations": [
+          {
+            "id": "seriesToColumns",
+            "options": {
+              "byField": "nodeId"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time 1": true,
+                "Time 2": true,
+                "Time 3": true,
+                "Time 4": true,
+                "Time 5": true,
+                "Value #A": false,
+                "__name__ 1": true,
+                "__name__ 2": true,
+                "__name__ 3": true,
+                "__name__ 4": true,
+                "__name__ 5": true,
+                "desc 2": true,
+                "desc 3": true,
+                "desc 4": true,
+                "desc 5": true,
+                "instanceId 2": true,
+                "instanceId 3": true,
+                "instanceId 4": true,
+                "instanceId 5": true,
+                "regionId 2": true,
+                "regionId 3": true,
+                "regionId 4": true,
+                "regionId 5": true,
+                "rmgroup_id 1": true,
+                "rmgroup_id 2": true,
+                "rmgroup_id 3": true,
+                "rmgroup_id 4": true,
+                "rmgroup_id 5": true,
+                "rmgroup_name 1": true,
+                "rmgroup_name 2": true,
+                "rmgroup_name 3": true,
+                "rmgroup_name 4": true,
+                "rmgroup_name 5": true,
+                "tag_cloudmonitor_group 1": true,
+                "tag_cloudmonitor_group 2": true,
+                "tag_cloudmonitor_group 3": true,
+                "tag_cloudmonitor_group 4": true,
+                "tag_cloudmonitor_group 5": true,
+                "tag_cloudmonitorappgroup 1": true,
+                "tag_cloudmonitorappgroup 2": true,
+                "tag_cloudmonitorappgroup 3": true,
+                "tag_cloudmonitorappgroup 4": true,
+                "tag_cloudmonitorappgroup 5": true,
+                "tag_cmsgroup 1": true,
+                "tag_cmsgroup 2": true,
+                "tag_cmsgroup 3": true,
+                "tag_cmsgroup 4": true,
+                "tag_cmsgroup 5": true,
+                "tag_owner 1": true,
+                "tag_owner 2": true,
+                "tag_owner 3": true,
+                "tag_owner 4": true,
+                "tag_owner 5": true,
+                "tag_test 1": true,
+                "tag_test 2": true,
+                "tag_test 3": true,
+                "tag_test 4": true,
+                "tag_test 5": true,
+                "userId 1": true,
+                "userId 2": true,
+                "userId 3": true,
+                "userId 4": true,
+                "userId 5": true
+              },
+              "indexByName": {
+                "Time 1": 3,
+                "Time 2": 15,
+                "Time 3": 29,
+                "Time 4": 43,
+                "Time 5": 57,
+                "Value #A": 14,
+                "Value #B": 28,
+                "Value #C": 42,
+                "Value #D": 56,
+                "Value #E": 70,
+                "__name__ 1": 4,
+                "__name__ 2": 16,
+                "__name__ 3": 30,
+                "__name__ 4": 44,
+                "__name__ 5": 58,
+                "desc 1": 0,
+                "desc 2": 17,
+                "desc 3": 31,
+                "desc 4": 45,
+                "desc 5": 59,
+                "instanceId 1": 1,
+                "instanceId 2": 18,
+                "instanceId 3": 32,
+                "instanceId 4": 46,
+                "instanceId 5": 60,
+                "nodeId": 2,
+                "regionId 1": 5,
+                "regionId 2": 19,
+                "regionId 3": 33,
+                "regionId 4": 47,
+                "regionId 5": 61,
+                "rmgroup_id 1": 6,
+                "rmgroup_id 2": 20,
+                "rmgroup_id 3": 34,
+                "rmgroup_id 4": 48,
+                "rmgroup_id 5": 62,
+                "rmgroup_name 1": 7,
+                "rmgroup_name 2": 21,
+                "rmgroup_name 3": 35,
+                "rmgroup_name 4": 49,
+                "rmgroup_name 5": 63,
+                "tag_cloudmonitor_group 1": 8,
+                "tag_cloudmonitor_group 2": 22,
+                "tag_cloudmonitor_group 3": 36,
+                "tag_cloudmonitor_group 4": 50,
+                "tag_cloudmonitor_group 5": 64,
+                "tag_cloudmonitorappgroup 1": 9,
+                "tag_cloudmonitorappgroup 2": 23,
+                "tag_cloudmonitorappgroup 3": 37,
+                "tag_cloudmonitorappgroup 4": 51,
+                "tag_cloudmonitorappgroup 5": 65,
+                "tag_cmsgroup 1": 10,
+                "tag_cmsgroup 2": 24,
+                "tag_cmsgroup 3": 38,
+                "tag_cmsgroup 4": 52,
+                "tag_cmsgroup 5": 66,
+                "tag_owner 1": 11,
+                "tag_owner 2": 25,
+                "tag_owner 3": 39,
+                "tag_owner 4": 53,
+                "tag_owner 5": 67,
+                "tag_test 1": 12,
+                "tag_test 2": 26,
+                "tag_test 3": 40,
+                "tag_test 4": 54,
+                "tag_test 5": 68,
+                "userId 1": 13,
+                "userId 2": 27,
+                "userId 3": 41,
+                "userId 4": 55,
+                "userId 5": 69
+              },
+              "renameByName": {
+                "Time 1": "",
+                "Value #A": "CPU usage（%）",
+                "Value #B": "Memory usage（%）",
+                "Value #C": "Average latency（us）",
+                "Value #D": "Inbound bandwidth（KByte/s）",
+                "Value #E": "Outgoing bandwidth（KByte/s）",
+                "desc 1": "Instance Name",
+                "instanceId 1": "Instance ID",
+                "nodeId": "nodeId",
+                "regionId 1": "regionId"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "scene:database",
+      "env:Cloud",
+      "CMEE",
+      "env:type:Cloud",
+      "Redis",
+      "prometheus",
+      "dashboard:name:cmee-redis-community-cluster",
+      "addon:name:cloud-redis",
+      "addon:version:0.0.6"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "5",
+            "value": "5"
+          },
+          "includeAll": false,
+          "name": "Top_Number",
+          "options": [
+            {
+              "selected": true,
+              "text": "5",
+              "value": "5"
+            },
+            {
+              "selected": false,
+              "text": "10",
+              "value": "10"
+            },
+            {
+              "selected": false,
+              "text": "20",
+              "value": "20"
+            },
+            {
+              "selected": false,
+              "text": "30",
+              "value": "30"
+            }
+          ],
+          "query": "5,10,20,30",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunKvstore_ShardingCpuUsage, regionId)",
+          "includeAll": true,
+          "name": "RegionID",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunKvstore_ShardingCpuUsage, regionId)",
+            "refId": "${datasource}-RegionID-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunKvstore_ShardingProxyCpuUsage{regionId=~\"$RegionID\"}, instanceId)",
+          "includeAll": true,
+          "name": "Proxy_InstanceID",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunKvstore_ShardingProxyCpuUsage{regionId=~\"$RegionID\"}, instanceId)",
+            "refId": "${datasource}-Proxy_InstanceID-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunKvstore_ShardingProxyCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"}, nodeId)",
+          "includeAll": true,
+          "name": "Proxy_NodeID",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunKvstore_ShardingProxyCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Proxy_InstanceID\"}, nodeId)",
+            "refId": "${datasource}-Proxy_NodeID-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\"}, instanceId)",
+          "includeAll": true,
+          "name": "Node_InstanceID",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\"}, instanceId)",
+            "refId": "${datasource}-Node_InstanceID-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "definition": "label_values(AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"}, nodeId)",
+          "includeAll": true,
+          "name": "Node_NodeID",
+          "options": [],
+          "query": {
+            "query": "label_values(AliyunKvstore_ShardingCpuUsage{regionId=~\"$RegionID\", instanceId=~\"$Node_InstanceID\"}, nodeId)",
+            "refId": "${datasource}-Node_NodeID-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "mfc-glprom-nprd-hkg-cloudservice",
+            "value": "jXu2wByNz"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "mfc-glprom-nprd-hkg-cloudservice",
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Redis community edition-monitoring dashboard-cluster edition",
+    "uid": "5952-055230-cmee-redis-community-cluster",
+    "version": 4,
+    "weekStart": ""
+  }
+}

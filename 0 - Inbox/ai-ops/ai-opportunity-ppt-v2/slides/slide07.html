@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.finops-hero {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+  margin-top: 14pt;
+}
+.finops-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4pt;
+}
+.col-label {
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin: 0;
+}
+.big-money-now {
+  font-family: var(--font-sans-bold);
+  font-size: 44pt;
+  line-height: 1;
+  color: #8E90A2;
+  text-decoration: line-through;
+  text-decoration-color: #EC6453;
+  text-decoration-thickness: 3px;
+  margin: 0;
+}
+.big-money-ai {
+  font-family: var(--font-sans-bold);
+  font-size: 44pt;
+  line-height: 1;
+  color: #06C7BA;
+  margin: 0;
+}
+.money-unit {
+  font-size: 9pt;
+  color: var(--muted);
+  margin: 3pt 0 0 0;
+}
+.arrow-center {
+  font-size: 28pt;
+  color: #002060;
+  padding: 0 16pt;
+  font-family: var(--font-sans-bold);
+  margin: 0;
+}
+.tag-manual {
+  display: inline-block;
+  margin-top: 6pt;
+  padding: 2pt 8pt;
+  background: #FFF3F2;
+  border: 1px solid #EC6453;
+  border-radius: 20pt;
+  font-size: 7.5pt;
+  color: #EC6453;
+  font-family: var(--font-sans-bold);
+  margin: 0;
+}
+.tag-ai {
+  display: inline-block;
+  margin-top: 6pt;
+  padding: 2pt 8pt;
+  background: #F0FDFB;
+  border: 1px solid #06C7BA;
+  border-radius: 20pt;
+  font-size: 7.5pt;
+  color: #06C7BA;
+  font-family: var(--font-sans-bold);
+  margin: 0;
+}
+.resource-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5pt;
+  margin-top: 8pt;
+}
+.pill {
+  padding: 2pt 9pt;
+  border-radius: 20pt;
+  font-size: 8pt;
+  font-family: var(--font-sans-bold);
+  background: #F2F2F2;
+  color: #282B3E;
+  margin: 0;
+}
+.context-list {
+  margin-top: 10pt;
+  font-size: 9pt;
+  color: var(--body);
+  line-height: 1.5;
+}
+.context-list li {
+  margin-bottom: 4pt;
+  padding-left: 2pt;
+}
+.anchor-row {
+  margin-top: 12pt;
+  padding: 7pt 12pt;
+  background: #002060;
+  color: #FFFFFF;
+}
+.anchor-row p {
+  font-family: var(--font-sans-bold);
+  font-size: 10pt;
+  line-height: 1.4;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<div class="slide panel">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Return on investment · 2 of 2</p>
+    <p class="slide-no">07</p>
+  </div>
+  <h1 class="title">FinOps AI turns one lucky find into systematic saving.</h1>
+
+  <div class="finops-hero">
+
+    <div class="finops-col">
+      <p class="col-label">One manual review · Q1 2025</p>
+      <p class="big-money-now">$100K</p>
+      <p class="money-unit">saved / year · DB downgrade · fully manual</p>
+      <div class="tag-manual"><p>Single engineer · single resource type</p></div>
+    </div>
+
+    <p class="arrow-center">→</p>
+
+    <div class="finops-col">
+      <p class="col-label">AI FinOps · BAU cadence</p>
+      <p class="big-money-ai">$1M+</p>
+      <p class="money-unit">optimisation potential · all resource types</p>
+      <div class="tag-ai"><p>Continuous · systematic · zero extra headcount</p></div>
+    </div>
+
+  </div>
+
+  <div class="resource-pills">
+    <div class="pill"><p>DB (done ✓)</p></div>
+    <div class="pill"><p>Redis</p></div>
+    <div class="pill"><p>Kafka</p></div>
+    <div class="pill"><p>Deployment requests</p></div>
+    <div class="pill"><p>Other cloud resources</p></div>
+    <div class="pill"><p>… untouched today</p></div>
+  </div>
+
+  <ul class="context-list bullets">
+    <li><strong>The Q1 DB downgrade</strong> proved the concept — but it took a dedicated human investigation and covered only one resource type.</li>
+    <li>Redis, Kafka, deployment requests, and a long tail of cloud resources have never been reviewed for right-sizing.</li>
+    <li>An AI FinOps agent running at BAU cadence surfaces waste across all layers, continuously — no extra headcount required.</li>
+  </ul>
+
+  <div class="anchor-row">
+    <p>$100K was what one person found in one place. $1M+ is what AI finds everywhere, every sprint.</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

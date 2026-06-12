@@ -1,0 +1,867 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "machine",
+    "url": "/d/5495437431802631-17369231-804/machine",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-11-24T14:50:42+08:00",
+    "updated": "2025-12-05T09:55:41+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "admin",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 45,
+    "folderUid": "global-v2-cn-5495437431802631-acb2imwt_",
+    "folderTitle": "mfc-glprom-nprod-application",
+    "folderUrl": "/dashboards/f/global-v2-cn-5495437431802631-acb2imwt_/mfc-glprom-nprod-application",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": false,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "limit": 100,
+          "name": "Annotations & Alerts",
+          "showIn": 0,
+          "tags": [],
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 40,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "vLoMBHQVz"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 17,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "vLoMBHQVz"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "System information",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 5,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_cpu_system{host=~\"$host\"})",
+            "interval": "",
+            "legendFormat": "System CPU usage",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_cpu_io_wait{host=~\"$host\"})",
+            "interval": "",
+            "legendFormat": "CPU usage waiting for IO to complete",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_cpu_user{host=~\"$host\"})",
+            "interval": "",
+            "legendFormat": "User CPU usage",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_cpu_system{host=\"$host\"})+max(arms_system_cpu_io_wait{host=~\"$host\"})+max(arms_system_cpu_user{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Sum",
+            "refId": "D"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "CPU",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "percent",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "hiddenSeries": false,
+        "id": 15,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_mem_used_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "The system's used memory",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_mem_total_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Sum",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_mem_buffers_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "The number of BufferCache memories of the system",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_mem_cached_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "The amount of memory in the PageCache of the system",
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_mem_free_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Free memory of the system",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Memory",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 19
+        },
+        "hiddenSeries": false,
+        "id": 2,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_load{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Load",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Load",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "hiddenSeries": false,
+        "id": 24,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_disk_free_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Available disk capacity",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_disk_total_bytes{host=\"$host\"})",
+            "interval": "",
+            "legendFormat": "Total disk capacity",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(arms_system_disk_total_bytes{host=~\"$host\"})-max(arms_system_disk_free_bytes{host=~\"$host\"})",
+            "interval": "",
+            "legendFormat": "Disk capacity used",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Disk",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 2,
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 37
+        },
+        "hiddenSeries": false,
+        "id": 25,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_in_bytes{host=~\"$host\"}[1m]))",
+            "interval": "",
+            "legendFormat": "Number of bytes received by the network",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_out_bytes{host=~\"$host\"}[1m]))",
+            "interval": "",
+            "legendFormat": "Number of bytes sent by the network",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Network Traffic (Byte)/Per Minute",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 46
+        },
+        "hiddenSeries": false,
+        "id": 26,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.0.8",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_in_packets{host=~\"$host\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "Number of messages received by the network",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_out_packets{host=~\"$host\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "Number of messages sent by the network",
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_in_errs{host=~\"$host\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "Number of errors received by the network",
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+            },
+            "expr": "max(max_over_time_lorc(arms_system_net_out_errs{host=~\"$host\"}[1m]))",
+            "interval": "1m",
+            "legendFormat": "Number of network discarded messages",
+            "refId": "E"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Network packets (s)/min",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "kbytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 36,
+    "showAgsLink": "en",
+    "style": "dark",
+    "tags": [
+      "arms_app",
+      "arms_metrics"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+          },
+          "definition": "label_values(arms_system_cpu_idle,service)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Application",
+          "multi": false,
+          "name": "service",
+          "options": [],
+          "query": {
+            "query": "label_values(arms_system_cpu_idle,service)",
+            "refId": "arms_metrics_cn-hangzhou_cloud_hangzhou_1084900439941126_b3821b-service-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": "*",
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "arms_metrics_cn-hongkong_0_5495437431802631_e3ec73"
+          },
+          "definition": "label_values(arms_system_cpu_idle{service=\"$service\"},host)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Machine",
+          "multi": false,
+          "name": "host",
+          "options": [],
+          "query": {
+            "query": "label_values(arms_system_cpu_idle{service=\"$service\"},host)",
+            "refId": "arms_metrics_cn-hangzhou_cloud_hangzhou_1084900439941126_b3821b-host-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Machine",
+    "uid": "5495437431802631-17369231-804",
+    "version": 2,
+    "weekStart": ""
+  }
+}

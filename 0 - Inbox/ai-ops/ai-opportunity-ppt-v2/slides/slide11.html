@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; margin-top: 18pt; }
+.decision-card { min-height: 222pt; }
+.decision-title { font-family: var(--font-sans-bold); font-size: 16pt; color: var(--accent); line-height: 1.2; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">Decision page</p>
+    <p class="slide-no">11</p>
+  </div>
+  <h1 class="title">Today we ask for two decisions</h1>
+  <p class="subtitle" style="margin-top:8pt; max-width: 500pt;">End on sponsorship and execution priority — not on summary.</p>
+  <div class="decision-grid">
+    <div class="card decision-card highlight">
+      <p class="small-label accent-label">Decision 01</p>
+      <p class="decision-title" style="margin-top:8pt;">Approve AIOps as a formal internal program</p>
+      <ul class="bullets" style="margin-top:14pt;">
+        <li>Move beyond informal team-led momentum.</li>
+        <li>Establish explicit sponsor and steering support.</li>
+        <li>Give the direction governance visibility and operating legitimacy.</li>
+      </ul>
+    </div>
+    <div class="card decision-card">
+      <p class="small-label">Decision 02</p>
+      <p class="decision-title" style="margin-top:8pt;">Confirm Q2 / Q3 priority and headcount commitment</p>
+      <ul class="bullets" style="margin-top:14pt;">
+        <li>Q2 first: the foundation layer.</li>
+        <li>Q3 next: L2, dashboard, and documentation uplift.</li>
+        <li>Resource the validated path instead of spreading effort across all ambitions at once.</li>
+      </ul>
+    </div>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

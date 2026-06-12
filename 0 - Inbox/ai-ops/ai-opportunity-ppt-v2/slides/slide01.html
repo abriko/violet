@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../themes/manulife-light.css">
+<style>
+p, h1, h2, h3, h4, h5, h6, ul, ol { margin: 0; padding: 0; }
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 0.85fr;
+  gap: 22pt;
+  height: 320pt;
+  align-items: center;
+  margin-top: 18pt;
+}
+.cover-copy { display: flex; flex-direction: column; gap: 12pt; }
+.cover-tag { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-2); letter-spacing: 1.5pt; text-transform: uppercase; }
+.cover-subtitle { max-width: 360pt; }
+.cover-visual { height: 288pt; }
+.cover-bottom { position: absolute; left: 42pt; right: 42pt; bottom: 30pt; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="brand-rail"><div class="navy"></div><div class="teal"></div></div>
+  <div class="header-row">
+    <p class="kicker">MANULIFE HK · DEVOPS & PLATFORM</p>
+    <p class="slide-no">01</p>
+  </div>
+  <div class="cover-grid">
+    <div class="cover-copy">
+      <p class="cover-tag">Executive proposal</p>
+      <h1 class="hero">AIOps Platform Proposal</h1>
+      <p class="subtitle cover-subtitle">Move from people-heavy firefighting to governed, AI-assisted operations.</p>
+      <div class="card soft" style="width: 292pt;">
+        <p class="small-label accent-label">What this meeting decides</p>
+        <p class="body" style="margin-top:6pt;">1) Formalize AIOps as an internal program. 2) Confirm Q2/Q3 execution priority and headcount support.</p>
+      </div>
+    </div>
+    <div class="cover-visual">
+    </div>
+  </div>
+  <div class="cover-bottom has-logo">
+    <p class="footer-note"></p>
+    <p class="footer-note">May 2026</p>
+  </div>
+  <img class="manulife-logo" src="../assets/manulife-logo.png" alt="Manulife logo">
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# 1. 创建一个没有历史的新分支
+git checkout --orphan new-main
+
+# 2. 添加所有文件
+git add .
+
+# 3. 提交
+git commit -m "Initial commit (squashed)"
+
+# 4. 删除旧分支
+git branch -D main
+
+# 5. 把新分支改名为 main
+git branch -m main
+
+# 6. 强制推送
+# git push origin main --force

@@ -1,0 +1,158 @@
+{
+  "main": {
+    "id": "8058d58355d58b14",
+    "type": "split",
+    "children": [
+      {
+        "id": "b65ef2ef918fb169",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d4b416fe42f1d033",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/简介.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "简介"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7d2a0f3d88d476a5",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "251a776adacc94ce",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "檔案瀏覽器"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "7d624fad849260cc",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "bf82d937d216173d",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "0 - Inbox/简介.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "反向連結"
+        }
+      },
+      {
+        "id": "efcea57059446d64",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Untitled/2.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "71f58fe083ccda40",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Untitled/2.md"
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:查看關聯圖": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "audio-recorder:開始/停止錄音": false,
+      "workspaces:管理工作區配置": false,
+      "bases:建立新的 base": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "d4b416fe42f1d033",
+  "lastOpenFiles": [
+    "Drawing 2025-12-24 15.07.25.excalidraw.md",
+    "9 - Assets/Others/IMG_5522.png",
+    "0 - Inbox/简介.md",
+    "Untitled 1.md",
+    "9 - Assets/Others/IMG_5563.png",
+    "0 - Inbox/3.md",
+    "0 - Inbox/rea paas.md",
+    "0 - Inbox/Untitled.md",
+    "0 - Inbox/银行.md",
+    "0 - Inbox/1.md",
+    "0 - Inbox/2.md",
+    "Untitled.md",
+    "Untitled/简介.md",
+    "Performance/2025.md",
+    "Untitled/2025.md",
+    "Untitled/3.md",
+    "Untitled/1.md",
+    "Untitled/2.md",
+    "Untitled/2025-01-10.excalidraw.md",
+    "work/infra-test.excalidraw.md",
+    "Performance/2024.md",
+    "Performance/2023.md",
+    "Untitled/Untitled 1.md",
+    "Performance",
+    "template_readme.md",
+    "Attachment/Others/Pasted image 20241127111249.png",
+    "Attachment/Others/Pasted image 20240429140535.png",
+    "Untitled/Fargate.md",
+    "Attachment/Others/Pasted image 20240429140548.png",
+    "Untitled/rollout-stuck.md",
+    "Untitled/test.md",
+    "Plugins/Excalidraw/Library/architecture-diagram-components.excalidrawlib",
+    "Plugins/Excalidraw/Fonts/DongJingJieJiaoDeXiaoLangMan-2.ttf",
+    "Plugins/Excalidraw/Scripts/Downloaded/Slideshow.svg",
+    "Plugins/Excalidraw/Library/my-obsidian-library.excalidrawlib",
+    "Plugins/Excalidraw/Library/network-topology-icons.excalidrawlib",
+    "Plugins/Excalidraw/Library/data-viz.excalidrawlib",
+    "Plugins/Excalidraw/Scripts/Downloaded/Mindmap format.svg",
+    "Attachment/Placeholder.txt",
+    "Source/Placeholder.txt"
+  ]
+}

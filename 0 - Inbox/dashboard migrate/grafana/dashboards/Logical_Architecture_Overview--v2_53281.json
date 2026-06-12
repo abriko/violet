@@ -1,0 +1,5490 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": false,
+    "canEdit": false,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": false,
+    "slug": "logical-architecture-overview-v2",
+    "url": "/d/53281/logical-architecture-overview-v2",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-12-10T15:05:58+08:00",
+    "updated": "2026-04-03T17:14:27+08:00",
+    "updatedBy": "liwang_adm@mfcgcr.com",
+    "createdBy": "liwang_adm@mfcgcr.com",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 78,
+    "folderUid": "ffehbbj5lyjggc",
+    "folderTitle": "HK ADO",
+    "folderUrl": "/dashboards/f/ffehbbj5lyjggc/hk-ado",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      },
+      "organization": {
+        "canAdd": false,
+        "canEdit": false,
+        "canDelete": false
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 62,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "transparent",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Alb-Resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigwRate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gw-resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "asm rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ack rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app qps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "generic qps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ai qps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "app resp"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "shades"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "alb-QPS"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "apigw-qps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Asm QPS"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "chtbot rate"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ai rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "genrice rate"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "chatbot resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "ms"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ai resp"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "s"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "chatbot qps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "transparent",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ai mem"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bits"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "chatbot mem"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bits"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "generic mem"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bits"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 57,
+        "options": {
+          "infinitePan": false,
+          "inlineEditing": true,
+          "panZoom": false,
+          "root": {
+            "background": {
+              "color": {
+                "fixed": "transparent"
+              }
+            },
+            "border": {
+              "color": {
+                "fixed": "dark-green"
+              },
+              "radius": 0,
+              "width": 0
+            },
+            "constraint": {
+              "horizontal": "left",
+              "vertical": "top"
+            },
+            "elements": [
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Jarvis-ai-service"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 77",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 241,
+                  "rotation": 0,
+                  "top": 591,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ai resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ai resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 82",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 448,
+                  "rotation": 0,
+                  "top": 657,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "RPS"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "lb rps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 57,
+                  "left": 261,
+                  "top": 92,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 16,
+                  "text": {
+                    "fixed": "Jarvis-chatboot-service"
+                  },
+                  "valign": "top"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 2,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 191,
+                      "y": 525
+                    },
+                    "target": {
+                      "x": -0.96,
+                      "y": 0.7931034482758621
+                    },
+                    "targetName": "Element 79",
+                    "targetOriginal": {
+                      "x": 243,
+                      "y": 653
+                    },
+                    "vertices": [
+                      {
+                        "x": -0.019230769230769232,
+                        "y": 0.9921875
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "chatbot",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 41,
+                  "rotation": 0,
+                  "top": 411,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "chatbot resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chatbot resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 74",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 248,
+                  "top": 477,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "chat resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 239,
+                  "top": 467,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ai resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 439,
+                  "rotation": 0,
+                  "top": 647,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ai rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 340,
+                  "top": 647,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Application LoadBalance"
+                  },
+                  "valign": "top"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 5,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 411,
+                      "y": 149
+                    },
+                    "target": {
+                      "x": 0,
+                      "y": 0.9824561403508771
+                    },
+                    "targetName": "gw",
+                    "targetOriginal": {
+                      "x": 201,
+                      "y": 235
+                    },
+                    "vertices": [
+                      {
+                        "x": 0,
+                        "y": 0.38372093023255816
+                      },
+                      {
+                        "x": 1,
+                        "y": 0.38372093023255816
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-all",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 261,
+                  "rotation": 0,
+                  "top": 35,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "asm resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 702,
+                  "rotation": 0,
+                  "top": 290,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Jarvis-generic-service"
+                  },
+                  "valign": "top"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 5,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 552,
+                      "y": 525
+                    },
+                    "target": {
+                      "x": 1.0196078431372548,
+                      "y": 0.9655172413793104
+                    },
+                    "targetName": "ai resp",
+                    "targetOriginal": {
+                      "x": 542,
+                      "y": 648
+                    },
+                    "vertices": [
+                      {
+                        "x": -10.4,
+                        "y": 0.4065040650406504
+                      },
+                      {
+                        "x": -10.4,
+                        "y": 1
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "generic",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 504,
+                  "rotation": 0,
+                  "top": 411,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Alibaba Cloud Service Mesh"
+                  },
+                  "valign": "top"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 5,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": -0.5,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 477,
+                      "y": 348
+                    },
+                    "target": {
+                      "x": 0.006666666666666667,
+                      "y": 0.9649122807017544
+                    },
+                    "targetName": "chatbot",
+                    "targetOriginal": {
+                      "x": 192,
+                      "y": 413
+                    },
+                    "vertices": [
+                      {
+                        "x": -0.35789473684210527,
+                        "y": 0.5846153846153846
+                      },
+                      {
+                        "x": 1.0035087719298246,
+                        "y": 0.5846153846153846
+                      }
+                    ]
+                  },
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "radius": {
+                      "fixed": 5,
+                      "max": 200,
+                      "min": 0
+                    },
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 0.5,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 627,
+                      "y": 348
+                    },
+                    "target": {
+                      "x": 0.013333333333333334,
+                      "y": 0.9824561403508771
+                    },
+                    "targetName": "generic",
+                    "targetOriginal": {
+                      "x": 554,
+                      "y": 412
+                    },
+                    "vertices": [
+                      {
+                        "x": -1.3972602739726028,
+                        "y": 0.390625
+                      },
+                      {
+                        "x": -0.3972602739726027,
+                        "y": 0.390625
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "asm",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 504,
+                  "rotation": 0,
+                  "top": 234,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "hk-ado-jarvis (HK Zone C/D)"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ams-jarvis",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 504,
+                  "rotation": 0,
+                  "top": 261,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "chtbot rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chtbot rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "chatbot rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 145,
+                  "rotation": 0,
+                  "top": 481,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 75",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 140,
+                  "rotation": 0,
+                  "top": 467,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Alb-Resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "asm resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 58",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 711,
+                  "rotation": 0,
+                  "top": 300,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "RPS"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 51",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 504,
+                  "rotation": 0,
+                  "top": 290,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Asm QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Asm QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "asm qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 513,
+                  "rotation": 0,
+                  "top": 304,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 57",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 608,
+                  "rotation": 0,
+                  "top": 304,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 59",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 603,
+                  "rotation": 0,
+                  "top": 290,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 43",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 57,
+                  "left": 361,
+                  "rotation": 0,
+                  "top": 92,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 371,
+                  "rotation": 0,
+                  "top": 104,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "fill": {
+                    "fixed": "#D9D9D9"
+                  },
+                  "path": {
+                    "fixed": "img/icons/unicons/add-user.svg",
+                    "mode": "fixed"
+                  }
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 1,
+                      "y": 0
+                    },
+                    "sourceOriginal": {
+                      "x": 108,
+                      "y": 92
+                    },
+                    "target": {
+                      "x": -0.9599937490232849,
+                      "y": 1
+                    },
+                    "targetName": "lb rps",
+                    "targetOriginal": {
+                      "x": 263,
+                      "y": 93
+                    }
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "User",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 72,
+                  "left": 43,
+                  "top": 56,
+                  "width": 82
+                },
+                "type": "icon"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Alb-Resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Alb-Resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 471,
+                  "rotation": 0,
+                  "top": 100,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-QPS",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-QPS",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb-qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 39,
+                  "left": 267,
+                  "top": 110,
+                  "width": 78
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ai qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "width": 0
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "size": 12,
+                  "text": {
+                    "field": "ai qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "generic qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 899,
+                  "rotation": 0,
+                  "top": 832,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "HK Zone C | HK Zone D"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "alb",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 261,
+                  "rotation": 0,
+                  "top": 62,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "lb resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 57,
+                  "left": 461,
+                  "rotation": 0,
+                  "top": 92,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Cloud-native API Gateway"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "gw",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 114,
+                  "left": 51,
+                  "rotation": 0,
+                  "top": 234,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "hk-ado-jarvis (HK Zone C/D)"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [
+                  {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "direction": "both",
+                    "lineStyle": {
+                      "animate": true,
+                      "style": "dashed"
+                    },
+                    "path": "straight",
+                    "size": {
+                      "fixed": 1,
+                      "max": 10,
+                      "min": 1
+                    },
+                    "source": {
+                      "x": 1,
+                      "y": -1
+                    },
+                    "sourceOriginal": {
+                      "x": 351,
+                      "y": 291
+                    },
+                    "target": {
+                      "x": 0.006666666666666667,
+                      "y": 1
+                    },
+                    "targetName": "asm",
+                    "targetOriginal": {
+                      "x": 553,
+                      "y": 234
+                    },
+                    "vertices": [
+                      {
+                        "x": 0.32673267326732675,
+                        "y": 0
+                      },
+                      {
+                        "x": 0.32673267326732675,
+                        "y": 1.4736842105263157
+                      },
+                      {
+                        "x": 1,
+                        "y": 1.4736842105263157
+                      },
+                      {
+                        "x": 1.504950495049505,
+                        "y": 1.4736842105263157
+                      }
+                    ]
+                  }
+                ],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 52",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 51,
+                  "rotation": 0,
+                  "top": 261,
+                  "width": 300
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "RPS"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 54",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 51,
+                  "rotation": 0,
+                  "top": 290,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "apigw-qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "apigw-qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Api qps",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 60,
+                  "rotation": 0,
+                  "top": 304,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "alb-rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 46",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 155,
+                  "rotation": 0,
+                  "top": 304,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Alb-Resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "gw-resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 47",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 258,
+                  "rotation": 0,
+                  "top": 300,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 55",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 150,
+                  "rotation": 0,
+                  "top": 290,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "gw resp",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 249,
+                  "top": 290,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Req Totol"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 62",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 504,
+                  "top": 467,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "generic qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 63",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 511,
+                  "top": 480,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "alb-rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "genrice rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "generic rate",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 608,
+                  "top": 481,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "Alb-Resp",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "Alb-Resp",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 65",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 711,
+                  "top": 477,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Suc Rate"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 66",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 603,
+                  "top": 467,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Resp"
+                  },
+                  "valign": "top"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 67",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 702,
+                  "rotation": 0,
+                  "top": 467,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Pods",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 70",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 41,
+                  "rotation": 0,
+                  "top": 438,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Req Totol"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 71",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 41,
+                  "top": 467,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "chatbot qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chatbot qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 72",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 50,
+                  "rotation": 0,
+                  "top": 481,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 12,
+                  "text": {
+                    "fixed": "Req Totol"
+                  },
+                  "valign": "top"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 79",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 58,
+                  "left": 241,
+                  "rotation": 0,
+                  "top": 647,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ai qps",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ai qps",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 80",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 250,
+                  "top": 661,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ai rate",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ai rate",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 81",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 50,
+                  "left": 345,
+                  "top": 661,
+                  "width": 80
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "CPU",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 53",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 140,
+                  "top": 438,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Mem",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 56",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 239,
+                  "top": 438,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Pods",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 60",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 504,
+                  "rotation": 0,
+                  "top": 438,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Pods",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 61",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 241,
+                  "rotation": 0,
+                  "top": 618,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "CPU",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 64",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 603,
+                  "rotation": 0,
+                  "top": 438,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "CPU",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 68",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 340,
+                  "rotation": 0,
+                  "top": 618,
+                  "width": 100
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Mem",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 73",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 702,
+                  "rotation": 0,
+                  "top": 438,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "fixed": "transparent"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "super-light-green"
+                  },
+                  "width": 1
+                },
+                "config": {
+                  "align": "left",
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "size": 14,
+                  "text": {
+                    "fixed": "Mem",
+                    "mode": "fixed"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 76",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 30,
+                  "left": 439,
+                  "rotation": 0,
+                  "top": 618,
+                  "width": 102
+                },
+                "type": "text"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "chatbot pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chatbot pod",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "ai pod",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 76,
+                  "rotation": 0,
+                  "top": 436,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "ai pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 19,
+                  "text": {
+                    "field": "chatbot pod",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 69",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 276,
+                  "rotation": 0,
+                  "top": 615,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 19,
+                  "text": {
+                    "field": "chatbot pod",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 78",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 541,
+                  "rotation": 0,
+                  "top": 436,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ai cpu",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 83",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 367,
+                  "rotation": 0,
+                  "top": 615,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chatbot cpu",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 84",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 171,
+                  "rotation": 0,
+                  "top": 436,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "generic cpu",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 85",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 629,
+                  "rotation": 0,
+                  "top": 436,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "ai mem",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 86",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 451,
+                  "rotation": 0,
+                  "top": 615,
+                  "width": 106
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "generic mem",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 87",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 35,
+                  "left": 742,
+                  "rotation": 0,
+                  "top": 436,
+                  "width": 49
+                },
+                "type": "metric-value"
+              },
+              {
+                "background": {
+                  "color": {
+                    "field": "generic pod",
+                    "fixed": "#D9D9D9"
+                  }
+                },
+                "border": {
+                  "color": {
+                    "fixed": "dark-green"
+                  }
+                },
+                "config": {
+                  "align": "center",
+                  "color": {
+                    "fixed": "green"
+                  },
+                  "size": 18,
+                  "text": {
+                    "field": "chatbot mem",
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "valign": "middle"
+                },
+                "connections": [],
+                "constraint": {
+                  "horizontal": "left",
+                  "vertical": "top"
+                },
+                "links": [],
+                "name": "Element 88",
+                "oneClickMode": "off",
+                "placement": {
+                  "height": 40,
+                  "left": 261,
+                  "rotation": 0,
+                  "top": 433,
+                  "width": 89
+                },
+                "type": "metric-value"
+              }
+            ],
+            "name": "Element 1764124104531",
+            "oneClickMode": "off",
+            "placement": {
+              "height": 100,
+              "left": 0,
+              "rotation": 0,
+              "top": 0,
+              "width": 100
+            },
+            "type": "frame"
+          },
+          "showAdvancedTypes": true
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}[$__range]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-QPS",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunAlb_ListenerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}[5m]))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "legendFormat": "Alb-Resp",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyApiQps{apiName=~\"hk-ado-jarvis\"}[$__range]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigw-qps",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyDownstreamSuccessRate{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "apigwRate",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "\r\nround(sum(AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"})\r\n/\r\nsum(\r\n AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\n))\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "alb-rate",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(avg_over_time(AliyunCnapigateway_EnvoyApiRtAvg{promInstanceId=~\"$PromInstanceId\"}[5m]))",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "gw-resp",
+            "range": true,
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[$__range])))",
+            "hide": false,
+            "legendFormat": "Asm QPS",
+            "range": true,
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "(sum(irate(istio_request_duration_milliseconds_bucket_delta{reporter=\"source\",source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le) / 1000) or sum(irate(istio_request_duration_seconds_bucket_delta{reporter=\"source\", source_workload_namespace=~\"istio-system\",source_app=\"$asm_gateway_name\"}[5m])) by (source_app, source_workload_namespace, le)",
+            "hide": false,
+            "legendFormat": "asm resp",
+            "range": true,
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\",response_code=~\"2..\"}[5m])/sum_over_time(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m])",
+            "hide": false,
+            "legendFormat": "asm rate",
+            "range": true,
+            "refId": "I"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "round(sum(irate(apiserver_request_total{subresource !~ \".*/healthz$|/livez$|/readyz$\"}[5m])))",
+            "hide": false,
+            "legendFormat": "ack qps",
+            "range": true,
+            "refId": "J"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "avg (sum by (verb) (irate(apiserver_request_duration_seconds_bucket{verb!~\"WATCH|CONNECT\",resource!=\"\",subresource!~\".*/healthz$|/livez$|/readyz$\"}[5m])))",
+            "hide": false,
+            "legendFormat": "ack resp",
+            "range": true,
+            "refId": "K"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum(irate(apiserver_request_total{code=~\"20.*\",verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))/sum(irate(apiserver_request_total{verb!~\"GET|LIST|WATCH|CONNECT\"}[5m]))",
+            "hide": false,
+            "legendFormat": "ack rate",
+            "range": true,
+            "refId": "L"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "round(sum(avg_over_time_lorc(arms_app_requests_count_raw{service=~\"hk-ado-jarvis-chatbot-service-prd\",rpc!~\".*/liveness$\",}[$__range]))) or vector(0)",
+            "hide": false,
+            "legendFormat": "chatbot qps",
+            "range": true,
+            "refId": "M"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "round(sum(avg_over_time_lorc(arms_app_requests_count_raw{service=~\"hk-ado-jarvis-generic-service-prd\",rpc!~\".*/liveness$\",}[$__range]))) or vector(0)",
+            "hide": false,
+            "legendFormat": "generic qps",
+            "range": true,
+            "refId": "P"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "round(sum(avg_over_time(arms_app_requests_count_raw{destId=\"svc-hk-ado-jarvis-ai-service.ns-hkg-agent-system\",rpc!~\".*/liveness$\",}[$__range]))) or vector(0)",
+            "hide": false,
+            "legendFormat": "ai qps",
+            "range": true,
+            "refId": "Q"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"hk-ado-jarvis-generic-service-prd\",rpc!~\".*/liveness$\"}[$__range]) or vector(1))/sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",app=\"hk-ado-jarvis-generic-service-prd\",rpc!~\".*/liveness$\"}[$__range]) or vector(1)) ",
+            "hide": false,
+            "legendFormat": "genrice rate",
+            "range": true,
+            "refId": "O"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"hk-ado-jarvis-chatbot-service-prd\",rpc!~\".*/liveness$\"}[$__range]) or vector(1))/sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",app=\"hk-ado-jarvis-chatbot-service-prd\",rpc!~\".*/liveness$\"}[$__range]) or vector(1)) ",
+            "hide": false,
+            "legendFormat": "chtbot rate",
+            "range": true,
+            "refId": "R"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",status=~\"2..\",app=\"hk-ado-jarvis-ai-service-prod\",rpc!~\".*/liveness$\"}[$__range]) or vector(1))/sum(sum_over_time(arms_requests_by_status_count_raw{source=\"apm\",app=\"hk-ado-jarvis-ai-service-prod\",rpc!~\".*/liveness$\"}[$__range]) or vector(1)) ",
+            "hide": false,
+            "legendFormat": "ai rate",
+            "range": true,
+            "refId": "S"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"hk-ado-jarvis-ai-service-prod\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\",}[$__range]))/sum(sum_over_time_lorc(arms_app_requests_count_raw{service=\"hk-ado-jarvis-ai-service-prod\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\"}[$__range])) or vector(0)",
+            "hide": false,
+            "legendFormat": "ai resp",
+            "range": true,
+            "refId": "T"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "\r\nround(\r\n (\r\n sum(sum_over_time_lorc(arms_app_requests_seconds_raw{\r\n service=\"hk-ado-jarvis-chatbot-service-prd\",\r\n serverIp=~\".*\",\r\n callKind=~\"http|rpc|custom_entry|server\",\r\n rpc!~\".*/liveness$\",\r\n source=\"apm\",\r\n }[$__range]))\r\n /\r\n sum(sum_over_time_lorc(arms_app_requests_count_raw{\r\n service=\"hk-ado-jarvis-chatbot-service-prd\",\r\n serverIp=~\".*\",\r\n callKind=~\"http|rpc|custom_entry|server\",\r\n rpc!~\".*/liveness$\",\r\n source=\"apm\",\r\n }[$__range]))\r\n or vector(1)\r\n ) * 10\r\n) / 10\r\n",
+            "hide": false,
+            "legendFormat": "chatbot resp",
+            "range": true,
+            "refId": "U"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time_lorc(arms_app_requests_seconds_raw{service=\"hk-ado-jarvis-generic-service-prd\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\",}[$__range]))/sum(sum_over_time_lorc(arms_app_requests_count_raw{service=\"hk-ado-jarvis-generic-service-prd\",serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",source=\"apm\"}[$__range])) or vector(0)",
+            "hide": false,
+            "legendFormat": " generic resp",
+            "range": true,
+            "refId": "N"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "count(max by(container_id)(kube_pod_container_info{namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-chatbot-service.*\"}))",
+            "hide": false,
+            "legendFormat": "chatbot pod",
+            "range": true,
+            "refId": "V"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "count(max by(container_id)(kube_pod_container_info{namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-ai-service.*\"}))",
+            "hide": false,
+            "legendFormat": "ai pod",
+            "range": true,
+            "refId": "W"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "count(max by(container_id)(kube_pod_container_info{namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-generic-service.*\"}))",
+            "hide": false,
+            "legendFormat": "generic pod",
+            "range": true,
+            "refId": "X"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"cpu\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-ai-service.*\"}))",
+            "hide": false,
+            "legendFormat": "ai cpu",
+            "range": true,
+            "refId": "Y"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"cpu\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-chatbot-service.*\"}))",
+            "hide": false,
+            "legendFormat": "chatbot cpu",
+            "range": true,
+            "refId": "Z"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"cpu\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-generic-service.*\"}))",
+            "hide": false,
+            "legendFormat": "generic cpu",
+            "range": true,
+            "refId": "AA"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"memory\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-generic-service.*\"}))",
+            "hide": false,
+            "legendFormat": "generic mem",
+            "range": true,
+            "refId": "AB"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"memory\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-chatbot-service.*\"}))",
+            "hide": false,
+            "legendFormat": "chatbot mem",
+            "range": true,
+            "refId": "AC"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "topk(1,sum by (container,pod)(kube_pod_container_resource_limits{resource=\"memory\",namespace=\"ns-hkg-agent-system\",pod=~\"^dep-hk-ado-jarvis-ai-service.*\"}))",
+            "hide": false,
+            "legendFormat": "ai mem",
+            "range": true,
+            "refId": "AD"
+          }
+        ],
+        "type": "canvas"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "blue",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "id": 65,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "avg_over_time(AliyunAlb_LoadBalancerQPS{regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"}[5m])",
+            "interval": "5m",
+            "legendFormat": "alb qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Req (Count/5m)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "id": 64,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "sum(AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"})\r\n/\r\nsum(\r\n AliyunAlb_LoadBalancerHTTPCodeUpstream2XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream3XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream4XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\nor AliyunAlb_LoadBalancerHTTPCodeUpstream5XX{regionId=~\"$regionId\", loadBalancerId=~\"$loadBalancerId\"}\r\n)\r\n",
+            "legendFormat": "alb rate",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Suc rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "负载均衡实例后端应答时间(ms)",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "id": 67,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunAlb_LoadBalancerUpstreamResponseTime{loadBalancerId=~\"$loadBalancerId\"}",
+            "interval": "1m",
+            "legendFormat": "Alb resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ALB Backend Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 4
+        },
+        "id": 66,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyApiQps{apiName=~\"$GWSVC\"}",
+            "interval": "5m",
+            "legendFormat": "gw qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Req (Count/5m)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 0.8
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 4
+        },
+        "id": 69,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "round(AliyunCnapigateway_EnvoyDownstreamSuccessRate,0.01)",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Suc rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "jXu2wByNz"
+        },
+        "description": "网关Operation请求平均时延",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 4
+        },
+        "id": 68,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "jXu2wByNz"
+            },
+            "editorMode": "code",
+            "expr": "AliyunCnapigateway_EnvoyApiRtAvg{apiName=~\"$GWSVC\"}",
+            "interval": "1m",
+            "legendFormat": "gw resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "GW Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "f4V_TpTHk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 8
+        },
+        "id": 62,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (istio)(rate(istio_requests_total{source_workload_namespace=\"istio-system\",reporter=\"source\",source_app=\"$asm_gateway_name\"}[5m]))",
+            "hide": false,
+            "interval": "5m",
+            "legendFormat": "asm qps",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Req (Count/5m)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "f4V_TpTHk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "axisSoftMax": 1,
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 8
+        },
+        "id": 63,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "f4V_TpTHk"
+            },
+            "editorMode": "code",
+            "expr": "sum(sum_over_time(istio_requests_total{destination_app=\"$ASMSVC\",response_code=~\"2..\"}[5m]))/sum(sum_over_time(istio_requests_total{destination_app=\"$ASMSVC\"}[5m]))",
+            "interval": "",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Suc Rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "semi-dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 8
+        },
+        "id": 70,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (callType) (arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})/sum by (callType) (arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{namespace=\"$NameSpace\",callKind=~\"$incallKind\"})",
+            "interval": "1m",
+            "legendFormat": "Asm resp",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "ASM Resp",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-chatbot-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-generic-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 12
+        },
+        "id": 59,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "sum by(service)(sum_over_time_lorc(arms_app_requests_count_raw{serverIp=~\".*\",callKind=~\"http|rpc|custom_entry|server\",rpc!~\".*/liveness$\",namespace=\"$NameSpace\",source=\"apm\"}[5m])) -1",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "interval": "5m",
+            "legendFormat": "{{service}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "APP Req (Count/5m)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "max": 1,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-chatbot-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-generic-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 12
+        },
+        "id": 60,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum by(app)(sum_over_time_lorc(arms_requests_by_status_count_raw {source=\"apm\",status=~\"2..\",namespace=\"$NameSpace\"}[5m]))/sum by(app)(sum_over_time_lorc(arms_requests_by_status_count_raw {source=\"apm\",namespace=\"$NameSpace\"}[5m]))",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{service}}",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "App Suc Rate",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "-_KRSjivz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-chatbot-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "hk-ado-jarvis-generic-service-prd"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 12
+        },
+        "id": 71,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.5.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "-_KRSjivz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (service) (arms_app_requests_seconds_ign_destid_endpoint_ppid_prpc_rpc{callKind=~\"$incallKind\",rpc!~\".*/liveness$\",namespace=\"$NameSpace\"})/sum by (service) (arms_app_requests_count_ign_destid_endpoint_ppid_prpc_rpc{callKind=~\"$incallKind\",rpc!~\".*/liveness$\",namespace=\"$NameSpace\"})",
+            "instant": false,
+            "legendFormat": "{{service}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "App Resp",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "1m",
+    "schemaVersion": 40,
+    "tags": [
+      "cmee",
+      "alb",
+      "scene:middleware",
+      "addon:name:cloud-alb",
+      "addon:version:0.0.3",
+      "env:Cloud",
+      "env:type:Cloud",
+      "dashboard:name:cmee-alb-overview"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "cn-hongkong",
+            "value": "cn-hongkong"
+          },
+          "hide": 2,
+          "name": "regionId",
+          "options": [
+            {
+              "selected": true,
+              "text": "cn-hongkong",
+              "value": "cn-hongkong"
+            }
+          ],
+          "query": "cn-hongkong",
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "text": "ns-hkg-agent-system",
+            "value": "ns-hkg-agent-system"
+          },
+          "label": "ProjectName",
+          "name": "NameSpace",
+          "options": [
+            {
+              "selected": true,
+              "text": "Jarvis",
+              "value": "ns-hkg-agent-system"
+            },
+            {
+              "selected": false,
+              "text": "ODS",
+              "value": "ns-hkg-ods-system"
+            },
+            {
+              "selected": false,
+              "text": "ATAS",
+              "value": "ns-gft-atas-system"
+            },
+            {
+              "selected": false,
+              "text": "DCS",
+              "value": "ns-hkg-dcs-system"
+            }
+          ],
+          "query": "Jarvis : ns-hkg-agent-system, ODS : ns-hkg-ods-system,ATAS : ns-gft-atas-system,DCS : ns-hkg-dcs-system,",
+          "type": "custom"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+          "hide": 2,
+          "includeAll": true,
+          "label": "AppName",
+          "name": "Service",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(?!.*(?:demo|test|gateway)).*$/",
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+          "hide": 2,
+          "includeAll": false,
+          "name": "loadBalancerId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=~\"AliyunAlb_LoadBalancerQPS|AliyunAlb_LoadBalancerHealthyHostCount\", regionId=~\"$regionId\"},loadBalancerId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerProtocol",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\"},listenerProtocol)",
+            "refId": "${datasource}-listenerProtocol-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "listenerPort",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ListenerQPS|AliyunAlb_ListenerHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\"},listenerPort)",
+            "refId": "${datasource}-listenerPort-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "ruleId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_RuleQPS|AliyunAlb_RuleHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},ruleId)",
+            "refId": "${datasource}-ruleId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+          "hide": 2,
+          "includeAll": true,
+          "multi": true,
+          "name": "serverGroupId",
+          "options": [],
+          "query": {
+            "query": "label_values({__name__=~\"AliyunAlb_ServerGroupQPS|AliyunAlb_ServerGroupHealthyHostCount\",regionId=~\"$regionId\",loadBalancerId=~\"$loadBalancerId\",listenerProtocol=~\"$listenerProtocol\",listenerPort=~\"$listenerPort\"},serverGroupId)",
+            "refId": "${datasource}-serverGroupId-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {},
+          "hide": 2,
+          "includeAll": false,
+          "label": "Prometheus",
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "/^prom-rw-d446eea044878595b90a806d83e4/",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": "istio-ingressgateway",
+            "value": "istio-ingressgateway"
+          },
+          "hide": 2,
+          "label": "asm_gateway_name",
+          "name": "asm_gateway_name",
+          "options": [
+            {
+              "selected": true,
+              "text": "istio-ingressgateway",
+              "value": "istio-ingressgateway"
+            }
+          ],
+          "query": "istio-ingressgateway",
+          "type": "textbox"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+          "description": "",
+          "hide": 2,
+          "label": "pid",
+          "name": "Pid",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{service=\"$Service\"},pid)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+          "hide": 2,
+          "label": "asmsvc",
+          "name": "ASMSVC",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(.*?)(?:-dev|-prod|-prd|-uat)$/",
+          "type": "query"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-_KRSjivz"
+          },
+          "definition": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+          "hide": 2,
+          "label": "asmavc",
+          "name": "GWSVC",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(arms_app_requests_count_raw{namespace=\"$NameSpace\", service=\"$Service\"},app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "/^(hk-ado-jarvis).*?$/",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|server",
+            "value": "http|rpc|consumer|custom_entry|server"
+          },
+          "hide": 2,
+          "label": "incallKind",
+          "name": "incallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|server",
+              "value": "http|rpc|consumer|custom_entry|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|server",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+            "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+          },
+          "hide": 2,
+          "label": "outcallKind",
+          "name": "outcallKind",
+          "options": [
+            {
+              "selected": true,
+              "text": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+              "value": "rpc_client|http_client|db|sql|nosql|cache|producer|client"
+            }
+          ],
+          "query": "rpc_client|http_client|db|sql|nosql|cache|producer|client",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "text": "http|rpc|consumer|custom_entry|schedule|server",
+            "value": "http|rpc|consumer|custom_entry|schedule|server"
+          },
+          "hide": 2,
+          "label": "fullIncallKinds",
+          "name": "fullIncallKinds",
+          "options": [
+            {
+              "selected": true,
+              "text": "http|rpc|consumer|custom_entry|schedule|server",
+              "value": "http|rpc|consumer|custom_entry|schedule|server"
+            }
+          ],
+          "query": "http|rpc|consumer|custom_entry|schedule|server",
+          "type": "custom"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "type": "prometheus",
+            "uid": "jXu2wByNz"
+          },
+          "definition": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+          "description": "",
+          "hide": 2,
+          "label": "promInstanceId",
+          "name": "PromInstanceId",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(AliyunAlb_ListenerQPS{loadBalancerId=\"$loadBalancerId\"},promInstanceId)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "",
+    "title": "Logical Architecture Overview--v2",
+    "uid": "53281",
+    "version": 4,
+    "weekStart": ""
+  }
+}
