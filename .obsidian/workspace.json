@@ -58,12 +58,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Inbox/ai-ops/aiops-blueprint.md",
-                "mode": "preview",
+                "file": "0 - Inbox/Agent skills.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aiops-blueprint"
+              "title": "Agent skills"
             }
           },
           {
@@ -72,16 +72,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Inbox/Kanban-main/MTP pipeline.md",
-                "mode": "preview",
+                "file": "9 - Plugins/skills/axton-obsidian-visual-skills/README.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MTP pipeline"
+              "title": "README"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -227,15 +227,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e34587b1f895d1af",
+  "active": "4a885d7ce7838f67",
   "lastOpenFiles": [
+    "0 - Inbox/ai-ops/aiops-blueprint.md",
+    "0 - Inbox/Kanban-main/!dea 💡.md",
+    "9 - Plugins/skills/axton-obsidian-visual-skills/README.md",
+    "0 - Inbox/Agent skills.md",
+    "0 - Inbox/Kanban-main/MTP pipeline.md",
     "9 - Plugins/auto/cleanup-git-logs",
     "9 - Plugins/auto",
     "0 - Inbox/Main.base",
-    "0 - Inbox/ai-ops/aiops-blueprint.md",
     "4 - Resources/AliCloud/阿里云资源命名规范-对比报告.md",
     "4 - Resources/AliCloud",
-    "0 - Inbox/Kanban-main/!dea 💡.md",
     "0 - Inbox/Kanban-main/Copilot Studio.md",
     "0 - Inbox/Kanban-main/PIpeline AI.md",
     "0 - Inbox/Kanban-main/AliCoud 梳理.md",
@@ -245,7 +248,6 @@
     "fetch_compare_confluence.py",
     "0 - Inbox/ai-ops/deployment-agent-mvp-technical-review.md",
     "4 - Resources/AI/Copilot Studio/answer-quality.md",
-    "0 - Inbox/Kanban-main/MTP pipeline.md",
     "0 - Inbox/ai-ops/Drawing 2026-06-10 12.43.26.excalidraw.md",
     "0 - Inbox/ai-ops/Deployment parts alignment.md",
     "update_confluence_page.py",
@@ -268,8 +270,6 @@
     "4 - Resources/DevOps/Service Catalog/Copy of AliCloud_Service_Request.xlsx",
     "4 - Resources/DevOps/Service Catalog",
     "4 - Resources/DevOps",
-    "4 - Resources/AI/Copilot Studio",
-    "0 - Inbox/ai-ops/agent-migrate/Untitled.md",
     "9 - Assets/Others/snow-service-account.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/pain-point.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/aiops-architecture.excalidraw.png",
