@@ -21,6 +21,7 @@ npm install -g agent-skill-manager
 
 [garrytan/gstack](https://github.com/garrytan/gstack)
 [Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)
+[pchuri/confluence-cli](https://github.com/pchuri/confluence-cli)
 
 
 # USER

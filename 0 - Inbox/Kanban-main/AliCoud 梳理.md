@@ -20,9 +20,6 @@ Priority: Medium
 接下来上AliCloud的服务
 全链路追踪
 
-建立标准根据之前的
-[https://manulife-asia.atlassian.net/wiki/spaces/CGT/pages/1561199368/Ali+Cloud+-+Resource](https://manulife-asia.atlassian.net/wiki/spaces/CGT/pages/1561199368/Ali+Cloud+-+Resource "https://manulife-asia.atlassian.net/wiki/spaces/cgt/pages/1561199368/ali+cloud+-+resource")
-[https://manulife-asia.atlassian.net/wiki/spaces/CGT/pages/1561592489/Ali+Cloud+-+Environment+Inform…](https://manulife-asia.atlassian.net/wiki/spaces/CGT/pages/1561592489/Ali+Cloud+-+Environment+Information?%20Sign%20up%20for%20free.= "https://manulife-asia.atlassian.net/wiki/spaces/cgt/pages/1561592489/ali+cloud+-+environment+information?%20sign%20up%20for%20free.=")
 
 # Usage analysis
 
