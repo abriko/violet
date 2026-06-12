@@ -4,7 +4,7 @@ tags:
   - devops
 creation date: 2026-06-01 09:53
 Priority: Medium
-Status: In progress
+Status: Sign off
 ---
 
 https://manulife-asia.atlassian.net/browse/HPD-1042

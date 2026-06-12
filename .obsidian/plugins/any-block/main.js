@@ -19145,15 +19145,25 @@ var ABAlias_json_withSub = [
   { regex: /\|(callout|alert) ([^+-\s]+)([+-]?)\s?(.*)\|/, replacement: "|add([!$2]$3 $4)|addQuote|" }
 ];
 var ABAlias_json_mdit = [
-  { regex: /\|:::_140lne\|(2?tabs?|标签页?)\|/, replacement: "|mditTabs|" },
+  { regex: /\|:::_140lne\|((?:mdit2|2)?tabs?|标签页?)\|/, replacement: "|mditTabs|" },
   { regex: "|:::_140lne|demo|", replacement: "|mditDemo|" },
   { regex: "|:::_140lne|abDemo|", replacement: "|mditABDemo|" },
-  { regex: /\|:::_140lne\|(2?col|分栏)\|/, replacement: "|mditCol|" },
-  { regex: /\|:::_140lne\|(2?card|卡片)\|/, replacement: "|mditCard|" },
-  { regex: /\|:::_140lne\|(2?chat|聊天)\|/, replacement: "|mditChat|code(chat)|" }
+  { regex: /\|:::_140lne\|((?:mdit2|2)?col|分栏)\|/, replacement: "|mditCol|" },
+  { regex: /\|:::_140lne\|((?:mdit2|2)?card|卡片)\|/, replacement: "|mditCard|" },
+  { regex: /\|:::_140lne\|((?:mdit2|2)?chat|聊天)\|/, replacement: "|mditChat|code(chat)|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(mermaid|flow|流程图)\|/, replacement: "|mdit2list|list2mermaid|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(mehrmaid|mdmermaid)\|/, replacement: "|mdit2list|list2mehrmaidText|code(mehrmaid)|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(puml)?(plantuml|mindmap|脑图|思维导图)\|/, replacement: "|mdit2list|list2pumlMindmap|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(markmap|mdMindmap|md脑图|md思维导图)\|/, replacement: "|mdit2list|list2markmap|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(wbs|(工作)?分解(图|结构))\|/, replacement: "|mdit2list|list2pumlWBS|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(table|multiWayTable|multiCrossTable|表格?|多叉表格?|跨行表格?)\|/, replacement: "|mdit2list|list2table|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(lt|listTable|treeTable|listGrid|treeGrid|列表格|树形表格?)\|/, replacement: "|mdit2list|list2lt|" },
+  { regex: /\|:::_140lne\|2?(list|列表)\|/, replacement: "|mdit2list|list2lt|addClass(ab-listtable-likelist)|" },
+  { regex: /\|:::_140lne\|(?:mdit2|2)?(dir|dirTree|目录树?|目录结构)\|/, replacement: "|mdit2list|list2dt|" },
+  { regex: /\|:::_140lne\|(fakeList|仿列表)\|/, replacement: "|mdit2list|list2table|addClass(ab-table-fc)|addClass(ab-table-likelist)|" },
+  { regex: "|mdit2list|", replacement: "|mdit2listdata|listdata2strict|listdata2list|" }
 ];
 var ABAlias_json_title = [
-  { regex: "|title2list|", replacement: "|title2listdata|listdata2strict|listdata2list|" },
   { regex: /\|heading_140lne\|2?(timeline|时间线)\|/, replacement: "|title2timeline|" },
   { regex: /\|heading_140lne\|2?(tabs?|标签页?)\||\|title2tabs?\|/, replacement: "|title2c2listdata|c2listdata2tab|" },
   { regex: /\|heading_140lne\|2?(col|分栏)\||\|title2col\|/, replacement: "|title2c2listdata|c2listdata2items|addClass(ab-col)|" },
@@ -19168,7 +19178,8 @@ var ABAlias_json_title = [
   { regex: /\|heading_140lne\|2?(lt|listTable|treeTable|listGrid|treeGrid|列表格|树形表格?)\|/, replacement: "|title2list|list2lt|" },
   { regex: /\|heading_140lne\|2?(list|列表)\|/, replacement: "|title2list|list2lt|addClass(ab-listtable-likelist)|" },
   { regex: /\|heading_140lne\|2?(dir|dirTree|目录树?|目录结构)\|/, replacement: "|title2list|list2dt|" },
-  { regex: /\|heading_140lne\|(fakeList|仿列表)\|/, replacement: "|title2list|list2table|addClass(ab-table-fc)|addClass(ab-table-likelist)|" }
+  { regex: /\|heading_140lne\|(fakeList|仿列表)\|/, replacement: "|title2list|list2table|addClass(ab-table-fc)|addClass(ab-table-likelist)|" },
+  { regex: "|title2list|", replacement: "|title2listdata|listdata2strict|listdata2list|" }
 ];
 var ABAlias_json_list = [
   { regex: "|listXinline|", replacement: "|list2listdata|listdata2strict|listdata2list|" },
@@ -19877,14 +19888,22 @@ var ListProcess = class {
       if (codeBlockFlag == "") {
         const match3 = line.match(ABReg.reg_code);
         if (match3 && match3[3]) {
-          codeBlockFlag = match3[1] + match3[3];
-          list_itemInfo[list_itemInfo.length - 1].content = list_itemInfo[list_itemInfo.length - 1].content + "\n" + line;
+          if (mul_mode === "heading" || mul_mode === "") {
+            list_itemInfo.push({
+              content: line,
+              level: 0
+            });
+            mul_mode = "para";
+          } else {
+            codeBlockFlag = match3[1] + match3[3];
+            list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
+          }
           continue;
         }
       } else {
         if (line.indexOf(codeBlockFlag) == 0)
           codeBlockFlag = "";
-        list_itemInfo[list_itemInfo.length - 1].content = list_itemInfo[list_itemInfo.length - 1].content + "\n" + line;
+        list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
         continue;
       }
       const match_heading = line.match(ABReg.reg_heading_noprefix);
@@ -19904,10 +19923,77 @@ var ListProcess = class {
         });
         mul_mode = "list";
       } else if (/^\S/.test(line) && mul_mode == "list") {
-        list_itemInfo[list_itemInfo.length - 1].content = list_itemInfo[list_itemInfo.length - 1].content + "\n" + line;
+        list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
       } else {
         if (mul_mode == "para") {
-          list_itemInfo[list_itemInfo.length - 1].content = list_itemInfo[list_itemInfo.length - 1].content + "\n" + line;
+          list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
+        } else if (/^\s*$/.test(line)) {
+          continue;
+        } else {
+          list_itemInfo.push({
+            content: line,
+            level: 0
+          });
+          mul_mode = "para";
+        }
+      }
+    }
+    removeTailBlank();
+    return list_itemInfo;
+    function removeTailBlank() {
+      if (mul_mode == "para" || mul_mode == "list") {
+        list_itemInfo[list_itemInfo.length - 1].content = list_itemInfo[list_itemInfo.length - 1].content.replace(/\s*$/, "");
+      }
+    }
+  }
+  static mdit2data(text5) {
+    let list_itemInfo = [];
+    const list_text = text5.split("\n");
+    let mul_mode = "";
+    let codeBlockFlag = "";
+    for (let line of list_text) {
+      if (codeBlockFlag == "") {
+        const match3 = line.match(ABReg.reg_code);
+        if (match3 && match3[3]) {
+          if (mul_mode === "mdit" || mul_mode === "") {
+            list_itemInfo.push({
+              content: line,
+              level: 0
+            });
+            mul_mode = "para";
+          } else {
+            codeBlockFlag = match3[1] + match3[3];
+            list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
+          }
+          continue;
+        }
+      } else {
+        if (line.indexOf(codeBlockFlag) == 0)
+          codeBlockFlag = "";
+        list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
+        continue;
+      }
+      const match_mdit = line.match(/^(\s*)@(\d+)\s+(.*)$/);
+      const match_list = line.match(ABReg.reg_list_noprefix);
+      if (match_mdit && !match_mdit[1]) {
+        removeTailBlank();
+        list_itemInfo.push({
+          content: match_mdit[3],
+          level: Number(match_mdit[2]) - 100
+        });
+        mul_mode = "mdit";
+      } else if (match_list) {
+        removeTailBlank();
+        list_itemInfo.push({
+          content: match_list[4],
+          level: match_list[1].length + 1
+        });
+        mul_mode = "list";
+      } else if (/^\S/.test(line) && mul_mode == "list") {
+        list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
+      } else {
+        if (mul_mode == "para") {
+          list_itemInfo[list_itemInfo.length - 1].content += "\n" + line;
         } else if (/^\s*$/.test(line)) {
           continue;
         } else {
@@ -20116,6 +20202,16 @@ var abc_title2listdata = ABConvert.factory({
   detail: "\u6807\u9898\u5230listdata",
   process: (el, header, content) => {
     return ListProcess.title2data(content);
+  }
+});
+var abc_mdit2listdata = ABConvert.factory({
+  id: "mdit2listdata",
+  name: "mdit\u5230listdata",
+  process_param: "string" /* text */,
+  process_return: "array" /* list_stream */,
+  detail: "mdit\u5230listdata",
+  process: (el, header, content) => {
+    return ListProcess.mdit2data(content);
   }
 });
 var _abc_listdata2list = ABConvert.factory({
