@@ -53,3 +53,7 @@ data/release-plans/2026-h1.csv有点怪，我们习惯两次major release：7月
 之前做的release data我需要你帮我review下，我想在里面实现一个case：
 release plan里没有标出
 
+## Governance
+/office-hours 我需要在服务页面添加治理情况展示，并在data/文件夹准备dummy data。
+例子我们公司服务部署使用RSF框架
+- 2.9.0 最新版
