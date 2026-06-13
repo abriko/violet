@@ -30,3 +30,20 @@ Dependency CR值得当前release plan中依赖的其他CR number。
 MVP out of scope：
 - Dependency CR自动判断
 - 动态API
+
+---
+
+帮我准备dummy data用来做demo，放到dummy-release
+```csv
+#,Change Request,CR Implementation Status,Serivce,Project Name,Contact Point,Planned start date/time,Planned end date/time,Dependency CR,Pillar
+```
+Change Request其中号码类似CHG01234567，CR Implementation Status全部放Plan。
+准备数量40个，种类包括：少量的资源配置（setup db， setup domain），project new feature， project bau
+我需要这些模拟CR依赖关系，也就是Dependency CR，需要包含三类
+- 孤立CR，没有依赖
+- 有依赖链路的CR，最多三层链路
+- 相互依赖的CR
+
+
+之前做的release data我需要你帮我review下，我想在里面实现一个case：
+release plan里没有标出
