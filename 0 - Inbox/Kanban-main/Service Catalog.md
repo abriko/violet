@@ -44,6 +44,12 @@ Change Request其中号码类似CHG01234567，CR Implementation Status全部放P
 - 有依赖链路的CR，最多三层链路
 - 相互依赖的CR
 
+data/release-plans/2026-h1.csv有点怪，我们习惯两次major release：7月/12月。帮我改成对应的明明
+另外帮我创建个：
+2025-dec-major：40CR；有依赖链路的CR，最多二层链路
+2026-april-minor：10CR的list；孤立CR，没有依赖
+
 
 之前做的release data我需要你帮我review下，我想在里面实现一个case：
 release plan里没有标出
+
