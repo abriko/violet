@@ -72,12 +72,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Inbox/Kanban-main/Service Catalog.md",
+                "file": "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Service Catalog"
+              "title": "vin-main-design-20260612-215042"
             }
           }
         ],
@@ -218,15 +218,15 @@
   },
   "active": "388d2a0ae745c66d",
   "lastOpenFiles": [
-    "0 - Inbox/Main.base",
-    "0 - Inbox/Agent.md",
+    "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
+    "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
     "3 - Areas/Gstack/service-catalog/luruilr-unknown-eng-review-test-plan-20260613-091719.md",
     "0 - Inbox/Kanban-main/Service Catalog.md",
-    "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
+    "0 - Inbox/Main.base",
+    "0 - Inbox/Agent.md",
     "3 - Areas/Gstack/service-catalog/unknown-reviews.jsonl",
     "3 - Areas/Gstack/unknown/tasks-eng-review-20260613-091713.jsonl",
     "3 - Areas/Gstack/unknown/tasks-eng-review-20260613-091653.jsonl",
-    "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
     "3 - Areas/Gstack/service-catalog/timeline.jsonl",
     "3 - Areas/Gstack/hk-devops-service-catalog",
     "0 - Inbox/Kanban-main/!dea 💡.md",

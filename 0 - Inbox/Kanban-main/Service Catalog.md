@@ -54,6 +54,12 @@ data/release-plans/2026-h1.csv有点怪，我们习惯两次major release：7月
 release plan里没有标出
 
 ## Governance
-/office-hours 我需要在服务页面添加治理情况展示，并在data/文件夹准备dummy data。
+/office-hours 我需要在服务页面添加治理情况展示。
 例子我们公司服务部署使用RSF框架
-- 2.9.0 最新版
+- 2.9.0，展示：最新版，all good
+- 2.8.0，展示：正常版本，info 切换ddl 2026/8/1
+- 2.7.0，展示：过期版本，warning 需要理解切换
+例子2:
+Azure Cache for Redis 2028年9月官方retire，需要migrate到Azure Managed Redis。对于所有使用这个的服务会提示公司policy要求在2027年8月前完成切换，没切换前都是提示状态。
+
+MVP阶段不需要考虑数据怎么来，直接在并data/文件夹准备dummy data的sql文件
