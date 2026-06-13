@@ -44,16 +44,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
+                "file": "3 - Areas/Gstack/service-catalog/luruilr-unknown-eng-review-test-plan-20260613-091719.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vin-main-design-20260612-215042"
+              "title": "luruilr-unknown-eng-review-test-plan-20260613-091719"
+            }
+          },
+          {
+            "id": "9b64629f1d527aef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - Inbox/Kanban-main/Service Catalog.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Service Catalog"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -188,14 +202,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "79731f484fdfcf02",
+  "active": "9b64629f1d527aef",
   "lastOpenFiles": [
-    "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
+    "0 - Inbox/Main.base",
+    "3 - Areas/Gstack/service-catalog/luruilr-unknown-eng-review-test-plan-20260613-091719.md",
     "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
+    "3 - Areas/Gstack/service-catalog/unknown-reviews.jsonl",
+    "3 - Areas/Gstack/unknown/tasks-eng-review-20260613-091713.jsonl",
+    "3 - Areas/Gstack/unknown/tasks-eng-review-20260613-091653.jsonl",
+    "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
     "0 - Inbox/Kanban-main/Service Catalog.md",
     "3 - Areas/Gstack/service-catalog/timeline.jsonl",
     "3 - Areas/Gstack/hk-devops-service-catalog",
-    "0 - Inbox/Main.base",
     "0 - Inbox/Kanban-main/!dea 💡.md",
     "0 - Inbox/Kanban-main/AliCoud 梳理.md",
     "9 - Plugins/skills/axton-obsidian-visual-skills/README.md",
@@ -217,7 +235,6 @@
     "4 - Resources/AI/Copilot Studio/answer-quality.md",
     "0 - Inbox/ai-ops/Drawing 2026-06-10 12.43.26.excalidraw.md",
     "0 - Inbox/ai-ops/Deployment parts alignment.md",
-    "update_confluence_page.py",
     "9 - Assets/Others/SCR-20260610-pkjy.png",
     "9 - Assets/Others/SCR-20260610-jact.png",
     "9 - Assets/Others/SCR-20260610-iztw.png",
@@ -226,11 +243,7 @@
     "0 - Inbox/Kanban-main/Grafana dashboard.md",
     "0 - Inbox/dashboard migrate/after-migration.md",
     "0 - Inbox/dashboard migrate/README.md",
-    "0 - Inbox/dashboard migrate/migration-plan.md",
-    "4 - Resources/AI/Copilot Studio/rovo-migrate/rovo.md",
     "0 - Inbox/ai-ops/assets/5-design-principles.png",
-    "4 - Resources/DevOps/MiniOps",
-    "4 - Resources/DevOps/Service Catalog/Copy of AliCloud_Service_Request.xlsx",
     "9 - Assets/Others/snow-service-account.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/pain-point.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/aiops-architecture.excalidraw.png",
