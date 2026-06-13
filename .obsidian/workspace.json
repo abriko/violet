@@ -44,12 +44,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Inbox/Kanban-main/Service Catalog.md",
+                "file": "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Service Catalog"
+              "title": "vin-main-design-20260612-215042"
             }
           }
         ],
@@ -100,8 +100,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 235.5,
-    "collapsed": true
+    "width": 274.50390243530273
   },
   "right": {
     "id": "4847b22a05ce3268",
@@ -186,17 +185,18 @@
       "audio-recorder:Start/stop recording": false,
       "workspaces:Manage workspace layouts": false,
       "templater-obsidian:Templater": false,
-      "obsidian-git:Open Git source control": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "79731f484fdfcf02",
   "lastOpenFiles": [
-    "3 - Areas/Gstack/hk-devops-service-catalog/timeline.jsonl",
+    "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
+    "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
+    "0 - Inbox/Kanban-main/Service Catalog.md",
+    "3 - Areas/Gstack/service-catalog/timeline.jsonl",
     "3 - Areas/Gstack/hk-devops-service-catalog",
     "0 - Inbox/Main.base",
     "0 - Inbox/Kanban-main/!dea 💡.md",
-    "0 - Inbox/Kanban-main/Service Catalog.md",
     "0 - Inbox/Kanban-main/AliCoud 梳理.md",
     "9 - Plugins/skills/axton-obsidian-visual-skills/README.md",
     "0 - Inbox/Agent.md",
@@ -229,10 +229,8 @@
     "0 - Inbox/dashboard migrate/migration-plan.md",
     "4 - Resources/AI/Copilot Studio/rovo-migrate/rovo.md",
     "0 - Inbox/ai-ops/assets/5-design-principles.png",
-    "4 - Resources/DevOps/MiniOps/miniops_wiki_20260531_082445.md",
     "4 - Resources/DevOps/MiniOps",
     "4 - Resources/DevOps/Service Catalog/Copy of AliCloud_Service_Request.xlsx",
-    "4 - Resources/DevOps/Service Catalog",
     "9 - Assets/Others/snow-service-account.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/pain-point.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/aiops-architecture.excalidraw.png",
