@@ -1683,11 +1683,14 @@ views:
       note.Status:
         In progress:
           - 0 - Inbox/Kanban-main/AliCoud 梳理.md
-          - 0 - Inbox/Kanban-main/MTP pipeline.md
           - 0 - Inbox/Kanban-main/Service Catalog.md
+          - 0 - Inbox/Kanban-main/Supervisor.md
         Uncategorized:
           - 0 - Inbox/Kanban-main/!dea 💡.md
           - 0 - Inbox/Kanban-main/Untitled.md
+          - 0 - Inbox/Kanban-main/ACK upgrade.md
+          - 0 - Inbox/Kanban-main/ASM upgrade.md
+          - 0 - Inbox/Kanban-main/PIpeline AI.md
         Blocked:
           - 0 - Inbox/Kanban-main/Grafana dashboard.md
         Backlog: []
