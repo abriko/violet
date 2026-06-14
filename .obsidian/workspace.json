@@ -79,23 +79,9 @@
               "icon": "lucide-file",
               "title": "vin-main-design-20260612-215042"
             }
-          },
-          {
-            "id": "f682444cdaac1fc3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "0 - Inbox/Kanban-main/Supervisor.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Supervisor"
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -142,8 +128,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 274.50390243530273,
-    "collapsed": true
+    "width": 274.50390243530273
   },
   "right": {
     "id": "4847b22a05ce3268",
@@ -231,10 +216,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f682444cdaac1fc3",
+  "active": "e34587b1f895d1af",
   "lastOpenFiles": [
-    "0 - Inbox/Main.base",
+    "3 - Areas/Gstack/unknown/luruilr-unknown-design-20260602-office-hours.md",
+    "3 - Areas/Gstack/unknown/luruilr-main-design-20260614-141116.md",
+    "0 - Inbox/session-ses_13b5.md",
     "0 - Inbox/Kanban-main/Supervisor.md",
+    "0 - Inbox/Main.base",
     "0 - Inbox/Agent.md",
     "3 - Areas/Gstack/service-catalog/vin-main-design-20260612-215042.md",
     "3 - Areas/Gstack/service-catalog/vin-main-design-20260530-111136.md",
@@ -270,8 +258,6 @@
     "9 - Assets/Others/SCR-20260610-iztw.png",
     "9 - Assets/Others/SCR-20260610-izpm.png",
     "0 - Inbox/ai-ops/agent-migrate.md",
-    "0 - Inbox/Kanban-main/Grafana dashboard.md",
-    "0 - Inbox/dashboard migrate/after-migration.md",
     "0 - Inbox/ai-ops/assets/5-design-principles.png",
     "9 - Assets/Others/snow-service-account.png",
     "0 - Inbox/ai-ops/ai-opportunity-ppt-v1/pain-point.png",
